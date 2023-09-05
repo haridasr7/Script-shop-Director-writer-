@@ -1,0 +1,10 @@
+.pdfVMain{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.pdf-document {
+    margin: 0;
+    padding: 0;
+    background-color: aqua;
+  }

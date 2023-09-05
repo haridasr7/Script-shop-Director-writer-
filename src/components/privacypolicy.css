@@ -1,0 +1,10 @@
+@media only screen and (max-width: 800px) {
+    .wprivacypolicy {
+        padding-top: 5%;
+    }
+}
+@media only screen and (max-width: 710px) {
+    .wprivacypolicy {
+        padding-top: 10%;
+    }
+}

@@ -1,0 +1,296 @@
+.navbarMainDiv {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    position: fixed;
+    background-color: #FFFFFF;
+    z-index: 2;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.85);
+
+}
+
+.CommonNavbar {
+
+    display: flex;
+    flex-direction: row;
+    width: 85%;
+
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navbarFollowers {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    margin-left: -4%;
+}
+
+.CNavLogo {
+    width: 100px;
+}
+
+.Navcenter-section {
+    display: flex;
+    gap: 50px;
+
+    justify-content: center;
+}
+
+.Navbaractive {
+    text-decoration-line: none;
+    color: #14ABE4;
+
+}
+
+.NavbarInactive {
+    text-decoration-line: none;
+    color: black;
+}
+
+#navbarC3Typo {
+
+
+    font-size: 22px;
+    font-weight: 500;
+
+}
+
+#navbarC3Typo1 {
+
+
+    font-size: 22px;
+    font-weight: 500;
+
+}
+
+#navbarC3Typo2 {
+
+
+    font-size: 22px;
+    font-weight: 500;
+
+}
+
+.Navright-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.navDpCircle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #14ABE4;
+
+
+}
+
+.navDpCircleImg {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+
+
+}
+
+.navDpCircleIcon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+
+
+}
+
+#navDpCircleIcon1 {
+    font-size: 60px;
+    color: #FFFFFF;
+}
+
+.arrow-button {
+    font-size: 10px;
+    color: black;
+    margin-left: -10px;
+
+
+}
+
+#navbarFollowerButton {
+    padding: 5px;
+    border: 2px solid #14ABE4;
+    border-radius: 5px;
+    color: #14ABE4;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.navbarCdropdown-menu {
+    display: flex;
+    flex-direction: column;
+    width: 31%;
+    position: absolute;
+    margin-top: 75px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.85);
+    margin-left: -10%;
+    background-color: #FFFFFF;
+    z-index: 10;
+
+
+}
+
+.navdropHr {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.navdropHr1 {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.navdropHr2 {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.navbarCdropdown-menuUL {
+    list-style: none;
+
+
+}
+
+.navbarCdropdown-menuULLink {
+    text-decoration-line: none;
+    color: black;
+
+}
+
+.navbarCdropdown-menuLi {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    width: 90%;
+    height: 40px;
+    cursor: pointer;
+
+
+
+}
+
+.navbarCdropdown-menuTypo {
+    font-size: 16px;
+    font-weight: 500
+}
+
+.navbarCdropdown-menuDiv {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 10px;
+
+}
+
+#NavbarCMenu {
+    display: none;
+}
+
+
+
+
+@media (max-width:768px) {
+    .navbarMainDiv {
+        
+    }
+
+    .CommonNavbar {
+
+        justify-content: left;
+
+    }
+
+    .CNavLogo {
+        width: 70px;
+        margin-left: 55%;
+
+    }
+
+    .Navcenter-section {
+        display: none;
+    }
+
+    .Navright-section {
+        display: none;
+    }
+
+    .navbarFollowers {
+        display: flex;
+        margin-right: 10%;
+        align-items: center;
+
+
+
+    }
+
+    #navbarFollowerButton {
+        padding: 5px;
+        border: 1px solid #14ABE4;
+        border-radius: 5px;
+        color: #14ABE4;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    #NavbarCMenu {
+        display: block;
+    }
+
+   
+}
+
+@media (max-width:520px) {
+    .navbarFollowers {
+        display: flex;
+        margin-right: 5%;
+        align-items: center;
+
+
+
+    }
+
+  
+
+}
+
+@media (max-width:400px) {
+    .CNavLogo {
+        width: 50px;
+        margin-left: 25%;
+
+    }
+
+    #navbarFollowerButton {
+        padding: 3px;
+        border: 1px solid #14ABE4;
+        border-radius: 5px;
+        color: #14ABE4;
+        font-size: 10px;
+        font-weight: 600;
+    }
+
+    .navbarCdropdown-menuTypo {
+        font-size: 14px;
+        font-weight: 500
+    }
+
+
+}

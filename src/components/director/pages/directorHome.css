@@ -1,0 +1,879 @@
+.DHMain{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  
+    
+}
+.DHMS1M{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background: linear-gradient(to right, #B4D3E0, #FFFFFF);
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin-top: 92px;
+
+}
+.DHMS1D1{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+   justify-content: right;
+    
+}
+.DHMS1D2{
+    width: 50%;
+    display: flex;
+    justify-content: left;
+    
+    
+}
+.DHMS1D1Img{
+    width: 60%;
+    margin-right: 5%;
+    
+}
+.DHMS1D2S{
+   display: flex;
+   flex-direction: column;
+   width: 70%;
+   justify-content: center;
+   text-align: center;
+
+}
+#DHMS1D2ST1{
+    font-size: 32px;
+    font-weight: 800;
+    font-family: inter;
+    color: #000000;
+}
+#DHMS1D2ST2{
+    font-size: 20px;
+    font-weight: 300;
+    font-family: inter;
+    color: #0E0E0E;
+    margin-top: 3%;
+}
+#DHMS1D2ST3{
+    font-size: 20px;
+    font-weight: 700;
+    font-family: inter;
+    color: #FFFFFF;
+    
+
+
+}
+.DHMS1D2ST3D{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: #14ABE4;
+    height: 15%;
+    align-items: center;
+    margin-top: 3%;
+}
+#DHMS1D2ST4{
+    font-size: 16px;
+    font-weight: 300;
+    font-family: inter;
+    color: #0E0E0E;
+    margin-top: 2%;
+}
+
+
+
+/* section2 */
+
+.DHMS2M{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding-top: 5%;
+    
+    
+   
+    
+}
+.DHMS2D1{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+   
+}
+.DHMS2D1S1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+#DHS2D1T1{
+    font-size: 36px;
+    font-family: inter;
+    font-weight: 400;
+    color: #14ABE4;
+}
+#DHS2D1T2{
+    font-size: 20px;
+    font-family: inter;
+    font-weight: 300;
+    color: #959494;
+    margin-bottom: 30px;
+    
+}
+
+.DHS2D1Hr{
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+.DHMS2D2{
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+    margin: auto;
+    gap: 10px;
+    justify-content: space-around;
+}
+.DHMS2D2Modal{
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+    margin: auto;
+    gap: 10px;
+    justify-content: space-around;
+}
+.Teststadium {
+    width: 80px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 20px; /* Half of the height to create the semicircles */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 1px #736F6F solid;
+    
+  }
+  .TeststadiumBig {
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 20px; /* Half of the height to create the semicircles */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 1px #736F6F solid;
+    
+  }
+  .TeststadiumActive {
+    width: 80px;
+    height: 40px;
+  
+    border-radius: 20px; /* Half of the height to create the semicircles */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    background-color: #14ABE4;
+    
+  }
+  .TeststadiumActiveBig {
+    width: 150px;
+    height: 40px;
+  
+    border-radius: 20px; /* Half of the height to create the semicircles */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    background-color: #14ABE4;
+    
+  }
+  .Testsemicircle {
+    width: 20px;
+    height: 20px;
+    border-radius: 100% 0 0 100%; /* Create the left semicircle */
+   
+    position: absolute;
+
+  }
+  .Testright {
+    right: 0;
+    border-radius: 0 100% 100% 0; /* Create the right semicircle */
+    
+  }
+
+  .Testtext {
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 1;
+  }
+  .TesttextActive {
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 1;
+    color: #FFFFFF;
+  }
+  .DHMS2D3{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    margin-top: 25px;
+    text-align: center;
+    justify-content: center;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 80px;
+}
+
+/* section3 */
+
+
+.DHMS3M{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+}
+.DHMS3DM{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    gap: 40px;
+    
+    width: 95%;
+    padding-bottom: 50px;
+   justify-content: center;
+  
+    
+    
+
+}
+#DHCard{
+    width: 30%;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.85);
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    border:1px #A8A4A4 solid;
+    padding-bottom: 20px;
+    
+    
+    
+}
+.DHCImage{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 200px;
+    background-color: #14ABE4;
+    text-align: center;
+   
+}
+.DHCImageImg{
+    
+    width: 100%;
+    height: 200px;
+   
+}
+#DHIIcon{
+    font-size: 150px;
+    color: #FFFFFF;
+}
+#DHIIcon2{
+    font-size: 80px;
+    color: #FFFFFF;
+    background-color: #14ABE4;
+    width: 80%;
+    height: 60%;
+    margin: auto;
+    border-radius: 10px;
+}
+.DHCardDM{
+    width: 85%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+.DHCardDS1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+    align-items: center;
+    
+}
+.DHCardDS2{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin-top: 15px;
+}
+.DHCardDS3{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+#DHCardDS1T1{
+    font-family: inter;
+    font-size: 21px;
+    font-weight: 500;
+    color: #000000;
+    
+}
+#DHFavIcon{
+    color: #c6c4c4;
+}
+#DHFavIconS{
+    color: #14ABE4;
+}
+#DHCardDS1T2{
+    font-family: inter;
+    font-size: 16px;
+    font-weight: 500;
+    color: #B1ACAC;
+    
+    
+}
+#DHCardDS1T3{
+    font-family: inter;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000000;
+    
+    
+}
+#DHCardDS1T4{
+    font-family: inter;
+    font-size: 16px;
+    font-weight: 600;
+    color: #D9D9D9;
+    margin-top: 5px;
+    
+    
+}
+.DHCardDS4{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    margin-top: 15px;
+}
+#DHCardButton{
+  font-size: 16px;
+  padding: 4px;
+  background-color: #14ABE4;
+  border-radius: 5px;
+  color: #FFFFFF;
+  text-transform: none;
+}
+
+
+.DHMSTabAndMob{
+    display: none;
+    width: 100%;
+    margin-bottom: 30px;
+}
+/* section 4 */
+.DHMS4M{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #14ABE4;
+    align-items: center;
+    height: 9vw;
+}
+#DHMS4MB1{
+    border: 2px #FFFFFF solid;
+    padding: 1px 5px;
+    color: #FFFFFF;
+    font-weight: 400;
+    font-family:inter;
+    font-size: 3vw;
+    text-transform: none;
+
+}
+#DHMS4MB2{
+    
+    
+    color: #FFFFFF;
+    font-weight: 400;
+    font-family:inter;
+    font-size: 3vw;
+    text-transform: none;
+}
+
+
+/* section5 */
+.DHMS5M{
+    display: flex;
+    flex-direction: column;
+    margin-top: 7vh;
+}
+
+.DHMS5MD1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+
+}
+#DHMS5MT1{
+    font-size: 4vw;
+    color: #000000;
+    font-weight: 400;
+    font-family: inter;
+    
+}
+#DHMS5MT2{
+    font-size: 3vw;
+    color: #858585;
+    font-weight: 400;
+    font-family: inter;
+    
+}
+.DHMS5MD2{
+    
+    
+    background-color: #D9D9D9;
+    align-items: center;
+    
+    
+    
+}
+.DHMS5MD2Carousel{
+   
+    background-color:#D9D9D9 ; 
+    height:40vw;
+    align-items: center;
+    padding-left: 20px;
+    
+    
+}
+.DHMS5NO{
+    width: 100%;
+    text-align: center;
+    font-size: 5vw;
+    font-family: inter;
+}
+#DHS5Card{
+    width: 30vw;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.85);
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    border:1px #A8A4A4 solid;
+    height: 80%;
+    justify-content: center;
+    text-align: center;
+    height: 30vw;
+
+    
+    
+    
+}
+.DHS5CardI{
+    width: 80%;
+    height: 60%;
+    margin: auto;
+    border-radius: 10px;
+}
+.DHS5CardT1D{
+    width: 100%;
+   
+    font-size: 2.5vw;
+    font-family: inter;
+}
+/* #DHS5CardT1{
+    font-size: 3vw;
+    font-family: inter;
+    
+} */
+#DHS5CardT2{
+    font-size: 2vw;
+    font-family: inter;
+    
+}
+
+/* pagination */
+
+
+
+/* PaginationStyles.css */
+.DHpagination .MuiPagination-ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  
+  .DHpagination .MuiPaginationItem-root {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 6px 10px; /* Adjust padding to reduce the gap between numbers */
+    margin: 0 2px; /* Adjust margin to reduce the gap between numbers */
+  }
+  
+  .DHpagination .Mui-selected {
+    background-color: #14ABE4;
+    color: #fff;
+  }
+
+
+@media (max-width:950px) {
+    #DHMS1D2ST1{
+        font-size: 25px;
+    }
+    #DHMS1D2ST2{
+        font-size: 16px;
+    }
+    #DHMS1D2ST3{
+        font-size: 16px;
+    }
+    #DHMS1D2ST4{
+        font-size: 14px;
+    }
+}
+@media (max-width:900px) {
+#DHCard{
+    width: 40%;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.85);
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    border:1px #A8A4A4 solid;
+    padding-bottom: 20px;
+    
+    
+    
+}
+}
+@media (max-width:768px) {
+    .DHMS2M{
+        display: none;
+    }
+    .DHMS3M{
+        display: none;
+    }
+    .DHpagination{
+        display: none;
+    }
+    .DHMS1M{
+     
+        margin-top: 71px;
+    
+    }
+    #DHCardDS1T1{
+        font-family: inter;
+        font-size: 14px;
+        font-weight: 500;
+        color: #000000;
+        
+    }
+    #DHCardDS1T2{
+        font-family: inter;
+        font-size: 10px;
+        font-weight: 500;
+        color: #B1ACAC;
+        
+        
+    }
+    #DHCardDS1T3{
+        font-family: inter;
+        font-size: 12px;
+        font-weight: 400;
+        color: #000000;
+        
+        
+    }
+    #DHCardDS1T4{
+        font-family: inter;
+        font-size: 12px;
+        font-weight: 600;
+        color: #D9D9D9;
+        margin-top: 5px;
+        
+        
+    }
+    #DHCardButton{
+        font-size: 12px;
+        padding: 4px;
+        background-color: #14ABE4;
+        border-radius: 5px;
+        color: #FFFFFF;
+      }
+    .rating-outer {
+        display: inline-block;
+        position: relative;
+        font-size: 18px; /* Adjust the font size to control the size of the stars */
+        line-height: 1;
+    }
+    #DHMS1D2ST1{
+        font-size: 20px;
+        font-weight: 600;
+    }
+    #DHMS1D2ST2{
+        font-size: 12px;
+    }
+    #DHMS1D2ST3{
+        font-size: 12px;
+    }
+    #DHMS1D2ST4{
+        font-size: 10px;
+    }
+    #DHS2D1T1{
+        font-size: 28px;
+       
+    }
+    #DHS2D1T2{
+        font-size: 16px;
+    
+    }
+    .DHMS3DM{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        
+        gap: 30px;
+        
+        width: 90%;
+        padding-bottom: 50px;
+        margin: auto;
+        justify-content: center;
+        
+        
+    
+    }
+    .DHMSTabAndMob{
+        display: flex;
+        flex-direction: column;
+        
+    }
+}
+@media (max-width:600px) {
+    .DHMS1D1Img{
+        width: 70%;
+        margin-right: 15%;
+        
+    }
+    .DHMS1D2S{
+       display: flex;
+       flex-direction: column;
+       width: 90%;
+       justify-content: center;
+       text-align: center;
+       margin-left: -10%;
+    
+    }
+    .DHMS3DM{
+       gap: 30px;
+       
+        width: 90%;
+    
+    
+    }
+    #DHCard{
+        width: 70%;
+
+    }
+    .DHMS2D2Modal{
+        display: flex;
+        flex-wrap: wrap;
+        width: 90%;
+        margin: auto;
+        gap: 10px;
+        justify-content: space-around;
+    }
+    
+   
+   
+}
+@media (max-width:500px) {
+    #DHMS1D2ST1{
+        font-size: 18px;
+        font-weight: 600;
+    }
+    #DHMS1D2ST2{
+        font-size: 10px;
+    }
+    #DHMS1D2ST3{
+        font-size: 10px;
+    }
+    #DHMS1D2ST4{
+        font-size: 9px;
+    }
+    #DHS2D1T1{
+        font-size: 20px;
+       
+    }
+    #DHS2D1T2{
+        font-size: 14px;
+    
+    }
+    .DHMS2D2 {
+        display: flex;
+        flex-wrap: wrap;
+        width: 80%;
+        margin: auto;
+        gap: 10px;
+        justify-content: space-around;
+    }
+}
+@media (max-width:464px) {
+    .DHMS5M{
+        display: flex;
+        flex-direction: column;
+        margin-top: 5vh;
+    }
+    .DHMS5MD2Carousel{
+   
+        background-color:#D9D9D9 ; 
+        
+       height: 45vw;
+        padding-left: 20px;
+        
+        
+    }
+    #DHS5Card{
+        width: 35vw;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.85);
+        display: flex;
+        flex-direction: column;
+        border-radius: 16px;
+        border:1px #A8A4A4 solid;
+        height: 80%;
+        justify-content: center;
+        text-align: center;
+        height: 35vw;
+    
+        
+        
+        
+    }
+    
+}
+@media (max-width:400px) {
+    .DHMS1M{
+     
+        margin-top: 51px;
+    
+    }
+    .DHMS2D1{
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        margin: auto;
+        text-align: center;
+       
+    }   
+  
+    #DHMS1D2ST1{
+        font-size: 14px;
+        font-weight: 500;
+    }
+    #DHMS1D2ST2{
+        font-size: 10px;
+    }
+    #DHMS1D2ST3{
+        font-size: 10px;
+    }
+    #DHMS1D2ST4{
+        font-size: 9px;
+    }
+    .DHMS3DM{
+    
+        gap: 20px;
+  
+    
+    }
+    #DHCard{
+        width: 80%;
+ 
+    }
+   
+ 
+    .DHMS2D2Modal{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        margin: auto;
+        gap: 10px;
+        justify-content: space-around;
+        
+    }
+    .DHpagination .MuiPaginationItem-root {
+        margin: 0;
+        font-size: 10px;
+        font-weight: bold;
+        border-radius: 10px;
+        padding: 1px 1px; /* Adjust padding to reduce the gap between numbers */
+        margin: 0 1px; /* Adjust margin to reduce the gap between numbers */
+      }
+}
+
+
+.DHmodal, .DHoverlay {
+    width: 120vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: 3;
+    
+}
+
+.DHoverlay {
+    background: rgba(49,49,49,0.8);
+}
+.modal-contentDH {
+    position: absolute;
+    top: 50%;
+    left: 42%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #ffffff;
+    padding: 14px 28px;
+    border-radius: 3px;
+   width: 60%;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+  z-index: 4;
+   
+}
+.DHmodalCloseButtonD{
+    
+   
+   
+    text-align: center;
+    width: 20%;
+    margin: auto;
+   
+}
+#DHmodalCloseButton{
+    color: #FFFFFF;
+    background-color: #14ABE4;
+    padding: 5px;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    text-transform: none;
+}
+

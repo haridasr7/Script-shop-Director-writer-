@@ -1,0 +1,623 @@
+.PSMain{
+    
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 75vh;
+    margin-bottom: 3vw;
+
+}
+.PSS1{
+display: flex;
+flex-direction: column;
+justify-content: center;
+margin-top:120px;
+width: 100%;
+
+}
+.PSS1S1{
+    width: 85%;
+    margin: auto;
+
+
+}
+.PSS1S1D1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:7px;
+    margin-bottom: 2vh;
+
+
+}
+#PSS1S1Link1{
+    text-decoration-line: none;
+    font-size: 24px;
+    color: #342F2F;
+    opacity: 44%;
+    font-weight: 400;
+    line-height: 29px;
+    font-family: inter;
+}
+#PSS1S1Arrow{
+    color: #342F2F;
+    opacity: 44%;
+    font-size: 20px;
+}
+#PSS1S1T1{
+    font-size: 24px;
+    color: #342F2F;
+    opacity: 44%;
+    font-family: inter;
+    font-weight: 400;
+    line-height: 29px;
+    
+
+}
+.PSS1S2{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 2vw;
+    
+    
+
+}
+.PSS1S2ImgD{
+    display: flex;
+    width: 100%;
+    height: 35vw;
+    overflow: hidden;
+    
+
+}
+.PSS1Img{
+    width: 100%;
+
+}
+.PSS1S2D2{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #2F4E61;
+    min-height: 4vw;
+   
+}
+.PSS1S2D2S1{
+    display: flex;
+    flex-direction: row;
+    width: 85%;
+    margin: auto;
+    min-height: 6vw;
+    align-items: center;
+}
+#PSS1S2T1{
+    font-size: 24px;
+    color: #FFFFFF;
+    font-family: inter;
+    font-weight: 400;
+    width: 25vw;
+    
+}
+#PSS1S2T2{
+    font-size: 16px;
+    color: #FFFFFF;
+    font-family: inter;
+    font-weight: 400;
+    width: 50vw;
+  
+   padding-top: 1.5vw;
+   padding-bottom: 1.5vw;
+   margin-right: 5vw;
+}
+#PSS1S2B1{
+   
+        font-size: 16px;
+        width: 20vw;
+        height: 30px;
+        background-color: #14ABE4;
+        border-radius: 5px;
+        color: #FFFFFF;
+        text-transform: none;
+      
+}
+
+/* section2 */
+.PSS2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top:30px;
+    width: 100%;
+    
+}
+.PSS2D1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+    margin: auto;
+
+}
+#PSS2T1{
+    font-family: inter;
+    font-weight: 400;
+    font-size: 24px;
+    color: #000000;
+}
+#PSS2L1{
+    font-family: inter;
+    font-weight: 400;
+    font-size: 18px;
+    color: #747474;
+    text-decoration-line: none;
+}
+.PSS2D2{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-top: 3vw;
+    padding-bottom: 3vw;
+    background-color:#EBEBEB;
+    margin-top: 1vw;
+}
+.PSS2D2S1{
+    width: 90%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: row;
+    
+
+}
+#PSS2Card{
+    display: flex;
+    flex-direction: column;
+  
+    width: 20vw;
+    
+    text-align: center;
+    background-color: #EBEBEB;
+    border: none;
+    box-shadow:none;
+    border-radius: 5px;
+    
+
+}
+.PSS2CardI{
+    width: 100%;
+    height: 25vw;
+   
+    
+}
+#PSS2CT1{
+    font-family: inter;
+    font-weight: 400;
+    font-size: 2vw;
+    color: #000000;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+}
+#PSS2CB1{
+   
+    
+    font-size: 1.6vw;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    color: #1D1C1C;
+    text-transform: none;
+    
+  
+}
+.PSS2Carousel{
+   
+    background-color:#EBEBEB; 
+    height:auto;
+    align-items: center;
+    padding-left: 5px;
+   
+    
+    
+}
+
+/* section3 */
+.PSS3{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top:5vw;
+    width: 100%;
+    margin-bottom: 5vw;
+    
+}
+.PSS3D1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+    margin: auto;
+
+}
+
+.PSS3D2{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-top: 3vw;
+    padding-bottom: 3vw;
+    background-color:#EBEBEB;
+    margin-top: 1vw;
+}
+.PSS2D2S1{
+    width: 90%;
+    margin-left: 7%;
+    display: flex;
+    flex-direction: row;
+    gap: 5vw;
+
+}
+
+#PSS3Card{
+    display: flex;
+    flex-direction: column;
+  
+    width: 30vw;
+    
+    text-align: center;
+    background-color: #FFFFFF;
+    border: none;
+    box-shadow:none;
+    padding-top: 2vw;
+    padding-bottom: 1vw;
+
+    
+
+}
+.PSS3CardI{
+    width: 70%;
+    height: 16vw;
+    border-radius: 5px;
+    margin: auto;
+   
+    
+}
+#PSS3CT1{
+    font-family: inter;
+    font-weight: 400;
+    font-size: 2vw;
+    color: #000000;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+}
+#PSS3CT2{
+    font-family: inter;
+    font-weight: 400;
+    font-size: 1.4vw;
+    color: #717171;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    min-height: 10vw;
+}
+
+
+/* Tab section1 */
+.PSS1Tab{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top:70px;
+    width: 100%;
+    display: none;
+    
+    
+}
+.PSS1S2Tab{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+  padding-bottom: 1vw;
+    
+    
+
+}
+.PSS1S2ImgDTab{
+    display: flex;
+    width: 100%;
+    height: 45vw;
+    overflow: hidden;
+    
+
+}
+.PSS1ImgTab{
+    width: 100%;
+
+}
+.PSS1S2D2Tab{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #2F4E61;
+    min-height: 8vw;
+   
+}
+.PSS1S2D2S1Tab{
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    margin: auto;
+    min-height: 8vw;
+    align-items: left;
+    padding-bottom: 1vw;
+}
+#PSS1S2T1Tab{
+    font-size: 18px;
+    color: #FFFFFF;
+    font-family: inter;
+    font-weight: 400;
+    
+    
+}
+#PSS1S2T2Tab{
+    font-size: 14px;
+    color: #FBFBFB;
+    font-family: inter;
+    font-weight: 400;
+    width: 70%;
+    
+  
+   
+}
+#PSS1S2B1Tab{
+        margin-left: 75%;
+        margin-top: -15px;
+        font-size: 14px;
+        width: 25vw;
+        height: 30px;
+        background-color: #FFFFFF;
+        border-radius: 5px;
+        color: #222020;
+        text-transform: none;
+      
+}
+
+.PSNO{
+    margin-top: 200px;
+    width: 100%;
+    text-align: center;
+    font-size: 5vw;
+    font-family: inter;
+}
+.PSNOTab{
+    margin-top: 100px;
+    width: 100%;
+    text-align: center;
+    font-size: 5vw;
+    font-family: inter;
+    display: none;
+}
+
+@media (max-width:768px) {
+
+    .PSS1{
+        display: none;
+    }
+    .PSNO{
+        display: none;
+    }
+    .PSS1Tab{
+        display: block;
+    }
+    .PSNOTab{
+        display: block;
+    }
+    #PSS2T1{
+        font-family: inter;
+        font-weight: 400;
+        font-size: 18px;
+        color: #000000;
+    }
+    #PSS2L1{
+        font-family: inter;
+        font-weight: 400;
+        font-size: 16px;
+        color: #747474;
+        text-decoration-line: none;
+    }
+    #PSS2Card{
+        display: flex;
+        flex-direction: column;
+      
+        width: 25vw;
+        
+        text-align: center;
+        background-color: #EBEBEB;
+        border: none;
+        box-shadow:none;
+        border-radius: 5px;
+        
+    
+    }
+    .PSS2CardI{
+        width: 100%;
+        height: 25vw;
+       
+        
+    }
+    #PSS2CT1{
+        font-family: inter;
+        font-weight: 400;
+        font-size: 2.5vw;
+        color: #000000;
+        margin-top: 1vw;
+        margin-bottom: 1vw;
+    }
+    #PSS3CT2{
+        font-family: inter;
+        font-weight: 400;
+        font-size: 1.8vw;
+        color: #717171;
+        margin-top: 1vw;
+        margin-bottom: 1vw;
+    }
+    #PSS2CB1{
+       
+        
+        font-size: 2.1vw;
+        background-color: #FFFFFF;
+        border-radius: 5px;
+        color: #1D1C1C;
+        text-transform: none;
+        height: 4vw;
+        
+      
+    }
+    #PSS3Card{
+        display: flex;
+        flex-direction: column;
+      
+        width: 35vw;
+        
+        text-align: center;
+        background-color: #FFFFFF;
+        border: none;
+        box-shadow:none;
+        padding-top: 2vw;
+        padding-bottom: 1vw;
+    
+        
+    
+    }
+    .PSS3CardI{
+        width: 80%;
+        height: 16vw;
+        border-radius: 5px;
+        margin: auto;
+       
+        
+    }
+    
+}
+@media (max-width:464px) {
+    #PSS2Card{
+        display: flex;
+        flex-direction: column;
+      
+        width: 35vw;
+        
+        text-align: center;
+        background-color: #EBEBEB;
+        border: none;
+        box-shadow:none;
+        border-radius: 5px;
+        
+    
+    }
+    .PSS2CardI{
+        width: 100%;
+        height: 28vw;
+       
+        
+    }
+
+}
+
+@media (max-width:425px) {
+    
+    .PSS1S2ImgDTab{
+        display: flex;
+        width: 100%;
+        height: 50vw;
+        overflow: hidden;
+        
+    
+    }
+    
+#PSS1S2T1Tab{
+    font-size: 14px;
+    color: #FFFFFF;
+    font-family: inter;
+    font-weight: 400;
+    
+    
+}
+#PSS1S2T2Tab{
+    font-size: 12px;
+    color: #FBFBFB;
+    font-family: inter;
+    font-weight: 400;
+    width: 70%;
+    margin-top: 1vw;
+    
+  
+   
+}
+#PSS1S2B1Tab{
+        margin-left: 60%;
+        margin-top: -15px;
+        font-size: 12px;
+        width: auto;
+        height: 30px;
+      
+      
+}
+#PSS2CT1{
+    font-family: inter;
+    font-weight: 400;
+    font-size: 3.3vw;
+    color: #000000;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+}
+#PSS3CT2{
+    font-family: inter;
+    font-weight: 400;
+    font-size: 2.5vw;
+    color: #717171;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+}
+
+#PSS2CB1{
+   
+    
+    font-size: 3vw;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    color: #1D1C1C;
+    text-transform: none;
+    height: 5.4vw;
+    
+  
+}
+#PSS2T1{
+    font-family: inter;
+    font-weight: 400;
+    font-size: 16px;
+    color: #000000;
+}
+#PSS2L1{
+    font-family: inter;
+    font-weight: 400;
+    font-size: 12px;
+    color: #747474;
+    text-decoration-line: none;
+}
+    
+}
+
+@media (max-width:400px) {
+    .PSS1Tab{
+       
+        margin-top:50px;
+        
+       
+        
+    }
+
+}
+
+
+
+  

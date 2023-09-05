@@ -1,0 +1,408 @@
+.servicesMain{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 80vh;
+}
+.SMS1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top:90px;
+    width: 100%;
+    background-color:#D9D9D9;
+    align-items: center;
+
+}
+.SMS1D1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top:4vw;
+    width: 100%;
+    background-color:#D9D9D9;
+    align-items: center;
+    margin-bottom: 4vw;
+    height: 18vw;
+
+}
+.SMS1Left{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    
+    
+}
+.SMS1LM{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    justify-content: space-between;
+    margin: auto;
+    
+    height: 100%;
+
+}
+.SMS1Right{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    height: 100%;
+}
+.SMS1LD1{
+    display: flex;
+    flex-direction: column;
+}
+#SMS1T1{
+    font-family: inter;
+    font-weight: 700;
+    font-size: 4vw;
+    color: #FFFFFF;
+}
+
+#SMS1T2{
+    font-family: inter;
+    font-weight: 500;
+    font-size: 2vw;
+    color: #695C70;
+}
+.SMS1LD2{
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+.SMS1RightImg{
+    width: 50%;
+    height: 100%;
+    margin-left: 10%;
+}
+#SMS1B1{
+    font-family: inter;
+    font-size: 1.5vw;
+    color: #FFFFFF;
+    background-color: #768186;
+    padding: 0.2vw 1vw;
+}
+#SMS1B1:hover{
+    font-family: inter;
+    font-size: 1.5vw;
+    color: #FFFFFF;
+    background-color:#14ABE4;
+    padding: 0.2vw 1vw;
+}
+/* Section2 */
+
+.SMS2{
+    display: flex;
+    flex-direction: column;
+    margin-top: 3vw;
+    width: 100%;
+}
+
+.SMS2D1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+
+.SMS2D2{
+    display: flex;
+    flex-direction: row;
+
+}
+.SMS2D2L{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    text-align: center;
+
+}
+.SMS2D2R{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    text-align: center;
+    
+}
+#SMS2T1{
+    color:#100E0E;
+    font-size: 3.4vw;
+    font-family: inter;
+    font-weight: 400;
+}
+#SMS2T2{
+    color: #100E0E;
+    font-size: 2.4vw;
+    font-family: inter;
+}
+#SMS2T3{
+    color: #000000;
+    font-size: 1.6vw;
+    font-family: inter;
+    width: 50%;
+    margin: auto;
+}
+
+/* Section 3 */
+.SMS3{
+    display: flex;
+    flex-direction: row;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+    padding-top: 4vw;
+    padding-bottom: 4vw;
+    width: 100%;
+    background-color: #D9D9D9;
+}
+.SMS3S1{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 25vw;
+    align-items: center;
+   
+}
+.SMS3L{
+    display: flex;
+    width: 50%;
+    height: 100%;
+}
+
+.SMS3R{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    justify-content: space-between;
+   
+}
+#SMS3LCard{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+   
+    margin: auto;
+    background-color: #857D8B;
+    border-radius: 3vw;
+
+}
+.SMS3Image{
+    width: auto;
+    height: 75%;
+    width: 90%;
+    margin-top: 1vw;
+    margin-left: 5%;
+}
+#SMS3T1{
+    font-size: 2vw;
+    color: #FFFFFF;
+    font-family: inter;
+    margin-left: 5%;
+    margin-top: 3%;
+}
+#SMS3T2{
+    font-size: 2vw;
+    color:#000000;
+    font-family: inter;
+}
+#SMS1B2{
+    font-family: inter;
+    font-size: 1.5vw;
+    color: #FFFFFF;
+    background-color: #768186;
+    padding: 0.2vw 1vw;
+    width: fit-content;
+    text-decoration: none;
+}
+#SMS1B2:hover{
+    font-family: inter;
+    font-size: 1.5vw;
+    color: #FFFFFF;
+    background-color: #14ABE4;
+    padding: 0.2vw 1vw;
+    width: fit-content;
+    text-decoration: none;
+}
+
+/* Section 4 */
+.SMS4{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+    margin-left: 15%;
+
+}
+.SMS4Main{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+}
+.SMS4Card{
+    width: 45vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #D9D9D9;
+    height: 20vw;
+   justify-content: space-around;
+    text-align: center;
+    padding: 2vw;
+}
+#SMS4T1{
+    font-family: inter;
+    font-size: 2.8vw;
+    color: #000000;
+    font-weight: 400;
+}
+#SMS4T2{
+    font-family: inter;
+    font-size: 2.3vw;
+    color: #525252;
+    font-weight: 300;
+}
+.SMS4Nav{
+    background-color: aqua;
+}
+#Sckr{
+    font-size: 5vw;
+    color: #000000;
+    
+    
+}
+
+@media (max-width:768px) {
+
+    .SMS1{
+       
+        margin-top:70px;
+      
+    
+    }
+
+}
+
+
+@media (max-width:500px) {
+    .SMS4{
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin-top: 3vw;
+        margin-bottom: 3vw;
+        margin-left: 5%;
+    
+    }
+    .SMS1LM{
+        display: flex;
+        flex-direction: column;
+        width: 85%;
+        justify-content: space-between;
+        margin-left:15% ;
+        
+        height: 100%;
+    
+    }
+    .SMS1Left{
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        height: 100%;
+        
+        
+    }
+    .SMS1Right{
+        display: flex;
+        flex-direction: row;
+        width: 40%;
+        height: 100%;
+    }
+    .SMS1RightImg{
+        width: 50%;
+        height: 100%;
+        margin-left: 0%;
+    }
+    #SMS1T1{
+       
+        font-size: 5vw;
+       
+    }
+    
+    #SMS1T2{
+       
+        font-size: 2.5vw;
+        
+    }
+    #SMS1B1{
+      
+        font-size: 1.8vw;
+       
+        padding: 0.2vw 1vw;
+    }
+    #SMS1B1:hover{
+    
+        font-size: 1.8vw;
+      
+       
+        padding: 0.2vw 1vw;
+    }
+    #SMS2T1{
+       
+        font-size: 4vw;
+      
+    }
+    #SMS2T2{
+        
+        font-size: 2.8vw;
+       
+    }
+    #SMS2T3{
+        
+        font-size: 2.2vw;
+        width: 65%;
+      
+    }
+    #SMS3T1{
+        font-size: 2.2vw;
+
+        margin-left: 5%;
+        margin-top: 3%;
+    }
+    #SMS3T2{
+        font-size: 2.4vw;
+      
+    }
+    #SMS1B2{
+     
+        font-size: 2vw;
+      
+        padding: 0.2vw 1vw;
+     
+    }
+    #SMS1B2:hover{
+        
+        font-size: 1.5vw;
+        
+        padding: 0.2vw 1vw;
+        
+    }
+    
+}
+
+@media (max-width:400px) {
+
+    .SMS1{
+       
+        margin-top:50px;
+      
+    
+    }
+
+}
+
