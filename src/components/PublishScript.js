@@ -2,23 +2,33 @@ import React from "react";
 import "./PublishScript.css";
 
 import NavbarWriter from "./writernavbar/NavbarWriter";
-import { Typography } from "@mui/material";
+import {
+  Grid,
+  InputBase,
+  TextField,
+  Typography,
+  Select,
+  MenuItem,
+  Button,
+} from "@mui/material";
 import FooterDirector from "./writernavbar/Footerwriter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { styled } from "@mui/material";
+
 function PublishScript() {
   return (
     <div>
       <div className="publishscriptHeader">
         <NavbarWriter />
       </div>
-      <div className="publishscriptcontent row">
-        <div className="publilcscriptright col-lg-7 ">
+      <Grid container spacing={3} className="publishscriptcontent">
+        <Grid item xs={12} lg={7} md={7} className="publilcscriptleft">
           <div>
-            <Typography className="publishscriptheading me-4">
+            <Typography className="publishscriptheading">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit
             </Typography>
-            <div className="publishscriptsubtext mt-3 mb-4 ">
+            <div className="publishscriptsubtext  ">
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
                 aliquam rutrum eleifend. Sed vestibulum leo eget neque luctus, a
@@ -28,63 +38,88 @@ function PublishScript() {
                 ligula posuere, vel interdum lectus lacinia.
               </p>
             </div>
-            <div className="publishscriptimage mt-4 container">
+            <div className="publishscriptimage">
               <img
-                className="publishscriptgroupimage img-fluid"
+                className="publishscriptgroupimage "
                 src="./Images/Group.png"
                 alt=""
+                style={{ maxWidth: "100%", height: "auto" }}
               />
             </div>
           </div>
-        </div>
-        <div className="publishscriptleft col   ml-2  ">
+        </Grid>
+        <Grid item xs={12} lg={4} md={4} className="publishscriptleft">
           <div className="publishscriptbox">
             <div className="publishscriptboxContent mt-4">
               <div className="publishscripttitle">Publish Your Script</div>
               <form action="">
-                <input
-                  type="text"
-                  className="publishscriptMovie mt-4 "
-                  placeholder="Movie Name"
+                <TextField
+                  id="publishscriptMovie"
+                  fullWidth
+                  label="Movie Name"
+                  margin="dense"
+                  sx={{ "& fieldset": { border: "none" } }}
                 />
-                <input
-                  type="text"
-                  className="publishscriptsynopsis mt-3"
-                  placeholder="Synopsis"
+                <TextField
+                  id="publishscriptsynopsis"
+                  fullWidth
+                  label="Synopsis"
+                  margin="normal"
+                  sx={{ "& fieldset": { border: "none" } }}
                 />
-                <select
-                  type="text"
-                  className="publishscriptgenre mt-3"
-                  placeholder="Genre"
+                <Select
+                  id="publishscriptgenre"
+                  fullWidth
+                  label="Genre"
+                  defaultValue="Genre"
+                  sx={{ "& fieldset": { border: "none" } }}
                 >
-                  {" "}
-                  <option value="Genre">Genre</option>
-                </select>
-                <select
-                  type="text"
-                  className="publishscripttype mt-3"
-                  placeholder="Genre"
+                  <MenuItem value="Genre">Genre</MenuItem>
+                </Select>
+                <Select
+                  id="publishscripttype"
+                  fullWidth
+                  variant="outlined"
+                  label="Script Type"
+                  defaultValue="Script Type"
+                  sx={{ "& fieldset": { border: "none" } }}
                 >
-                  {" "}
-                  <option value="Genre">Script Type</option>
-                </select>
-                <button className="publishscriptupload mt-3" type="submit">
-                  <span>
+                  <MenuItem value="Script Type">Script Type</MenuItem>
+                </Select>
+                <Button
+                  id="publishscriptupload"
+                  fullWidth
+                  startIcon={
                     <FontAwesomeIcon
                       icon={faArrowUpFromBracket}
                       style={{ color: "#14ABE4" }}
                     />
-                  </span>
-                  Uplaod Script
-                </button>
-                <button type="submit" className="publishscriptpublish mt-3">
+                  }
+                  style={{ marginTop: "16px" }}
+                >
+                  Upload Script
+                </Button>
+                <Button
+                  id="publishscriptimageupload"
+                  fullWidth
+                  startIcon={
+                    <FontAwesomeIcon
+                      icon={faArrowUpFromBracket}
+                      style={{ color: "#14ABE4" }}
+                    />
+                  }
+                  style={{ marginTop: "16px" }}
+                >
+                  Upload Image
+                </Button>
+                <Button id="publishscriptpublish" fullWidth variant="contained">
                   Publish
-                </button>
+                </Button>
               </form>
             </div>
           </div>
-        </div>
-      </div>
+        </Grid>
+      </Grid>
       <div className="publishscriptfooter">
         <FooterDirector />
       </div>
