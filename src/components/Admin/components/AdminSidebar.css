@@ -1,0 +1,28 @@
+.sidebarcomp {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #ebebeb;
+  min-height: 1700px;
+}
+.Logo {
+  width: 7vw;
+}
+.sidebarLinks {
+  color: #fff;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  display: flex;
+  flex-direction: column;
+}
+.Links {
+  padding: 3vw;
+}
+.sidebarLogo {
+  margin-top: 4vw;
+  margin-left: -6vw;
+}

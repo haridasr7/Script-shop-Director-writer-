@@ -85,6 +85,8 @@ function PublishScript() {
                   sx={{ "& fieldset": { border: "none" } }}
                 >
                   <MenuItem value="Script Type">Script Type</MenuItem>
+                  <MenuItem value="mainStreamFilm">Main Stream Film</MenuItem>
+                  <MenuItem value="shortFilm">Short Film</MenuItem>
                 </Select>
                 <Button
                   id="publishscriptupload"

@@ -1,0 +1,114 @@
+#adminhome_headsection {
+  margin-top: 10vw;
+}
+#adminhomeheader {
+  color: #717171;
+  font-family: Inter;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+#adminhomeSubheader {
+  color: #717171;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-top: 5px;
+}
+.adminhomeContentheader {
+  color: #717171;
+  font-family: Inter !important;
+  font-size: 32px !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: normal !important;
+}
+.adminhomeContent {
+  margin-top: 7vw;
+}
+.adminhomeContentsubheader {
+  color: #717171;
+  font-family: Inter !important;
+  font-size: 24px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: normal !important;
+  padding-top: 2vw;
+}
+
+.adminhomestat {
+  width: 17vw;
+  padding: 2vw 0 2vw 1vw;
+  background: #fff;
+  box-shadow: 5px 5px 50px 1px rgba(113, 113, 113, 0.25);
+  border-bottom: solid #6ccaee 6px;
+}
+.adminhomestatPara {
+  color: #000;
+  font-family: Inter !important;
+  font-size: 20px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: normal !important;
+  padding-top: 1vw;
+}
+.adminhomestatnum {
+  color: #000;
+  font-family: Inter !important;
+  font-size: 24px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: normal !important;
+  padding-top: 1vw;
+}
+.adminhomecustomer {
+  margin-top: 10vw;
+}
+.adminhomeusers {
+  display: flex;
+  flex-direction: row;
+  gap: 2vw;
+  padding: 2vw;
+}
+.adminhomeuserName {
+  color: #000;
+  font-family: Inter !important;
+  font-size: 20px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: normal !important;
+}
+.adminhomeuserRole {
+  color: #000;
+  font-family: Inter !important;
+  font-size: 14px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: normal !important;
+  padding-top: 5px;
+}
+.adminhomeuserContent {
+  color: #717171;
+  font-family: Inter !important;
+  font-size: 16px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: normal !important;
+  padding-top: 1vw;
+  padding-bottom: 2vw;
+}
+.adminhomeuserMore {
+  border-radius: 5px;
+  background-color: #45b8e9;
+
+  color: #fff;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-top: 1vw;
+}
