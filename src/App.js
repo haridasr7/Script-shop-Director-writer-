@@ -34,6 +34,7 @@ import Updatepassword from "./components/updatepassword";
 import PublishScript from "./components/PublishScript";
 import AdminSidebar from "./components/Admin/components/AdminSidebar";
 import AdminHome from "./components/Admin/pages/AdminHome";
+import AdminLogin from "./components/Admin/pages/AdminLogin";
 
 function App() {
   return (
@@ -65,8 +66,8 @@ function App() {
         <Route exact path="/services" Component={Services} />
         <Route exact path="/updatepassword" Component={Updatepassword} />
         <Route exact path="/publishscript" Component={PublishScript} />
-        <Route exact path="/AdminSidebar" Component={AdminSidebar} />
         <Route exact path="/AdminHome" Component={AdminHome} />
+        <Route exact path="/AdminLogin" Component={AdminLogin} />
       </Routes>
     </Fragment>
   );

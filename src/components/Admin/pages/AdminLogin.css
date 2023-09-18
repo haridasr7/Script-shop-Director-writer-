@@ -1,0 +1,96 @@
+.adminLoginWelcomeBanner {
+  border-radius: 8px;
+  background: #45b8e9;
+  box-shadow: 5px 5px 10px 0px rgba(113, 113, 113, 0.25);
+  color: #f6f6f6;
+  font-family: Inter !important;
+  font-size: 64px !important;
+  font-style: normal !important;
+  font-weight: 300 !important;
+  line-height: normal !important;
+  width: 48vw;
+  text-align: center;
+}
+#adminloginwelcomeSubhead {
+  color: #717171;
+  font-family: Inter;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-left: 12vw;
+  margin-top: -2vw;
+}
+.adminloginwelcomeimg {
+  width: 33vw;
+  margin-left: 7vw;
+}
+.adminlogin_signinSection {
+  border-radius: 14.507px;
+  background: #efefef;
+  box-shadow: 10px 10px 10px 0px rgba(113, 113, 113, 0.25);
+
+  height: 615px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 32vw;
+  padding: 2vw;
+}
+#admminlogin_signin {
+  color: #717171;
+  font-family: Inter;
+  font-size: 32.64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 3vw;
+  margin-top: 1vw;
+}
+
+.adminlogin_siginIcon {
+  border-radius: 18px;
+  border: 2px solid #a8a8a8;
+  width: 102px;
+  height: 104px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#adminlogin_signinUname {
+  border-radius: 8px;
+  border: 1px solid #45b8e9;
+  background: #fff;
+}
+#adminlogin_signinPwd {
+  border-radius: 8px;
+  border: 1px solid #45b8e9;
+  background: #fff;
+}
+
+#adminlogin_signinButton {
+  border-radius: 8px;
+  background-color: #45b8e9;
+  color: #fff;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  height: 4vw;
+  text-transform: capitalize;
+  margin-top: 1vw;
+}
+#adminlogin_signinForgot {
+  color: #45b8e9;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration: none;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 3vw;
+}
