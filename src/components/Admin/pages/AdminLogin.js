@@ -43,8 +43,8 @@ function AdminLogin() {
                 <TextField
                   id="adminlogin_signinUname"
                   fullWidth
-                  label="User Name"
-                  type="username"
+                  label="User Name or Email"
+                  type="username or Email "
                   margin="normal"
                 />
 
