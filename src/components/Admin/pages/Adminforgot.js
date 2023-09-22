@@ -1,45 +1,31 @@
 import React, { useState } from "react";
-import "./AdminLogin.css";
-import { Grid, Box, Typography, TextField, Button } from "@mui/material";
+import { Box, Typography, TextField, Button, Grid } from "@mui/material";
 import axios from "axios";
-import Person2Icon from "@mui/icons-material/Person2";
-import { Link, useNavigate } from "react-router-dom"; // Import Link and useNavigate
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-function AdminLogin() {
+import Person2Icon from "@mui/icons-material/Person2";
+import { Link, useNavigate } from "react-router-dom";
+function ForgotPassword() {
+  const [email, setEmail] = useState("");
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-  });
 
-  const handleLogin = async (event) => {
+  const handleForgotPassword = async (event) => {
     event.preventDefault();
 
     try {
-      const response = await axios.post("/Admin/api/v1/admin/login", formData);
-      const { token } = response.data;
-      navigate("/AdminHome");
-      displaySuccessToast(); // Display success toast on successful login
+      // Send a request to the server to initiate the password reset
+      await axios.post("/Admin/api/v1/admin/forgot-password", { email });
+      displaySuccessToast("Password reset email sent. Check your inbox.");
     } catch (error) {
-      console.error("Login error:", error);
-      displayErrorToast("Login failed. Please check your credentials."); // Display error toast on login failure
+      console.error("Forgot Password error:", error);
+      displayErrorToast("Failed to send password reset email.");
     }
   };
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const displaySuccessToast = () => {
-    toast.success("Admin is logged in!", {
+  const displaySuccessToast = (message) => {
+    toast.success(message, {
       position: "top-right",
-      autoClose: 3000, // Close the toast after 3 seconds
+      autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -50,7 +36,7 @@ function AdminLogin() {
   const displayErrorToast = (message) => {
     toast.error(message, {
       position: "top-right",
-      autoClose: 5000, // Close the toast after 5 seconds
+      autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -70,7 +56,7 @@ function AdminLogin() {
               style={{ marginLeft: "4px" }}
             />
             <Typography id="adminloginwelcomeSubhead">
-              Log in to your Account.
+              Forgot Password
             </Typography>
             <Box>
               <img
@@ -91,47 +77,39 @@ function AdminLogin() {
             <Box className="adminlogin_siginIcon">
               <Person2Icon style={{ fontSize: "50px", color: "#A8A8A8" }} />
             </Box>
-            <Typography id="admminlogin_signin"> Log In</Typography>
+            <Typography id="admminlogin_signin"> Forgot Password</Typography>
             <Box>
-              <form onSubmit={handleLogin}>
+              <form onSubmit={handleForgotPassword}>
                 <TextField
-                  id="adminlogin_signinUname"
+                  id="forgot_password_email"
                   fullWidth
-                  label="Username"
-                  type="text"
+                  label="Email"
+                  type="email"
                   margin="normal"
-                  name="username"
-                  value={formData.username}
-                  onChange={handleInputChange}
-                />
-
-                <TextField
-                  id="adminlogin_signinPwd"
-                  label="Password"
-                  type="password"
-                  fullWidth
-                  margin="normal"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleInputChange}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
 
                 <Button
-                  id="adminlogin_signinButton"
+                  id="forgot_password_button"
                   fullWidth
                   variant="contained"
                   type="submit"
                 >
-                  Login
+                  Send Reset Email
                 </Button>
-              </form>
-              <span
+
+                <span
                 id="adminlogin_signinForgot"
-                onClick={() => navigate("/Adminforget")} 
+                onClick={() => navigate("/AdminLogin")} 
                 style={{ cursor: "pointer" }}
               >
-                Forgot Password ?
+                Log In ?
               </span>
+              </form>
+             
+
+      
             </Box>
           </Box>
         </Grid>
@@ -143,4 +121,4 @@ function AdminLogin() {
   );
 }
 
-export default AdminLogin;
+export default ForgotPassword;
