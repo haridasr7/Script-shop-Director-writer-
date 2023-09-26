@@ -64,10 +64,24 @@
   background: #fff;
 }
 #adminlogin_signinPwd {
-  border-radius: 8px;
-  border: 1px solid #45b8e9;
   background: #fff;
+  border: 1px solid #45b8e9;
+  border-radius: 8px;
+  /* border-top: 1px solid #45b8e9;
+  border-left: 1px solid #45b8e9;
+  border-bottom: 1px solid #45b8e9;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px; */
 }
+/* #adminlogin_passwordStyle {
+  background: #fff;
+  border-top: 1px solid #45b8e9;
+  border-right: 1px solid #45b8e9;
+  border-bottom: 1px solid #45b8e9;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 27px;
+} */
 
 #adminlogin_signinButton {
   border-radius: 8px;
@@ -89,7 +103,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  text-decoration: none;
+  text-decoration: underline;
   display: flex;
   justify-content: flex-end;
   margin-top: 3vw;

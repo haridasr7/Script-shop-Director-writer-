@@ -24,7 +24,7 @@ import AllScripts from "./components/director/pages/AllScripts";
 import ContactUs from "./components/director/pages/ContactUs";
 import FavoriteScripts from "./components/director/pages/FavoriteScripts";
 import WriterDetail from "./components/director/pages/WriterDetails";
-import PurchasedScripts from "./components/director/pages/PurchasedScripts";
+// import PurchasedScripts from "./components/director/pages/PurchasedScripts";
 import ReadNow from "./components/director/pages/ReadNow";
 import AllPurchased from "./components/director/pages/AllPurchased";
 import DirectorProfile from "./components/director/pages/DirectorProfile";
@@ -35,6 +35,7 @@ import PublishScript from "./components/PublishScript";
 import AdminSidebar from "./components/Admin/components/AdminSidebar";
 import AdminHome from "./components/Admin/pages/AdminHome";
 import AdminLogin from "./components/Admin/pages/AdminLogin";
+import PurchaseHistory from "./components/PurchaseHistory";
 
 function App() {
   return (
@@ -58,7 +59,7 @@ function App() {
         <Route exact path="/ContactUs" Component={ContactUs} />
         <Route exact path="/myfavorites" Component={FavoriteScripts} />
         <Route exact path="/writerdetails" Component={WriterDetail} />
-        <Route exact path="/purchasehistory" Component={PurchasedScripts} />
+        {/* <Route exact path="/purchasehistory" Component={PurchasedScripts} /> */}
         <Route exact path="/readscript/:scriptId" Component={ReadNow} />
         <Route exact path="/purchasedAll" Component={AllPurchased} />
         <Route exact path="/directorprofile" Component={DirectorProfile} />
@@ -68,6 +69,7 @@ function App() {
         <Route exact path="/publishscript" Component={PublishScript} />
         <Route exact path="/AdminHome" Component={AdminHome} />
         <Route exact path="/AdminLogin" Component={AdminLogin} />
+        <Route exact path="/PurchaseHistory" Component={PurchaseHistory} />
       </Routes>
     </Fragment>
   );

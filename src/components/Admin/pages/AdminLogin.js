@@ -2,8 +2,20 @@ import React from "react";
 import "./AdminLogin.css";
 import { Grid, Box, Typography, TextField, Button, Link } from "@mui/material";
 import Person2Icon from "@mui/icons-material/Person2";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { useState } from "react";
+import InputAdornment from "@mui/material/InputAdornment";
+import IconButton from "@mui/material/IconButton";
+import styled from "styled-components";
 
 function AdminLogin() {
+  const [password, setPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setPassword((prevShowPassword) => !prevShowPassword);
+  };
+
   return (
     <div>
       <Grid container spacing={2} gap={"3vw"}>
@@ -16,7 +28,7 @@ function AdminLogin() {
               style={{ marginLeft: "4px" }}
             />
             <Typography id="adminloginwelcomeSubhead">
-              Sign in to your Account.
+              Login to your Account.
             </Typography>
             <Box>
               <img
@@ -37,7 +49,7 @@ function AdminLogin() {
             <Box className="adminlogin_siginIcon">
               <Person2Icon style={{ fontSize: "50px", color: "#A8A8A8" }} />
             </Box>
-            <Typography id="admminlogin_signin"> Sign In</Typography>
+            <Typography id="admminlogin_signin"> Login</Typography>
             <Box>
               <form action="">
                 <TextField
@@ -51,10 +63,28 @@ function AdminLogin() {
                 <TextField
                   id="adminlogin_signinPwd"
                   label="Password"
-                  type="password"
+                  type={password ? "text" : "password"}
                   fullWidth
                   margin="normal"
+                  variant="outlined"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment id="adminlogin_passwordStyle">
+                        <IconButton
+                          onClick={togglePasswordVisibility}
+                          edge="end"
+                        >
+                          {password ? (
+                            <VisibilityOffIcon />
+                          ) : (
+                            <VisibilityIcon />
+                          )}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
                 />
+
                 <Button
                   id="adminlogin_signinButton"
                   fullWidth
@@ -63,7 +93,7 @@ function AdminLogin() {
                   Login
                 </Button>
               </form>
-              <Link id="adminlogin_signinForgot">Forgot Password ?</Link>
+              <Link id="adminlogin_signinForgot">Forgot Password</Link>
             </Box>
           </Box>
         </Grid>

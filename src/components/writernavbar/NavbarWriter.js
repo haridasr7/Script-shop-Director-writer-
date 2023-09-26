@@ -202,7 +202,10 @@ function NavbarWriter() {
                     </div>
                   </li>
                 </Link>
-                <Link to="/purchasedBy" className="navbarCdropdown-menuULLink">
+                <Link
+                  to="/PurchaseHistory"
+                  className="navbarCdropdown-menuULLink"
+                >
                   <li>
                     <div className="navbarCdropdown-menuLi">
                       <p className="navbarCdropdown-menuTypo">
@@ -337,7 +340,10 @@ function NavbarWriter() {
                   </div>
                 </li>
               </Link>
-              <Link to="/purchasedBy" className="navbarCdropdown-menuULLink">
+              <Link
+                to="/PurchaseHistory"
+                className="navbarCdropdown-menuULLink"
+              >
                 <li>
                   <div className="navbarCdropdown-menuLi">
                     <p className="navbarCdropdown-menuTypo">Purchase History</p>
