@@ -35,14 +35,7 @@ import PublishScript from "./components/PublishScript";
 import AdminSidebar from "./components/Admin/components/AdminSidebar";
 import AdminHome from "./components/Admin/pages/AdminHome";
 import AdminLogin from "./components/Admin/pages/AdminLogin";
-<<<<<<< HEAD
 import PurchaseHistory from "./components/PurchaseHistory";
-=======
-import ForgotPassword from "./components/Admin/pages/Adminforgot";
-import { resetPassword } from "./actions/userActions";
-import ResetPassword from "./components/Admin/pages/Adminresetpassword";
-
->>>>>>> 06f6c44d81cb0d85866ef2fa87bdb3c353aa87d5
 
 function App() {
   return (
@@ -76,13 +69,7 @@ function App() {
         <Route exact path="/publishscript" Component={PublishScript} />
         <Route exact path="/AdminHome" Component={AdminHome} />
         <Route exact path="/AdminLogin" Component={AdminLogin} />
-<<<<<<< HEAD
         <Route exact path="/PurchaseHistory" Component={PurchaseHistory} />
-=======
-        <Route exact path="/Adminforget" Component={ForgotPassword} />
-        <Route exact path="/Adminreset" Component={ResetPassword} />
-      
->>>>>>> 06f6c44d81cb0d85866ef2fa87bdb3c353aa87d5
       </Routes>
     </Fragment>
   );

@@ -1,27 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import "./AdminLogin.css";
 import { Grid, Box, Typography, TextField, Button } from "@mui/material";
 import axios from "axios";
 import Person2Icon from "@mui/icons-material/Person2";
-<<<<<<< HEAD
+import { Link, useNavigate } from "react-router-dom"; // Import Link and useNavigate
+import { toast, ToastContainer } from "react-toastify";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { useState } from "react";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
-import styled from "styled-components";
+import "react-toastify/dist/ReactToastify.css";
+import { useState } from "react";
 
 function AdminLogin() {
   const [password, setPassword] = useState(false);
-
   const togglePasswordVisibility = () => {
     setPassword((prevShowPassword) => !prevShowPassword);
-=======
-import { Link, useNavigate } from "react-router-dom"; // Import Link and useNavigate
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+  };
 
-function AdminLogin() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
@@ -70,7 +66,6 @@ function AdminLogin() {
       pauseOnHover: true,
       draggable: true,
     });
->>>>>>> 06f6c44d81cb0d85866ef2fa87bdb3c353aa87d5
   };
 
   return (
@@ -85,11 +80,7 @@ function AdminLogin() {
               style={{ marginLeft: "4px" }}
             />
             <Typography id="adminloginwelcomeSubhead">
-<<<<<<< HEAD
-              Login to your Account.
-=======
               Log in to your Account.
->>>>>>> 06f6c44d81cb0d85866ef2fa87bdb3c353aa87d5
             </Typography>
             <Box>
               <img
@@ -110,11 +101,7 @@ function AdminLogin() {
             <Box className="adminlogin_siginIcon">
               <Person2Icon style={{ fontSize: "50px", color: "#A8A8A8" }} />
             </Box>
-<<<<<<< HEAD
-            <Typography id="admminlogin_signin"> Login</Typography>
-=======
             <Typography id="admminlogin_signin"> Log In</Typography>
->>>>>>> 06f6c44d81cb0d85866ef2fa87bdb3c353aa87d5
             <Box>
               <form onSubmit={handleLogin}>
                 <TextField
@@ -134,8 +121,9 @@ function AdminLogin() {
                   type={password ? "text" : "password"}
                   fullWidth
                   margin="normal"
-<<<<<<< HEAD
-                  variant="outlined"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleInputChange}
                   InputProps={{
                     endAdornment: (
                       <InputAdornment id="adminlogin_passwordStyle">
@@ -152,11 +140,6 @@ function AdminLogin() {
                       </InputAdornment>
                     ),
                   }}
-=======
-                  name="password"
-                  value={formData.password}
-                  onChange={handleInputChange}
->>>>>>> 06f6c44d81cb0d85866ef2fa87bdb3c353aa87d5
                 />
 
                 <Button
@@ -168,17 +151,13 @@ function AdminLogin() {
                   Login
                 </Button>
               </form>
-<<<<<<< HEAD
-              <Link id="adminlogin_signinForgot">Forgot Password</Link>
-=======
               <span
                 id="adminlogin_signinForgot"
-                onClick={() => navigate("/Adminforget")} 
+                onClick={() => navigate("/Adminforget")}
                 style={{ cursor: "pointer" }}
               >
                 Forgot Password ?
               </span>
->>>>>>> 06f6c44d81cb0d85866ef2fa87bdb3c353aa87d5
             </Box>
           </Box>
         </Grid>
