@@ -37,6 +37,9 @@
   margin: 1vw 14vw 0 14vw;
   text-align: center;
 }
+#publishHistory_scriptPublished {
+  margin-top: 5vw;
+}
 
 @media (max-width: 768px) {
   #purchaseHistory_leftheading {
@@ -54,8 +57,11 @@
   .purchasehistory_header {
     margin-top: 1vw;
   }
+  #publishHistory_scriptPublished {
+    margin-top: 6vw;
+  }
 }
-@media (max-width: 426px) {
+@media (max-width: 427px) {
   #purchaseHistory_leftheading {
     font-size: 26px;
   }
@@ -71,6 +77,9 @@
 
   .purchaseHistory_banner {
     top: 18vw;
+  }
+  #publishHistory_scriptPublished {
+    margin-top: 18vw;
   }
 }
 @media (max-width: 376px) {
@@ -91,6 +100,9 @@
   }
   .purchasehistory_header {
     margin-top: 2vw;
+  }
+  #publishHistory_scriptPublished {
+    margin-top: 15vw;
   }
 }
 @media (max-width: 376px) {
@@ -150,6 +162,7 @@
 @media (max-width: 426px) {
   #publishHistory_purchasesubhead {
     font-size: 12px;
+    margin-top: 4vw;
   }
   .publishHistory_purchaseHeading {
     font-size: 20px !important;
@@ -318,6 +331,7 @@
   }
   #publishHistory_purchasesubhead2 {
     font-size: 12px;
+    margin-top: 2vw;
   }
   #purchaseHistory_purchaseddirectorcontents {
     margin-top: 15vw;
@@ -342,6 +356,24 @@
   }
   #purchaseHistory_purchaseddirectorName {
     margin-top: 5vw;
+  }
+  #purchaseHistory_purchaseddirectorName {
+    font-size: 20px;
+    margin-top: 6vw;
+  }
+  #purchaseHistory_purchaseddirectorAbout {
+    padding-top: 2vw;
+    font-size: 17px;
+  }
+  #purchaseHistory_purchasedDate {
+    font-size: 18.18px;
+  }
+  #purchaseHistory_purchasedReadStatus {
+    font-size: 19.18px;
+  }
+  #purchasehistory_dropdownbtn {
+    width: 119px;
+    height: 22px;
   }
 }
 @media (max-width: 321px) {

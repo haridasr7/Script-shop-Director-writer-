@@ -142,7 +142,7 @@ function PurchaseHistory() {
   };
 
   return (
-    <div style={{ height: "3000px" }}>
+    <div>
       <div className="purchasehistory_header">
         <NavbarWriter />
       </div>
@@ -186,7 +186,8 @@ function PurchaseHistory() {
       <Grid
         container
         spacing={2}
-        sx={{ backgroundColor: "#EBE7E7", marginTop: "6vw" }}
+        sx={{ backgroundColor: "#EBE7E7" }}
+        id="publishHistory_scriptPublished"
       >
         <Grid item sx={{ textAlign: "center" }} lg={12}>
           <Typography className="publishHistory_purchaseHeading">
