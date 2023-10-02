@@ -80,7 +80,7 @@ function AdminLogin() {
               style={{ marginLeft: "4px" }}
             />
             <Typography id="adminloginwelcomeSubhead">
-              Log in to your Account.
+              Login to your Account.
             </Typography>
             <Box>
               <img
@@ -101,13 +101,13 @@ function AdminLogin() {
             <Box className="adminlogin_siginIcon">
               <Person2Icon style={{ fontSize: "50px", color: "#A8A8A8" }} />
             </Box>
-            <Typography id="admminlogin_signin"> Log In</Typography>
+            <Typography id="admminlogin_signin"> Login</Typography>
             <Box>
               <form onSubmit={handleLogin}>
                 <TextField
                   id="adminlogin_signinUname"
                   fullWidth
-                  label="Username"
+                  label="Username or Email"
                   type="text"
                   margin="normal"
                   name="username"
@@ -153,10 +153,10 @@ function AdminLogin() {
               </form>
               <span
                 id="adminlogin_signinForgot"
-                onClick={() => navigate("/Adminforget")}
+                onClick={() => navigate("/Adminforgot")}
                 style={{ cursor: "pointer" }}
               >
-                Forgot Password ?
+                Forgot Password
               </span>
             </Box>
           </Box>

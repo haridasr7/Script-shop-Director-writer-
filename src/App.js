@@ -36,6 +36,10 @@ import AdminSidebar from "./components/Admin/components/AdminSidebar";
 import AdminHome from "./components/Admin/pages/AdminHome";
 import AdminLogin from "./components/Admin/pages/AdminLogin";
 import PurchaseHistory from "./components/PurchaseHistory";
+import ForgotPassword from "./components/Admin/pages/Adminforgot";
+import { resetPassword } from "./actions/userActions";
+import ResetPassword from "./components/Admin/pages/Adminresetpassword";
+import AdminUserDetails from "./components/Admin/pages/AdminUserDetails";
 
 function App() {
   return (
@@ -70,6 +74,9 @@ function App() {
         <Route exact path="/AdminHome" Component={AdminHome} />
         <Route exact path="/AdminLogin" Component={AdminLogin} />
         <Route exact path="/PurchaseHistory" Component={PurchaseHistory} />
+        <Route exact path="/Adminforgot" Component={ForgotPassword} />
+        <Route exact path="/Adminreset" Component={ResetPassword} />
+        <Route exact path="/AdminUserDetails" Component={AdminUserDetails} />
       </Routes>
     </Fragment>
   );
