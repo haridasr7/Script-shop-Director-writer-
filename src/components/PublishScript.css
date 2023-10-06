@@ -4,7 +4,7 @@
 .publishscriptcontent {
   position: relative;
   top: 15vw;
-  gap: 6vw;
+  /* gap: 5vw; */
 }
 .publishscriptheading {
   color: #000;
@@ -38,7 +38,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 80px 70px;
+  padding: 60px 30px;
 
   border-radius: 20px;
   border: 3px solid rgba(0, 0, 0, 0.1);
@@ -86,7 +86,7 @@
 
   border-radius: 5px;
   background: #f5f5f5;
-  margin-top: 1vw;
+  /* margin-top: 1vw; */
 }
 #publishscriptupload {
   display: flex;
@@ -95,7 +95,7 @@
 
   justify-content: center;
   align-items: center;
-  gap: 10px;
+
   border-radius: 5px;
   border: 1px solid #14abe4;
   background: #fff;
@@ -106,6 +106,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  /* margin-top: 1vw; */
 }
 #publishscriptimageupload {
   display: flex;
@@ -114,7 +115,7 @@
 
   justify-content: center;
   align-items: center;
-  gap: 10px;
+
   border-radius: 5px;
   border: 1px solid #14abe4;
   background: #fff;
@@ -125,6 +126,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  margin-top: -1vw;
 }
 #publishscriptpublish {
   margin-top: 3vw;
@@ -150,8 +152,8 @@
 }
 @media (max-width: 1024px) {
   .publishscriptbox {
-    width: 25vw;
-    padding: 40px 52px;
+    width: 36vw;
+    padding: 37px 22px;
   }
   .publishscriptboxContent {
     width: 31vw;
@@ -200,7 +202,7 @@
   }
 
   .publishscriptbox {
-    width: 70vw;
+    width: 90vw;
     padding: 100px 47px;
   }
   .publishscriptright {
@@ -216,7 +218,7 @@
 
 @media (max-width: 321px) {
   .publishscriptbox {
-    width: 78vw;
+    width: 94vw;
     padding: 100px 20px;
   }
   .publishscriptboxContent {

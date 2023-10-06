@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./PurchaseHistory.css";
 import NavbarWriter from "./writernavbar/NavbarWriter";
 import FooterDirector from "./writernavbar/Footerwriter";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import {
   Grid,
@@ -17,7 +19,8 @@ import {
   styled,
 } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import axios from "axios";
+import { getAllScripts } from "../actions/scriptAction";
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -140,6 +143,21 @@ function PurchaseHistory() {
     borderRadius: "50%",
     border: "4px solid #fff",
   };
+
+  const [scripts, setScripts] = useState([]);
+  const { isAuthenticated, user } = useSelector((state) => state.authState);
+
+  useEffect(() => {
+    const fetchScript = async () => {
+      try {
+        const response = await axios.get(`/api/v1/writerscripts/${user._id}`);
+        setScripts(response.data);
+      } catch (error) {
+        console.error("Script not found.");
+      }
+    };
+    fetchScript();
+  }, [scripts]);
 
   return (
     <div>

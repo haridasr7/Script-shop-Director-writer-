@@ -70,7 +70,7 @@ function App() {
         <Route exact path="/privacy&policy" Component={Privacypolicy} />
         <Route exact path="/services" Component={Services} />
         <Route exact path="/updatepassword" Component={Updatepassword} />
-        <Route exact path="/publishscript" Component={PublishScript} />
+        <Route exact path="/PublishScript" Component={PublishScript} />
         <Route exact path="/AdminHome" Component={AdminHome} />
         <Route exact path="/AdminLogin" Component={AdminLogin} />
         <Route exact path="/PurchaseHistory" Component={PurchaseHistory} />
