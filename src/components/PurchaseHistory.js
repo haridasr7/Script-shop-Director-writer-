@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./PurchaseHistory.css";
 import NavbarWriter from "./writernavbar/NavbarWriter";
 import FooterDirector from "./writernavbar/Footerwriter";
-import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   Grid,
@@ -12,15 +11,16 @@ import {
   Container,
   Menu,
   MenuItem,
-  Card,
   CardContent,
   Avatar,
   Box,
   styled,
+  Select,
 } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import axios from "axios";
-import { getAllScripts } from "../actions/scriptAction";
+import { getPurchasedScripts, purchasedScripts } from "../actions/scriptAction";
+import { arrayBufferFileLoader } from "@cyntler/react-doc-viewer";
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -59,71 +59,71 @@ function PurchaseHistory() {
     setAnchorEl(null);
   };
 
-  const dropdownContent = [
-    {
-      img: "/images/scriptimg.png",
-      scriptName: "The Bridge  across Paradise",
-    },
-    {
-      img: "/images/scriptimg.png",
-      scriptName: "Lorem Ipsum",
-    },
-    {
-      img: "/images/scriptimg.png",
-      scriptName: "Lorem Ipsum",
-    },
-    {
-      img: "/images/scriptimg.png",
-      scriptName: "sandhesham",
-    },
-  ];
-  const directorDetails = [
-    {
-      photo: "/images/directorimg.png",
-      name: "Director’s Name",
-      about: "Lorem Ipsum Dolor Sit amet consectetur sit adipis",
-      purchaseDate: "May 9 22 ",
-      purchasedStatus: "(Purchased On)",
-      status: "Script Viewed",
-      btn: "More Details",
-    },
-    {
-      photo: "/images/directorimg.png",
-      name: "Director’s Name",
-      about: "Lorem Ipsum Dolor Sit amet consectetur sit adipis",
-      purchaseDate: "May 9 22",
-      purchasedStatus: "(Purchased On)",
-      status: "Script Viewed",
-      btn: "More Details",
-    },
-    {
-      photo: "/images/directorimg.png",
-      name: "Director’s Name",
-      about: "Lorem Ipsum Dolor Sit amet consectetur sit adipis",
-      purchaseDate: "May 9 22 ",
-      purchasedStatus: "(Purchased On)",
-      status: "Script Viewed",
-      btn: "More Details",
-    },
-    {
-      photo: "/images/directorimg.png",
-      name: "Director’s Name",
-      about: "Lorem Ipsum Dolor Sit amet consectetur sit adipis",
-      purchaseDate: "May 9 22 ",
-      purchasedStatus: "(Purchased On)",
-      status: "Script Viewed",
-      btn: "More Details",
-    },
-    {
-      photo: "/images/directorimg.png",
-      name: "Director’s Name",
-      about: "Lorem Ipsum Dolor Sit amet consectetur sit adipis",
-      purchaseDate: "May 9 22 ",
-      purchasedStatus: "(Purchased On)",
-      status: "Script Viewed",
-      btn: "More Details",
-    },
-  ];
+  // const dropdownContent = [
+  //   {
+  //     img: "/images/scriptimg.png",
+  //     scriptName: "The Bridge  across Paradise",
+  //   },
+  //   {
+  //     img: "/images/scriptimg.png",
+  //     scriptName: "Lorem Ipsum",
+  //   },
+  //   {
+  //     img: "/images/scriptimg.png",
+  //     scriptName: "Lorem Ipsum",
+  //   },
+  //   {
+  //     img: "/images/scriptimg.png",
+  //     scriptName: "sandhesham",
+  //   },
+  // ];
+  // const directorDetails = [
+  //   {
+  //     photo: "/images/directorimg.png",
+  //     name: "Director’s Name",
+  //     about: "Lorem Ipsum Dolor Sit amet consectetur sit adipis",
+  //     purchaseDate: "May 9 22 ",
+  //     purchasedStatus: "(Purchased On)",
+  //     status: "Script Viewed",
+  //     btn: "More Details",
+  //   },
+  //   {
+  //     photo: "/images/directorimg.png",
+  //     name: "Director’s Name",
+  //     about: "Lorem Ipsum Dolor Sit amet consectetur sit adipis",
+  //     purchaseDate: "May 9 22",
+  //     purchasedStatus: "(Purchased On)",
+  //     status: "Script Viewed",
+  //     btn: "More Details",
+  //   },
+  //   {
+  //     photo: "/images/directorimg.png",
+  //     name: "Director’s Name",
+  //     about: "Lorem Ipsum Dolor Sit amet consectetur sit adipis",
+  //     purchaseDate: "May 9 22 ",
+  //     purchasedStatus: "(Purchased On)",
+  //     status: "Script Viewed",
+  //     btn: "More Details",
+  //   },
+  //   {
+  //     photo: "/images/directorimg.png",
+  //     name: "Director’s Name",
+  //     about: "Lorem Ipsum Dolor Sit amet consectetur sit adipis",
+  //     purchaseDate: "May 9 22 ",
+  //     purchasedStatus: "(Purchased On)",
+  //     status: "Script Viewed",
+  //     btn: "More Details",
+  //   },
+  //   {
+  //     photo: "/images/directorimg.png",
+  //     name: "Director’s Name",
+  //     about: "Lorem Ipsum Dolor Sit amet consectetur sit adipis",
+  //     purchaseDate: "May 9 22 ",
+  //     purchasedStatus: "(Purchased On)",
+  //     status: "Script Viewed",
+  //     btn: "More Details",
+  //   },
+  // ];
 
   const BoxStyle = {
     display: "flex",
@@ -144,20 +144,51 @@ function PurchaseHistory() {
     border: "4px solid #fff",
   };
 
-  const [scripts, setScripts] = useState([]);
+  const [script, setScript] = useState([]);
+  const [directorData, setDirectorData] = useState("");
   const { isAuthenticated, user } = useSelector((state) => state.authState);
 
   useEffect(() => {
     const fetchScript = async () => {
       try {
-        const response = await axios.get(`/api/v1/writerscripts/${user._id}`);
-        setScripts(response.data);
+        const response = await axios.get(`/api/v1/getallscripts/${user._id}`);
+
+        setScript(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error("Script not found.");
       }
     };
-    fetchScript();
-  }, [scripts]);
+    if (isAuthenticated) {
+      fetchScript();
+    }
+  }, [isAuthenticated, user]);
+
+  const handleScriptChange = (selectedMovieName) => {
+    // setSelectedScript(selectedMovieName); // Set the script state with the selected movie
+    let selectedDirectorData = [];
+
+    for (const item of script) {
+      if (item.purchaserUsernames) {
+        for (const purchase of item.purchaserUsernames) {
+          if (purchase.movieName === selectedMovieName) {
+            selectedDirectorData.push(purchase);
+            handleClose();
+          }
+        }
+      }
+    }
+
+    if (selectedDirectorData.length > 0) {
+      setDirectorData(selectedDirectorData);
+
+      console.log(directorData);
+      // console.log([selectedDirectorData]);
+    } else {
+      setDirectorData([]); // If no matching director data is found, you can clear the directorData state.
+      // console.log(directorData);
+    }
+  };
 
   return (
     <div>
@@ -264,7 +295,7 @@ function PurchaseHistory() {
               Script Name
             </Button>
             <StyledMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
-              {dropdownContent.map((name, index) => (
+              {script.map((name, index) => (
                 <div
                   key={index}
                   style={{
@@ -273,13 +304,17 @@ function PurchaseHistory() {
                     borderBottom: "1px solid #D9D9D9",
                   }}
                 >
-                  <img
-                    src={name.img}
+                  {/* <img
+                    src={name.filename}
                     className="purchaseHistory_dropdownmenuimg"
                     style={{ width: "fitContent" }}
-                  />
-                  <MenuItem className="purchaseHistory_dropdownmenu">
-                    {name.scriptName}
+                  /> */}
+                  <MenuItem
+                    key={name.movieName}
+                    className="purchaseHistory_dropdownmenu"
+                    onClick={() => handleScriptChange(name.movieName)}
+                  >
+                    {name.movieName}
                   </MenuItem>
                 </div>
               ))}
@@ -287,51 +322,53 @@ function PurchaseHistory() {
           </Container>
         </Grid>
 
-        <Box className="purchaseHistory_purchaseddirectorDetails">
-          <Grid container spacing={2} padding={"3vw"}>
-            {directorDetails.map((item, index) => (
-              <Grid
-                item
-                lg={4}
-                md={4}
-                sm={6}
-                key={index}
-                id="purchaseHistory_purchaseddirectorcontents"
-              >
-                <Box style={BoxStyle} id="Forhover">
-                  <Avatar
+        {directorData.length > 0 ? (
+          <Box className="purchaseHistory_purchaseddirectorDetails">
+            {directorData.map((director, index) => (
+              <Grid container spacing={2} padding={"3vw"}>
+                <Grid
+                  item
+                  lg={4}
+                  md={4}
+                  sm={6}
+                  id="purchaseHistory_purchaseddirectorcontents"
+                  key={index}
+                >
+                  <Box style={BoxStyle} id="Forhover">
+                    {/* <Avatar
                     alt="User Avatar"
                     src={item.photo}
                     style={avatarStyle}
-                  />
-                  <CardContent>
-                    <Typography id="purchaseHistory_purchaseddirectorName">
-                      {item.name}{" "}
-                    </Typography>
-                    <Typography id="purchaseHistory_purchaseddirectorAbout">
-                      {item.about}{" "}
-                    </Typography>
-                    <Typography id="purchaseHistory_purchasedDate">
-                      {item.purchaseDate} &nbsp;{" "}
-                      <span id="purchaseHistory_purchasedDatestatus">
-                        {item.purchasedStatus}
-                      </span>{" "}
-                    </Typography>
-                    <Typography id="purchaseHistory_purchasedReadStatus">
-                      {item.status}{" "}
-                    </Typography>
-                    <Button
-                      variant="contained"
-                      id="purchaseHistory_purchasedbtn"
-                    >
-                      {item.btn}{" "}
-                    </Button>
-                  </CardContent>
-                </Box>
+                  /> */}
+                    <CardContent>
+                      <Typography id="purchaseHistory_purchaseddirectorName">
+                        {director.userName}
+                      </Typography>
+                      <Typography id="purchaseHistory_purchaseddirectorAbout">
+                        {director.synopsis}
+                      </Typography>
+                      <Typography id="purchaseHistory_purchasedDate">
+                        {director.Date.split("T")[0]}
+                        <span id="purchaseHistory_purchasedDatestatus"></span>{" "}
+                      </Typography>
+                      <Typography id="purchaseHistory_purchasedReadStatus">
+                        {director.status}
+                      </Typography>
+                      {/* <Button
+                        variant="contained"
+                        id="purchaseHistory_purchasedbtn"
+                      >
+                        More Details
+                      </Button> */}
+                    </CardContent>
+                  </Box>
+                </Grid>
               </Grid>
             ))}
-          </Grid>
-        </Box>
+          </Box>
+        ) : (
+          <div></div>
+        )}
       </Container>
 
       <div className="purchasehistory_footer">

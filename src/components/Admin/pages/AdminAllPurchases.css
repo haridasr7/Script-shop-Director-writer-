@@ -1,0 +1,50 @@
+#adminAllpurchaseHeadingBox {
+  background-color: #45b8e9;
+  margin-top: 5vw;
+  border-radius: 28px 28px 0px 0px;
+  padding: 2vw;
+  margin-bottom: 3vw;
+}
+#adminAllpurchaseHeading {
+  color: #fff;
+  font-family: Inter;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+#adminAllpurchaseSearchBox {
+  height: 1vw;
+}
+#adminAllpurchasedirectorbox {
+  border-radius: 16px;
+  background: #ebebeb;
+  padding: 2vw;
+  margin-top: 4vw;
+}
+#adminAllpurchasedirectorsubhead {
+  color: #858585;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: normal;
+}
+#adminAllpurchasedirectorTableHead {
+  color: #767676 !important;
+  font-family: Inter !important;
+  font-size: 24px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: normal !important;
+  padding-top: 4vw;
+  padding-bottom: 4vw;
+}
+#adminAllpurchasedirectorTableBody {
+  color: #717171;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

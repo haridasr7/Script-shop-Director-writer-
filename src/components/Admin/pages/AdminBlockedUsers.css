@@ -1,0 +1,163 @@
+#adminBlockedheading {
+  color: #fff;
+  font-family: Inter;
+  font-size: 64px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: normal;
+  position: absolute;
+  bottom: 66vw;
+  left: 28vw;
+}
+#adminBlockedSubheading {
+  color: #fff;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: normal;
+  position: absolute;
+  bottom: 64vw;
+  left: 28vw;
+}
+#adminBlockedUserblock {
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 5px 5px 10px 0px rgba(113, 113, 113, 0.25);
+  padding: 13px;
+  margin-top: -10vw;
+  position: relative;
+}
+#adminBlockedUserblockhead {
+  color: #767676;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-left: 2vw;
+}
+#adminBlockedUsersearchBox {
+  border-radius: 9px;
+  background: #f2f2f2;
+  border: none;
+}
+#adminBlockedUserChoosesec {
+  color: #767676;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+#adminBlockedUserChooseWriter {
+  border-radius: 4px;
+  background: #f5f5f5;
+  box-shadow: 5px 5px 40px 10px rgba(113, 113, 113, 0.25);
+  color: #767676;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 1vw;
+
+  text-align: center;
+  margin-top: 2vw;
+}
+#adminBlockedUserChooseDirector {
+  border-radius: 4px;
+  background: #f5f5f5;
+  box-shadow: 5px 5px 40px 10px rgba(113, 113, 113, 0.25);
+  color: #767676;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 1vw;
+  margin-top: 2vw;
+
+  text-align: center;
+}
+#adminBlockedUserdetails {
+  border-radius: 3.798px;
+  background: #fff;
+  box-shadow: 4.74719px 4.74719px 9.49438px 0px rgba(113, 113, 113, 0.25);
+  gap: 1vw;
+  margin-top: 3vw;
+}
+#adminBlockedUserName {
+  color: #767676;
+  font-family: Inter;
+  font-size: 22.787px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding-top: 1vw;
+}
+#adminBlockedUserRole {
+  color: #767676;
+  font-family: Inter;
+  font-size: 22.787px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-top: 5px;
+}
+#adminBlockedUserMail {
+  color: #767676;
+  font-family: Inter;
+  font-size: 15.191px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-top: 3vw;
+}
+#adminBlockedUserNum {
+  color: #767676;
+  font-family: Inter;
+  font-size: 22.787px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-top: 1vw;
+}
+.adminBlockedUserrestriction {
+  color: #6db0cd;
+  font-family: Inter;
+  font-size: 15.191px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-decoration-line: underline;
+  padding-left: 1vw;
+}
+#adminBlockedUserviewbtn {
+  border-radius: 3.798px;
+  border: 0.949px solid #c8c8c8;
+  background: #fff;
+  box-shadow: 4.74719px 4.74719px 9.49438px 0px rgba(113, 113, 113, 0.25);
+  color: #767676;
+  font-family: Inter;
+  font-size: 15.191px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 4vw;
+  margin-left: 1vw;
+}
+.pagination {
+  display: inline-block;
+}
+.pagination a {
+  color: #767676;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}

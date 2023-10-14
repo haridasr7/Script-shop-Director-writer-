@@ -40,6 +40,8 @@ import ForgotPassword from "./components/Admin/pages/Adminforgot";
 import { resetPassword } from "./actions/userActions";
 import ResetPassword from "./components/Admin/pages/Adminresetpassword";
 import AdminUserDetails from "./components/Admin/pages/AdminUserDetails";
+import AdminAllPurchases from "./components/Admin/pages/AdminAllPurchases";
+import AdminBlockedUsers from "./components/Admin/pages/AdminBlockedUsers";
 
 function App() {
   return (
@@ -77,6 +79,8 @@ function App() {
         <Route exact path="/Adminforgot" Component={ForgotPassword} />
         <Route exact path="/Adminreset" Component={ResetPassword} />
         <Route exact path="/AdminUserDetails" Component={AdminUserDetails} />
+        <Route exact path="/AdminAllPurchases" Component={AdminAllPurchases} />
+        <Route exact path="/AdminBlockedUsers" Component={AdminBlockedUsers} />
       </Routes>
     </Fragment>
   );
