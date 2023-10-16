@@ -324,8 +324,13 @@ function PurchaseHistory() {
 
         {directorData.length > 0 ? (
           <Box className="purchaseHistory_purchaseddirectorDetails">
-            {directorData.map((director, index) => (
-              <Grid container spacing={2} padding={"3vw"}>
+            <Grid
+              container
+              spacing={1}
+              padding={"3vw"}
+              sx={{ display: "flex", flexDirection: "row" }}
+            >
+              {directorData.map((director, index) => (
                 <Grid
                   item
                   lg={4}
@@ -363,8 +368,8 @@ function PurchaseHistory() {
                     </CardContent>
                   </Box>
                 </Grid>
-              </Grid>
-            ))}
+              ))}
+            </Grid>
           </Box>
         ) : (
           <div></div>

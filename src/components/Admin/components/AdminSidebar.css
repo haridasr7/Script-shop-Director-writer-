@@ -18,9 +18,10 @@
   line-height: normal;
   display: flex;
   flex-direction: column;
+  gap: 4vw;
 }
 .Links {
-  padding: 3vw;
+  padding: 2vw;
 }
 .sidebarLogo {
   margin-top: 4vw;
