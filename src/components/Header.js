@@ -66,7 +66,7 @@ const Header = () => {
                 <div className='maincontainer' style={{ display: 'flex', marginTop: '5%' }}>
                     <Grid container spacing={2} >
                         <Grid item xs={12} md={6} sm={6} lg={4}>
-                            <div style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>
+                            <div style={{ cursor: 'pointer' }} onClick={() => navigate('/Publishscript')}>
                                 <Card sx={{ width: 298, height: 410, borderRadius: 5, border: '1px solid #14ABE4' }}>
                                     <CardMedia
                                         component="img"
@@ -95,7 +95,7 @@ const Header = () => {
                         </Grid>
                         <div className='centergrid' style={{ marginTop: '1%' }}>
                             <Grid item xs={12} md={6} lg={4} sm={6} >
-                                <div  className='makesmall' style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>
+                                <div  className='makesmall' style={{ cursor: 'pointer' }} onClick={() => navigate('/Analytics')}>
                                     <Card sx={{ width: 298, height: 410, borderRadius: 5, border: '1px solid #14ABE4' }} >
                                         <CardMedia
                                             component="img"

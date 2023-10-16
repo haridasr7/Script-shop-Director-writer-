@@ -10,6 +10,7 @@ import {
   Item,
   Paper,
 } from "@mui/material";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faDollarSign,
@@ -18,8 +19,47 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import AdminFooter from "../components/AdminFooter";
+import axios from 'axios';
+
+
+
+
 
 function AdminHome() {
+  const [userCounts, setUserCounts] = useState({});
+  const [userrecentusers, setUserrecent] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios.get('/Admin/api/v1/user-counts')
+      .then(response => {
+        // Set the user counts to state
+        setUserCounts(response.data);
+        setLoading(false);
+
+
+      })
+      .catch(error => {
+        console.error('Error fetching user counts:', error);
+        setLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios.get('/Admin/api/v1/recently-joined-in-users')
+      .then(response => {
+        // Set the user counts to state
+        setUserrecent(response.data.users);
+        setLoading(false);
+        console.log(userrecentusers)
+
+      })
+      .catch(error => {
+        console.error('Error fetching user counts:', error);
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <div>
       <Grid
@@ -60,7 +100,7 @@ function AdminHome() {
                 <Typography className="adminhomestatPara">
                   Your Revenue
                 </Typography>
-                <Typography className="adminhomestatnum">$14000</Typography>
+                <Typography className="adminhomestatnum">${userCounts.totalRevenue}</Typography>
               </Paper>
             </Grid>
             <Grid item xs={3}>
@@ -70,7 +110,7 @@ function AdminHome() {
                 <Typography className="adminhomestatPara">
                   Total Directors
                 </Typography>
-                <Typography className="adminhomestatnum">1021</Typography>
+                <Typography className="adminhomestatnum">${userCounts.directorCount}</Typography>
               </Paper>
             </Grid>
             <Grid item xs={3}>
@@ -80,7 +120,7 @@ function AdminHome() {
                 <Typography className="adminhomestatPara">
                   Total Writers
                 </Typography>
-                <Typography className="adminhomestatnum">2079</Typography>
+                <Typography className="adminhomestatnum">${userCounts.writerCount}</Typography>
               </Paper>
             </Grid>
           </Grid>
@@ -91,103 +131,32 @@ function AdminHome() {
             <Typography className="adminhomeContentsubheader">
               These are customers who Signed Up Recently.
             </Typography>
+
             <Grid container spacing={2} sx={{ marginTop: "2vw", gap: "2vw" }}>
-              <Grid item xs={5}>
-                <Paper elevation={5} className="adminhomeusers">
-                  <FontAwesomeIcon icon={faUser} size="2x" />
-                  <Box>
-                    <Typography className="adminhomeuserName">
-                      John Doe
-                    </Typography>
-                    <Typography className="adminhomeuserRole">
-                      Writer
-                    </Typography>
-                    <Typography className="adminhomeuserContent">
-                      Lorem Ipsum dolor sit sit dolor amet consectetur sit
-                      adipiscing amet consectetur sit dolor amet{" "}
-                    </Typography>
-                    <Button
-                      className="adminhomeuserMore"
-                      variant="contained"
-                      sx={{ backgroundColor: "#45b8e9" }}
-                    >
-                      View Details
-                    </Button>
-                  </Box>
-                </Paper>
-              </Grid>
-              <Grid item xs={5}>
-                <Paper elevation={5} className="adminhomeusers">
-                  <FontAwesomeIcon icon={faUser} size="2x" />
-                  <Box>
-                    <Typography className="adminhomeuserName">
-                      Emmanuelle
-                    </Typography>
-                    <Typography className="adminhomeuserRole">
-                      Director
-                    </Typography>
-                    <Typography className="adminhomeuserContent">
-                      Lorem Ipsum dolor sit sit dolor amet consectetur sit
-                      adipiscing amet consectetur sit dolor amet{" "}
-                    </Typography>
-                    <Button
-                      className="adminhomeuserMore"
-                      variant="contained"
-                      sx={{ backgroundColor: "#45b8e9" }}
-                    >
-                      View Details
-                    </Button>
-                  </Box>
-                </Paper>
-              </Grid>
-              <Grid item xs={5}>
-                <Paper elevation={5} className="adminhomeusers">
-                  <FontAwesomeIcon icon={faUser} size="2x" />
-                  <Box>
-                    <Typography className="adminhomeuserName">
-                      Emmanuelle
-                    </Typography>
-                    <Typography className="adminhomeuserRole">
-                      Writer
-                    </Typography>
-                    <Typography className="adminhomeuserContent">
-                      Lorem Ipsum dolor sit sit dolor amet consectetur sit
-                      adipiscing amet consectetur sit dolor amet{" "}
-                    </Typography>
-                    <Button
-                      className="adminhomeuserMore"
-                      variant="contained"
-                      sx={{ backgroundColor: "#45b8e9" }}
-                    >
-                      View Details
-                    </Button>
-                  </Box>
-                </Paper>
-              </Grid>
-              <Grid item xs={5}>
-                <Paper elevation={5} className="adminhomeusers">
-                  <FontAwesomeIcon icon={faUser} size="2x" />
-                  <Box>
-                    <Typography className="adminhomeuserName">
-                      John Doe
-                    </Typography>
-                    <Typography className="adminhomeuserRole">
-                      Director
-                    </Typography>
-                    <Typography className="adminhomeuserContent">
-                      Lorem Ipsum dolor sit sit dolor amet consectetur sit
-                      adipiscing amet consectetur sit dolor amet{" "}
-                    </Typography>
-                    <Button
-                      className="adminhomeuserMore"
-                      variant="contained"
-                      sx={{ backgroundColor: "#45b8e9" }}
-                    >
-                      View Details
-                    </Button>
-                  </Box>
-                </Paper>
-              </Grid>
+             
+           
+              {
+                userrecentusers.map((content, idx) => (
+                  <Grid item xs={5} key={idx}>
+                    <Paper elevation={5} className="adminhomeusers">
+                      <FontAwesomeIcon icon={faUser} size="2x" />
+                      <Box>
+                        <Typography className="adminhomeuserName">{content.userName}</Typography>
+                        <Typography className="adminhomeuserRole">{content.role[0]}</Typography><br></br>
+                        <Button
+                          className="adminhomeuserMore"
+                          variant="contained"
+                          sx={{ backgroundColor: "#45b8e9" }}
+                        >
+                          View Details
+                        </Button>
+                      </Box>
+                    </Paper>
+                  </Grid>
+                ))
+              }
+
+           
             </Grid>
           </Box>
         </Grid>

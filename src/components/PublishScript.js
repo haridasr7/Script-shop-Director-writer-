@@ -11,10 +11,11 @@ import {
   Input,
 } from "@mui/material";
 import FooterDirector from "./writernavbar/Footerwriter";
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { writerPay } from "../actions/scriptAction";
 const genres = [
   "comedy",
   "horror",
@@ -35,6 +36,7 @@ const genres = [
   "short",
   "western",
 ];
+
 function PublishScript() {
   const [movieName, setMovieName] = useState("");
   const [synopsis, setSynopsis] = useState("");
@@ -42,33 +44,46 @@ function PublishScript() {
   const [scriptType, setScriptType] = useState("Script Type");
   const [scriptFile, setScriptFile] = useState(null);
   const [imageFile, setImageFile] = useState(null);
+  const dispatch = useDispatch(); 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { isAuthenticated, user } = useSelector((state) => state.authState);
   const [amount] = useState(10000);
+
+  
   const handleMovieNameChange = (e) => {
     setMovieName(e.target.value);
   };
+
   const handleSynopsisChange = (e) => {
     setSynopsis(e.target.value);
   };
+
   const handleGenreChange = (e) => {
     setGenre(e.target.value);
   };
+
   const handleScriptTypeChange = (e) => {
     setScriptType(e.target.value);
   };
+
   const handleScriptFileChange = (e) => {
     const file = e.target.files[0];
     setScriptFile(file);
   };
+
   const handleImageFileChange = (e) => {
     const file = e.target.files[0];
     setImageFile(file);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    dispatch(writerPay(user._id, movieName, amount));
   };
+  
+ 
+
   useEffect(() => {
     if (isSubmitting) {
       const formData = new FormData();
@@ -78,16 +93,12 @@ function PublishScript() {
       formData.append("scriptType", scriptType);
       formData.append("scriptFile", scriptFile);
       formData.append("imageFile", imageFile);
-      console.log(
-        movieName,
-        synopsis,
-        genre,
-        scriptType,
-        scriptFile,
-        imageFile
-      );
+
+
+      console.log(movieName,synopsis,genre,scriptType,scriptFile,imageFile)
       // Replace with your actual API endpoint URL
       const apiUrl = `/api/v1/publish/new/${user._id}`; //api to send the request
+
       fetch(apiUrl, {
         method: "POST",
         body: formData,
@@ -112,16 +123,8 @@ function PublishScript() {
           setIsSubmitting(false);
         });
     }
-  }, [
-    user._id,
-    isSubmitting,
-    movieName,
-    synopsis,
-    genre,
-    scriptType,
-    scriptFile,
-    imageFile,
-  ]);
+  }, [user._id, isSubmitting, movieName, synopsis, genre, scriptType, scriptFile, imageFile]);
+
   return (
     <div>
       <div className="publishscriptHeader">
@@ -210,9 +213,8 @@ function PublishScript() {
                   <MenuItem value="shortFilm">Short Film</MenuItem>
                   <MenuItem value="mainStreamFilm">Mainstream Film</MenuItem>
                   {/* Add other script type options here */}
-                </Select>
-                <br />
-                <br />
+                </Select><br/><br/>
+
                 {/* Script File Upload */}
                 <Input
                   type="file"
@@ -221,7 +223,7 @@ function PublishScript() {
                   style={{ display: "none" }}
                   id="scriptFileInput"
                 />
-                <label htmlFor="scriptFileInput">
+                  <label htmlFor="scriptFileInput">
                   <Button
                     component="span"
                     fullWidth
@@ -240,6 +242,7 @@ function PublishScript() {
                 </label>{" "}
                 <br />
                 <br />
+
                 <Input
                   type="file"
                   accept="image/*"
