@@ -851,6 +851,34 @@ try {
 }
 
 
+export const addWriterProfile = (formData, writerId) => async (dispatch) => {
+  try {
+    dispatch(writerProfileRequest());
+
+    const config = {
+      headers: {
+        'Content-type': 'multipart/form-data'
+      }
+    };
+
+    const { data } = await axios.put(
+      `/api/v1/writerprofile?writerId=${writerId}`,
+      formData,
+      config
+    );
+    console.log(data);
+    dispatch(writerProfileSuccess(data));
+  } catch (error) {
+    console.log(error);
+    if (error.response.data.error) {
+      dispatch(writerProfileFail(error.response.data.error));
+    } else if (error.response.data.message) {
+      dispatch(writerProfileFail(error.response.data.message));
+    }
+  }
+};
+
+
 export const writerDetails = (writerId) => async (dispatch) => {
 console.log(writerId);
 

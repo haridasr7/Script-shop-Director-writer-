@@ -29,7 +29,10 @@ function AdminHome() {
   const [userCounts, setUserCounts] = useState({});
   const [userrecentusers, setUserrecent] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
   useEffect(() => {
     axios.get('/Admin/api/v1/user-counts')
       .then(response => {
@@ -59,6 +62,15 @@ function AdminHome() {
         setLoading(false);
       });
   }, []);
+
+  const Handleprofile=()=>{
+
+    useEffect(()=>{
+      
+    })
+    
+  }
+  
 
   return (
     <div>
@@ -136,20 +148,18 @@ function AdminHome() {
              
            
               {
+                
                 userrecentusers.map((content, idx) => (
                   <Grid item xs={5} key={idx}>
                     <Paper elevation={5} className="adminhomeusers">
                       <FontAwesomeIcon icon={faUser} size="2x" />
+                      
                       <Box>
-                        <Typography className="adminhomeuserName">{content.userName}</Typography>
-                        <Typography className="adminhomeuserRole">{content.role[0]}</Typography><br></br>
-                        <Button
-                          className="adminhomeuserMore"
-                          variant="contained"
-                          sx={{ backgroundColor: "#45b8e9" }}
-                        >
-                          View Details
-                        </Button>
+                        <Typography className="adminhomeuserName">{content.userName}</Typography><br></br>
+                        <Typography className="adminhomeuserName">{content.role[0]}</Typography><br></br>
+                        <Typography className="adminhomeuserName">{content.email}</Typography><br></br>
+                        <Typography className="adminhomeuserName"><b>Joined At:</b> {formatDate(content.createdAt)}</Typography><br></br>
+                        
                       </Box>
                     </Paper>
                   </Grid>

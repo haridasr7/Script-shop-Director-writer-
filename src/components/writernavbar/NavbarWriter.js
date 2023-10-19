@@ -171,7 +171,7 @@ function NavbarWriter() {
                   </li>
                 </Link>
                 <Link
-                  to="/customersupport"
+                  to="/chatbot"
                   className="navbarCdropdown-menuULLink"
                 >
                   <li>

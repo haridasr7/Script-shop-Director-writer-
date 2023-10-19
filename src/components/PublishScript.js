@@ -47,7 +47,7 @@ function PublishScript() {
   const dispatch = useDispatch(); 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { isAuthenticated, user } = useSelector((state) => state.authState);
-  const [amount] = useState(10000);
+  const [amount] = useState(1000);
 
   
   const handleMovieNameChange = (e) => {
