@@ -78,7 +78,14 @@ function AdminAllPurchases() {
             <Grid container spacing={1}>
               <Grid lg={12} sx={{ marginTop: "5vw" }}>
                 <TableContainer>
-                  <Table sx={{ backgroundColor: "#EBEBEB" }}>
+                  <Table
+                    sx={{
+                      backgroundColor: "#EBEBEB",
+                      borderCollapse: "separate",
+                      borderSpacing: "0 4px",
+                      borderRadius: "53px",
+                    }}
+                  >
                     <TableHead>
                       <TableRow>
                         <TableCell id="adminAllpurchasedirectorTableHead">
@@ -99,7 +106,7 @@ function AdminAllPurchases() {
                       </TableRow>
                     </TableHead>
                     <TableBody
-                      sx={{ backgroundColor: " #FFF", padding: "2px" }}
+                      sx={{ backgroundColor: " #FFF", borderSpacing: "4px 0" }}
                     >
                       {purchasedDetails.map((details, index) => (
                         <TableRow key={index}>

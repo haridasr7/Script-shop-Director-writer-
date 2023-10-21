@@ -11,7 +11,10 @@ import {
   Box,
   Card,
   styled,
+  Select,
+  InputLabel,
 } from "@mui/material";
+import FormControl from "@mui/material/FormControl";
 import AdminSidebar from "../components/AdminSidebar";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
@@ -20,29 +23,8 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Person2Icon from "@mui/icons-material/Person2";
 import CancelPresentationSharpIcon from "@mui/icons-material/CancelPresentationSharp";
 import AdminFooter from "../components/AdminFooter";
-
-const StyledMenu = styled((props) => (
-  <Menu
-    elevation={0}
-    anchorOrigin={{
-      vertical: "bottom",
-      horizontal: "center",
-    }}
-    transformOrigin={{
-      vertical: "top",
-      horizontal: "center",
-    }}
-    {...props}
-  />
-))(({ theme }) => ({
-  "& .MuiPaper-root": {
-    borderRadius: 6,
-    marginTop: theme.spacing(3),
-    minWidth: 200,
-    backgroundColor: "#F4F4F4",
-    borderBottom: 1,
-  },
-}));
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 function AdminUserDetails() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -54,36 +36,72 @@ function AdminUserDetails() {
     setAnchorEl(null);
   };
 
-  const customerList = [
-    {
-      cPhoto: "/images/directorimg.png",
-      cName: "John Doe",
-      cRole: "Director",
-      cBlockIcon: <CancelPresentationSharpIcon />,
-      cBlockDetails: "Block User",
-    },
-    {
-      cPhoto: "/images/directorimg.png",
-      cName: "John Doe",
-      cRole: "Director",
-      cBlockIcon: <CancelPresentationSharpIcon />,
-      cBlockDetails: "Block User",
-    },
-    {
-      cPhoto: "/images/directorimg.png",
-      cName: "John Doe",
-      cRole: "Director",
-      cBlockIcon: <CancelPresentationSharpIcon />,
-      cBlockDetails: "Block User",
-    },
-    {
-      cPhoto: "/images/directorimg.png",
-      cName: "John Doe",
-      cRole: "Director",
-      cBlockIcon: <CancelPresentationSharpIcon />,
-      cBlockDetails: "Block User",
-    },
-  ];
+  const [userDetails, setUserDetails] = useState({
+    directors: [],
+    writers: [],
+  });
+  const [selectedRole, setSelectedRole] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredUsers, setFilteredUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchDirector = async () => {
+      try {
+        const response = await axios.get("Admin/api/v1/view-users/director");
+        setUserDetails((prevUserDetails) => ({
+          ...prevUserDetails,
+          directors: response.data,
+        }));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    const fetchWriter = async () => {
+      try {
+        const response = await axios.get("Admin/api/v1/view-users/writer");
+        setUserDetails((prevUserDetails) => ({
+          ...prevUserDetails,
+          writers: response.data,
+        }));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchDirector();
+    fetchWriter();
+  }, []);
+  // console.log(userDetails);
+
+  const blockUser = async (userid) => {
+    try {
+      const response = await axios.put(`/Admin/api/v1/block/${userid}`);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error blocking the user:", error);
+    }
+  };
+
+  const handleSearch = (event) => {
+    const query = event.target.value;
+    setSearchQuery(query);
+    if (selectedRole === "Writer") {
+      const filteredWriters = userDetails.writers?.userRoleDetails.filter(
+        (user) => user.userName.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredUsers(filteredWriters || []);
+    } else if (selectedRole === "Director") {
+      const filteredDirectors = userDetails.directors?.userRoleDetails.filter(
+        (user) => user.userName.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredUsers(filteredDirectors || []);
+    } else {
+      setFilteredUsers([]);
+    }
+  };
+  // console.log(filteredUsers);
+  // console.log(userDetails.writers);
 
   return (
     <div>
@@ -114,34 +132,42 @@ function AdminUserDetails() {
                       </InputAdornment>
                     ),
                   }}
+                  onChange={handleSearch}
                 />
               </Grid>
               <Grid item lg={3}>
-                <Button
-                  id="AdminUserDetails_DropDown"
-                  endIcon={<KeyboardArrowDownIcon />}
-                  startIcon={
-                    <Person2Icon
-                      style={{
-                        border: "1px solid #FFF",
-                        color: "white",
-                        fontSize: "35px",
-                      }}
-                    />
-                  }
-                  onClick={handleClick}
-                  fullWidth
-                >
-                  Select
-                </Button>
-                <StyledMenu
-                  anchorEl={anchorEl}
-                  open={open}
-                  onClose={handleClose}
-                >
-                  <MenuItem>Director</MenuItem>
-                  <MenuItem>Director</MenuItem>
-                </StyledMenu>
+                <FormControl fullWidth>
+                  <InputLabel className="AdminUserDetails_dropdowntext">
+                    Select
+                  </InputLabel>
+
+                  <Select
+                    id="AdminUserDetails_DropDown"
+                    value={selectedRole || ""}
+                    label="Role"
+                    onChange={(event) => setSelectedRole(event.target.value)}
+                    InputProps={{
+                      startAdornment: (
+                        <IconButton>
+                          <Person2Icon />
+                        </IconButton>
+                      ),
+                    }}
+                  >
+                    <MenuItem
+                      value="Director"
+                      className="AdminUserDetails_dropdowntext"
+                    >
+                      Director
+                    </MenuItem>
+                    <MenuItem
+                      value="Writer"
+                      className="AdminUserDetails_dropdowntext"
+                    >
+                      Writer
+                    </MenuItem>
+                  </Select>
+                </FormControl>
               </Grid>
             </Grid>
             <Box
@@ -173,46 +199,226 @@ function AdminUserDetails() {
                 marginLeft: "3px",
               }}
             >
-              <Grid item lg={12} marginTop={"3vw"} marginLeft={"3px"}>
-                {customerList.map((item, index) => (
-                  <Box className="adminUserhover-container" key={index}>
-                    <Grid container spacing={2} gap={"1vw"} padding={"1vw"}>
-                      <Grid item lg={3} id="AdminUserDetails_directorimg">
-                        <img
-                          src={item.cPhoto}
-                          alt=""
-                          style={{ width: "35%" }}
-                        />
-                      </Grid>
-                      <Grid item lg={5}>
-                        <Box paddingLeft={"1vw"}>
-                          <Typography id="AdminUserDetails_directorName">
-                            {item.cName}
-                          </Typography>
-                          <Typography id="AdminUserDetails_directorRole">
-                            {item.cRole}
-                          </Typography>
-                        </Box>
-                      </Grid>
-                      <Grid
-                        item
-                        lg={3}
-                        className="adminUsericon-button-container"
-                      >
-                        <Box paddingTop={"2vw"}>
-                          <IconButton>
-                            {item.cBlockIcon}
-                            <span className="AdminUserDetails_BlockDetails">
-                              {item.cBlockDetails}
-                            </span>
-                          </IconButton>
-                        </Box>
-                      </Grid>
-                    </Grid>
-                  </Box>
-                ))}
-              </Grid>
-              <Grid
+              {selectedRole === "Director" && (
+                <Grid item lg={12} marginTop={"3vw"} marginLeft={"3px"}>
+                  {Array.isArray(userDetails.directors.userRoleDetails) &&
+                    (searchQuery === ""
+                      ? userDetails.directors.userRoleDetails.map(
+                          (user, index) => (
+                            <Box
+                              className="adminUserhover-container"
+                              key={index}
+                            >
+                              <Grid
+                                container
+                                spacing={2}
+                                gap={"1vw"}
+                                padding={"1vw"}
+                              >
+                                <Grid
+                                  item
+                                  lg={3}
+                                  id="AdminUserDetails_directorimg"
+                                >
+                                  <img
+                                    src={user.imageUrl}
+                                    alt=""
+                                    style={{ width: "35%" }}
+                                  />
+                                </Grid>
+                                <Grid item lg={5}>
+                                  <Box paddingLeft={"1vw"}>
+                                    <Typography className="AdminUserDetails_directorName">
+                                      {user.userName}
+                                    </Typography>
+                                    <Typography className="AdminUserDetails_directorRole">
+                                      {user.role}
+                                    </Typography>
+                                  </Box>
+                                </Grid>
+                                <Grid
+                                  item
+                                  lg={3}
+                                  className="adminUsericon-button-container"
+                                >
+                                  <Box paddingTop={"2vw"}>
+                                    <IconButton
+                                      value={user.id}
+                                      onClick={() => blockUser(user.userid)}
+                                    >
+                                      <CancelPresentationSharpIcon />
+                                      <span className="AdminUserDetails_BlockDetails">
+                                        Block User
+                                      </span>
+                                    </IconButton>
+                                  </Box>
+                                </Grid>
+                              </Grid>
+                            </Box>
+                          )
+                        )
+                      : filteredUsers.map((user, index) => (
+                          <Box className="adminUserhover-container" key={index}>
+                            <Grid
+                              container
+                              spacing={2}
+                              gap={"1vw"}
+                              padding={"1vw"}
+                            >
+                              <Grid
+                                item
+                                lg={3}
+                                id="AdminUserDetails_directorimg"
+                              >
+                                <img
+                                  src={user.imageUrl}
+                                  alt=""
+                                  style={{ width: "35%" }}
+                                />
+                              </Grid>
+                              <Grid item lg={5}>
+                                <Box paddingLeft={"1vw"}>
+                                  <Typography className="AdminUserDetails_directorName">
+                                    {user.userName}
+                                  </Typography>
+                                  <Typography className="AdminUserDetails_directorRole">
+                                    {user.role}
+                                  </Typography>
+                                </Box>
+                              </Grid>
+                              <Grid
+                                item
+                                lg={3}
+                                className="adminUsericon-button-container"
+                              >
+                                <Box paddingTop={"2vw"}>
+                                  <IconButton
+                                    value={user.id}
+                                    onClick={() => blockUser(user.userid)}
+                                  >
+                                    <CancelPresentationSharpIcon />
+                                    <span className="AdminUserDetails_BlockDetails">
+                                      Block User
+                                    </span>
+                                  </IconButton>
+                                </Box>
+                              </Grid>
+                            </Grid>
+                          </Box>
+                        )))}
+                </Grid>
+              )}
+              {selectedRole === "Writer" && (
+                <Grid item lg={12} marginTop={"3vw"} marginLeft={"3px"}>
+                  {Array.isArray(userDetails.writers.userRoleDetails) &&
+                    (searchQuery === ""
+                      ? userDetails.writers.userRoleDetails.map(
+                          (user, index) => (
+                            <Box
+                              className="adminUserhover-container"
+                              key={index}
+                            >
+                              <Grid
+                                container
+                                spacing={2}
+                                gap={"1vw"}
+                                padding={"1vw"}
+                              >
+                                <Grid
+                                  item
+                                  lg={3}
+                                  id="AdminUserDetails_writerimg"
+                                >
+                                  <img
+                                    src={user.imageUrl}
+                                    alt=""
+                                    style={{ width: "35%" }}
+                                  />
+                                </Grid>
+                                <Grid item lg={5}>
+                                  <Box paddingLeft={"1vw"}>
+                                    <Typography className="AdminUserDetails_directorName">
+                                      {user.userName}
+                                    </Typography>
+                                    <Typography className="AdminUserDetails_directorRole">
+                                      {user.role}
+                                    </Typography>
+                                  </Box>
+                                </Grid>
+                                <Grid
+                                  item
+                                  lg={3}
+                                  className="adminUsericon-button-container"
+                                >
+                                  <Box paddingTop={"2vw"}>
+                                    <IconButton
+                                      value={user.id}
+                                      onClick={() => {
+                                        blockUser(user.userid);
+                                      }}
+                                    >
+                                      <CancelPresentationSharpIcon />
+                                      <span className="AdminUserDetails_BlockDetails">
+                                        Block User
+                                      </span>
+                                    </IconButton>
+                                  </Box>
+                                </Grid>
+                              </Grid>
+                            </Box>
+                          )
+                        )
+                      : filteredUsers.map((user, index) => (
+                          <Box className="adminUserhover-container" key={index}>
+                            <Grid
+                              container
+                              spacing={2}
+                              gap={"1vw"}
+                              padding={"1vw"}
+                            >
+                              <Grid item lg={3} id="AdminUserDetails_writerimg">
+                                <img
+                                  src={user.imageUrl}
+                                  alt=""
+                                  style={{ width: "35%" }}
+                                />
+                              </Grid>
+                              <Grid item lg={5}>
+                                <Box paddingLeft={"1vw"}>
+                                  <Typography className="AdminUserDetails_directorName">
+                                    {user.userName}
+                                  </Typography>
+                                  <Typography className="AdminUserDetails_directorRole">
+                                    {user.role}
+                                  </Typography>
+                                </Box>
+                              </Grid>
+                              <Grid
+                                item
+                                lg={3}
+                                className="adminUsericon-button-container"
+                              >
+                                <Box paddingTop={"2vw"}>
+                                  <IconButton
+                                    value={user.id}
+                                    onClick={() => {
+                                      blockUser(user.userid);
+                                    }}
+                                  >
+                                    <CancelPresentationSharpIcon />
+                                    <span className="AdminUserDetails_BlockDetails">
+                                      Block User
+                                    </span>
+                                  </IconButton>
+                                </Box>
+                              </Grid>
+                            </Grid>
+                          </Box>
+                        )))}
+                </Grid>
+              )}
+
+              {/* <Grid
                 item
                 lg={6}
                 sx={{
@@ -229,7 +435,7 @@ function AdminUserDetails() {
                 >
                   View Details
                 </Button>
-              </Grid>
+              </Grid> */}
             </Grid>
           </Container>
         </Grid>
