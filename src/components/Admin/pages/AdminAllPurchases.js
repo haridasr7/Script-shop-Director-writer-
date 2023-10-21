@@ -43,9 +43,8 @@ function AdminAllPurchases() {
     setSearchQuery(event.target.value);
   };
 
-  const filteredPurchases = userpurchase.filter(
-    (details) =>
-      details.scriptName.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredPurchases = userpurchase.filter((details) =>
+    details.scriptName.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -58,7 +57,9 @@ function AdminAllPurchases() {
           <Container>
             <Grid container spacing={2} id="adminAllpurchaseHeadingBox">
               <Grid lg={4}>
-                <Typography id="adminAllpurchaseHeading">All Purchases</Typography>
+                <Typography id="adminAllpurchaseHeading">
+                  All Purchases
+                </Typography>
               </Grid>
 
               <Grid lg={8}>
@@ -98,30 +99,43 @@ function AdminAllPurchases() {
                   >
                     <TableHead>
                       <TableRow>
-                        <TableCell id="adminAllpurchasedirectorTableHead">Script No #</TableCell>
-                        <TableCell id="adminAllpurchasedirectorTableHead">Date</TableCell>
-                        <TableCell id="adminAllpurchasedirectorTableHead">Script Name</TableCell>
-                        <TableCell id="adminAllpurchasedirectorTableHead">Writer</TableCell>
-                        <TableCell id="adminAllpurchasedirectorTableHead">Purchased By</TableCell>
+                        <TableCell id="adminAllpurchasedirectorTableHead">
+                          Script No #
+                        </TableCell>
+                        <TableCell id="adminAllpurchasedirectorTableHead">
+                          Date
+                        </TableCell>
+                        <TableCell id="adminAllpurchasedirectorTableHead">
+                          Script Name
+                        </TableCell>
+                        <TableCell id="adminAllpurchasedirectorTableHead">
+                          Writer
+                        </TableCell>
+                        <TableCell id="adminAllpurchasedirectorTableHead">
+                          Purchased By
+                        </TableCell>
                       </TableRow>
                     </TableHead>
-<<<<<<< HEAD
                     <TableBody
-                      sx={{ backgroundColor: " #FFF", borderSpacing: "4px 0" }}
+                      sx={{ backgroundColor: " #FFF", padding: "2px" }}
                     >
-                      {purchasedDetails.map((details, index) => (
-=======
-                    <TableBody sx={{ backgroundColor: " #FFF", padding: "2px" }}>
                       {filteredPurchases.map((details, index) => (
->>>>>>> ba5439eac9a31691f3c7eb1ae78de820e8e528d8
                         <TableRow key={index}>
-                          <TableCell id="adminAllpurchasedirectorTableBody">{details.scriptid}</TableCell>
+                          <TableCell id="adminAllpurchasedirectorTableBody">
+                            {details.scriptid}
+                          </TableCell>
                           <TableCell id="adminAllpurchasedirectorTableBody">
                             {formatPurchaseDate(details.dateofpurchase)}
                           </TableCell>
-                          <TableCell id="adminAllpurchasedirectorTableBody">{details.scriptName}</TableCell>
-                          <TableCell id="adminAllpurchasedirectorTableBody">{details.writerUsername}</TableCell>
-                          <TableCell id="adminAllpurchasedirectorTableBody">{details.purchasedBy}</TableCell>
+                          <TableCell id="adminAllpurchasedirectorTableBody">
+                            {details.scriptName}
+                          </TableCell>
+                          <TableCell id="adminAllpurchasedirectorTableBody">
+                            {details.writerUsername}
+                          </TableCell>
+                          <TableCell id="adminAllpurchasedirectorTableBody">
+                            {details.purchasedBy}
+                          </TableCell>
                         </TableRow>
                       ))}
                     </TableBody>
