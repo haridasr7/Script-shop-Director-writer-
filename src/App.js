@@ -42,6 +42,8 @@ import ResetPassword from "./components/Admin/pages/Adminresetpassword";
 import AdminUserDetails from "./components/Admin/pages/AdminUserDetails";
 import AdminAllPurchases from "./components/Admin/pages/AdminAllPurchases";
 import AdminBlockedUsers from "./components/Admin/pages/AdminBlockedUsers";
+import AnalyticsComponent from "./components/Analytics";
+import TawkToComponent from "./components/Tawkio";
 
 function App() {
   return (
@@ -73,6 +75,8 @@ function App() {
         <Route exact path="/services" Component={Services} />
         <Route exact path="/updatepassword" Component={Updatepassword} />
         <Route exact path="/PublishScript" Component={PublishScript} />
+        <Route path="/Analytics" element={<AnalyticsComponent/>} />
+        <Route path="/chatbot" element={<TawkToComponent/>} />
         <Route exact path="/AdminHome" Component={AdminHome} />
         <Route exact path="/AdminLogin" Component={AdminLogin} />
         <Route exact path="/PurchaseHistory" Component={PurchaseHistory} />
@@ -81,6 +85,7 @@ function App() {
         <Route exact path="/AdminUserDetails" Component={AdminUserDetails} />
         <Route exact path="/AdminAllPurchases" Component={AdminAllPurchases} />
         <Route exact path="/AdminBlockedUsers" Component={AdminBlockedUsers} />
+        
       </Routes>
     </Fragment>
   );

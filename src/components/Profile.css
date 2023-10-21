@@ -1,8 +1,9 @@
-/* .DPMAin {
+.DPMAin {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
+
 .DPMainSub {
   display: flex;
   flex-direction: row;
@@ -11,6 +12,7 @@
   align-items: center;
   margin-bottom: 80px;
 }
+
 .DPLeft {
   width: 50%;
   display: flex;
@@ -18,21 +20,25 @@
   justify-content: center;
   text-align: center;
 }
+
 .DPLeftImg {
   width: 40%;
   margin: auto;
 }
+
 .DPRight {
   width: 50%;
   display: flex;
   flex-direction: column;
 }
+
 .DPRBox {
   width: 75%;
   background: white;
   border-radius: 25px;
   border-color: black;
   border: solid 1px rgb(222, 220, 220);
+
   flex-direction: column;
   justify-content: center;
   display: flex;
@@ -45,6 +51,7 @@
   margin: auto;
   margin-top: 5px;
 }
+
 .DPRImg {
   display: flex;
   margin: auto;
@@ -56,6 +63,7 @@
   align-items: center;
   border: 1px solid black;
 }
+
 .DPRInput {
   width: 80%;
   gap: 20px;
@@ -67,6 +75,7 @@
   align-items: center;
   padding-top: 20px;
 }
+
 .Dname,
 .Dbio,
 .Dmail,
@@ -80,6 +89,7 @@
   border-color: rgb(238, 237, 237);
   width: 80%;
 }
+
 .DPRbutton {
   display: flex;
   margin: auto;
@@ -97,9 +107,10 @@
   height: 30px;
   font-size: 15px;
 }
-.DPRUpdateButton {
-  display: flex;
-  flex-direction: row;
+
+.DPRUpdateButton{
+   display: flex;
+   flex-direction: row;
   margin: auto;
   background-color: #14abe4;
   border-color: #14abe4;
@@ -120,13 +131,16 @@
     flex-direction: column-reverse;
     justify-content: center;
   }
+
   .DPLeft {
     width: 100%;
   }
+
   .DPRight {
     width: 100%;
     justify-content: center;
   }
+
   .DPRBox {
     width: 70%;
     background: white;
@@ -140,28 +154,33 @@
     height: 650px;
   }
 }
+
 @media (max-width: 426px) {
   .DPMainSub {
     flex-direction: column-reverse;
     justify-content: center;
   }
+
   .DPLeft {
     width: 100%;
   }
+
   .DPRight {
     width: 100%;
     justify-content: center;
   }
+
   .DPRBox {
     width: 70%;
     background: white;
     border-radius: 25px;
     border-color: black;
     border: solid 1px rgb(200, 199, 199);
+
     flex-direction: column;
     justify-content: center;
     display: flex;
     margin-left: 15%;
     height: 650px;
   }
-} */
+}

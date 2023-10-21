@@ -224,6 +224,7 @@ const scriptsSlice = createSlice({
         error:action.payload
       }
     },
+
     favoriteScriptRequest(state,action){
       return{
         ...state,
@@ -358,7 +359,30 @@ const scriptsSlice = createSlice({
       return {
         scripts: null,
       }
-    }
+    },
+    writerPaymentRequest(state,action){
+      return{
+        ...state,
+        loading:true
+      }
+    },
+    writerPaymentSuccess(state,action){
+      return{
+        ...state,
+        isPaid:action.payload.isPaid,
+        message:action.payload.message,
+        loading:false
+      }
+    },
+    writerPaymentFail(state,action){
+      return{
+        ...state,
+        loading:false,
+        error:action.payload
+      }
+    },
+
+    
     
     
   }
@@ -378,7 +402,7 @@ writerProfileRequest, writerProfileSuccess, writerProfileFail,
 purchasedScriptsRequest,purchasedScriptsSuccess,purchasedScriptsFail,
 directorGetProfileRequest,directorGetProfileSuccess,directorGetProfileFail,
 directorProfileRequest, directorProfileSuccess, directorProfileFail,
-clearScriptState
+clearScriptState, writerPaymentRequest, writerPaymentSuccess,writerPaymentFail
 
  } = actions;
 export default reducer;

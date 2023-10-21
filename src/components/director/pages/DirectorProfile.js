@@ -83,6 +83,7 @@ function DirectorProfile ()  {
     formData.append("bio", bio);
     formData.append("businessEmail", businessEmail);
     formData.append("phoneNumber", phoneNumber);
+    console.log(profilePic)
     dispatch(addDirectorProfile(formData, user._id));
   };
   return (
