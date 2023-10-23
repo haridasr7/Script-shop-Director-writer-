@@ -1,0 +1,152 @@
+#admincustomerqueriesHeadingBox {
+  background-color: #45b8e9;
+  margin-top: 1vw;
+  height: 20vw;
+  border-radius: 28px 28px 0px 0px;
+  padding: 4vw;
+  margin-bottom: 3vw;
+}
+#admincustomerqueriesHeading {
+  color: #fff;
+  font-family: Inter;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+#admincustomerqueriesSearchBox {
+  height: 1vw;
+}
+#admincustomerqueriessubHeading {
+  font-family: Inter;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 29px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #ffffff;
+}
+#admincustomerqueriesbutton {
+  display: flex;
+  margin-top: -5vw;
+  width: 70vw;
+  background: linear-gradient(0deg, #dde4e6, #dde4e6),
+    linear-gradient(0deg, #e6e6e6, #e6e6e6);
+}
+#admincustomerqueriesbut {
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  margin-left: 1.6vw;
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #000000;
+  height: 2vw;
+  background: linear-gradient(0deg, #dde4e6, #dde4e6),
+    linear-gradient(0deg, #e6e6e6, #e6e6e6);
+  padding: 1.5vw;
+  box-shadow: 5px 5px 10px 0px #71717140;
+  text-transform: capitalize;
+}
+#admincustomerqueriesbox {
+  background: #45778c;
+  display: flex;
+  width: 65vw;
+  margin-left: 3.5vw;
+  margin-top: 3vw;
+  margin-bottom: 3vw;
+  height: 4vw;
+}
+#admincustomerqueriesnew {
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 29px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #ffffff;
+  margin-left: 2vw;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+}
+#admincustomerqueriesnew2 {
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 29px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #fff068;
+  margin-left: 1vw;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+}
+#admincustomerqueriesmestop {
+  height: 4vw;
+  padding: 1vw;
+  display: flex;
+  flex-direction: row;
+  background: #dde4e7;
+  box-shadow: 5px 5px 10px 0px #71717140;
+  border: none;
+  margin-top: 3vw;
+}
+#admincustomerqueriesmesbottom {
+  display: flex;
+  background: #dde4e7;
+  box-shadow: 5px 5px 10px 0px #71717140;
+  border: none;
+  margin-left: 45vw;
+  padding: 1vw;
+}
+#customerqueriesmestex {
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 29px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-left: 2vw;
+}
+#check {
+  background: linear-gradient(0deg, #717171, #717171),
+    linear-gradient(0deg, #ffffff, #ffffff);
+  border: 2px solid #717171;
+  height: 2vw;
+  width: 2vw;
+}
+#customerqueriesmesabt {
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 29px;
+  letter-spacing: 0em;
+  color: #7b7b7b;
+  margin-left: 3vw;
+  align-items: end;
+}
+#messagebtn {
+  background: #ffffff;
+  color: #000000;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 29px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin-left: 1vw;
+  text-transform: capitalize;
+}
+#customerqueriesmestextime {
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 29px;
+  letter-spacing: 0em;
+  text-align: end;
+  margin-left: 2vw;
+}

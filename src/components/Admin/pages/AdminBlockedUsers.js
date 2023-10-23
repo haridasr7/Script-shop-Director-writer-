@@ -102,11 +102,7 @@ function AdminBlockedUsers() {
           <AdminSidebar />
         </Grid>
         <Grid item lg={9}>
-          <img
-            src="./Images/ADminblock.png"
-            alt=""
-            style={{ width: "100%", height: "35vh" }}
-          />
+          <img src="./Images/ADminblock.png" alt="" style={{ width: "100%" }} />
           <Typography id="adminBlockedheading">Blocked Users</Typography>
           <Typography id="adminBlockedSubheading">
             Find and restore all the users that has been blocked on this site.{" "}

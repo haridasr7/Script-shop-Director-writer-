@@ -5,9 +5,11 @@
   font-style: italic;
   font-weight: 500;
   line-height: normal;
-  position: absolute;
+  /* position: absolute;
   bottom: 66vw;
-  left: 28vw;
+  left: 28vw; */
+  margin-top: -400px;
+  margin-left: 3vw;
 }
 #adminBlockedSubheading {
   color: #fff;
@@ -16,16 +18,15 @@
   font-style: italic;
   font-weight: 400;
   line-height: normal;
-  position: absolute;
-  bottom: 64vw;
-  left: 28vw;
+  /* margin-top: -16vw; */
+  margin-left: 3vw;
 }
 #adminBlockedUserblock {
   border-radius: 4px;
   background: #fff;
   box-shadow: 5px 5px 10px 0px rgba(113, 113, 113, 0.25);
   padding: 13px;
-  margin-top: -10vw;
+  margin-top: 10vw;
   position: relative;
 }
 #adminBlockedUserblockhead {
