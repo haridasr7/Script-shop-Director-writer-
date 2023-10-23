@@ -280,9 +280,9 @@ const scriptsSlice = createSlice({
       return {
         ...state,
         writerProfile: action.payload.profile,
-        profilePic: action.payload.profilePic,
-
+        profilePhoto: action.payload.profilePic,
         loading: false,
+        message: "Profile Updated Successfully",
       };
     },
     writerProfileFail(state, action) {

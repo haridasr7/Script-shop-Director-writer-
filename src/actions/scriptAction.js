@@ -683,7 +683,7 @@ try {
       paymentMethod: 'ONLINE', // Always set to 'ONLINE' for Razorpay
       // ... (other payment details as needed for your backend)
     });
-
+    // console.log(order.data)
     if (order.data && order.data.id) {
       // Initialize Razorpay and open the payment dialog
       const options = {
@@ -850,7 +850,34 @@ try {
 }
 }
 
+export const addDirectorProfile =
+(formData, directorId) => async (dispatch) => {
+  try {
+    dispatch(directorProfileRequest());
+  
+const config = {
+          headers: {
+              'Content-type': 'multipart/form-data'
+          }
+      }
+    const {data } = await axios.put(
+      `/api/v1/directorprofile?directorId=${directorId}`,
+      formData,
+      config
+    );
+    console.log(data);
+    dispatch(directorProfileSuccess(data));
+  } catch (error) {
+    console.log(error);
+    if (error.response.data.error) {
+      dispatch(directorProfileFail(error.response.data.error));
+    } else if (error.response.data.message) {
+      dispatch(directorProfileFail(error.response.data.message));
+    }
+  }
+};
 
+//add writer profile
 export const addWriterProfile = (formData, writerId) => async (dispatch) => {
   try {
     dispatch(writerProfileRequest());
@@ -862,7 +889,7 @@ export const addWriterProfile = (formData, writerId) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `/api/v1/writerprofile?writerId=${writerId}`,
+      `/api/v1/myprofile?writerId=${writerId}`,
       formData,
       config
     );
@@ -879,38 +906,63 @@ export const addWriterProfile = (formData, writerId) => async (dispatch) => {
 };
 
 
-export const writerDetails = (writerId) => async (dispatch) => {
-console.log(writerId);
-
-try {
-  dispatch(writerProfileRequest());
-
-  const response = await axios.get(`/api/v1/myprofile/${writerId}`);
-  console.log(response.data);
-
-              const response1 = await axios.get(
-                `/api/v1/getProfileImage/${response.data.profile.profilePic}`,
-                {
-                  responseType: "blob",
-                }
-              );
-              let profilePicUrl = URL.createObjectURL(response1.data);
-  const data = {
-    profile: response.data.profile,
-    profilePic: profilePicUrl,
-  };
-  dispatch(writerProfileSuccess(data));
-  // dispatch(writerProfileSuccess(data));
-} catch (error) {
-  console.log(error);
-  if (error.response.data.error) {
-    dispatch(writerProfileFail(error.response.data.error));
-  } else if (error.response.data.message) {
-    dispatch(writerProfileFail(error.response.data.message));
+export const getDirectorProfile = (directorId) => async (dispatch) => {
+  try {
+    console.log(directorId);
+    dispatch(directorGetProfileRequest());
+    const { data } = await axios.get(`/api/v1/directorprofile/${directorId}`);
+    console.log("data"+data);
+    const response1 = await axios.get(
+      `/api/v1/getProfileImageForDirector/${data.profile.profilePic}`,
+      {
+        responseType: "blob",
+      }
+    );
+    let profilePicUrl = URL.createObjectURL(response1.data);
+    const profileData = {
+      profile: data.profile,
+      profilePic: profilePicUrl,
+    };
+    dispatch(directorGetProfileSuccess(profileData));
+  } catch (error) {
+    console.log(error);
+    if (error.response.data.error) {
+      dispatch(directorGetProfileFail(error.response.data.error));
+    } else if (error.response.data.message) {
+      dispatch(directorGetProfileFail(error.response.data.message));
+      
+    }
   }
-}
-};
+  };
 
+  export const writerDetails = (writerId) => async (dispatch) => {
+    try {
+      dispatch(writerProfileRequest());
+  
+      const { data } = await axios.get(`/api/v1/myprofile/${writerId}`);
+      if (data && data.profile && data.profile.profilePic) {
+        const response1 = await axios.get(`/api/v1/getProfileImage/${data.profile.profilePic}`, {
+          responseType: 'blob',
+        });
+        let profilePicUrl = URL.createObjectURL(response1.data);
+        const profileData = {
+          profile: data.profile,
+          profilePic: profilePicUrl,
+        };
+        dispatch(writerProfileSuccess(profileData));
+      } else {
+        dispatch(writerProfileFail('Profile data is missing or incomplete'));
+      }
+    } catch (error) {
+      console.log(error);
+      if (error.response && error.response.data && error.response.data.error) {
+        dispatch(writerProfileFail(error.response.data.error));
+      } else {
+        dispatch(writerProfileFail('An error occurred while fetching writer details'));
+      }
+    }
+  };
+  
 export const getPurchasedScripts = (directorId) => async(dispatch) =>{
 
 try {
@@ -973,64 +1025,6 @@ if (error.response.data.error) {
 
 }
 
-
-export const addDirectorProfile =
-(formData, directorId) => async (dispatch) => {
-  try {
-    dispatch(directorProfileRequest());
-  
-const config = {
-          headers: {
-              'Content-type': 'multipart/form-data'
-          }
-      }
-    const {data } = await axios.put(
-      `/api/v1/directorprofile?directorId=${directorId}`,
-      formData,
-      config
-    );
-    console.log(data);
-    dispatch(directorProfileSuccess(data));
-  } catch (error) {
-    console.log(error);
-    if (error.response.data.error) {
-      dispatch(directorProfileFail(error.response.data.error));
-    } else if (error.response.data.message) {
-      dispatch(directorProfileFail(error.response.data.message));
-    }
-  }
-};
-
-export const getDirectorProfile = (directorId) => async (dispatch) => {
-try {
-  console.log(directorId);
-  dispatch(directorGetProfileRequest());
-  const { data } = await axios.get(`/api/v1/directorprofile/${directorId}`);
-  console.log("data"+data);
-  const response1 = await axios.get(
-    `/api/v1/getProfileImageForDirector/${data.profile.profilePic}`,
-    {
-      responseType: "blob",
-    }
-  );
-  let profilePicUrl = URL.createObjectURL(response1.data);
-  const profileData = {
-    profile: data.profile,
-    profilePic: profilePicUrl,
-  };
-  dispatch(directorGetProfileSuccess(profileData));
-} catch (error) {
-  console.log(error);
-  if (error.response.data.error) {
-    dispatch(directorGetProfileFail(error.response.data.error));
-  } else if (error.response.data.message) {
-    dispatch(directorGetProfileFail(error.response.data.message));
-    
-  }
-}
-};
-
-
 ////writerpayment/////
 
 
@@ -1041,11 +1035,11 @@ try {
   const order = await axios.post(`/api/v1/payment/writer`, {
     writerId,
     movieName, // Include any other necessary data
-    amount: amount * 100, // Amount in paise (Indian currency)
+    amount: amount ,// Amount in paise (Indian currency)
     paymentMethod: 'ONLINE', // Always set to 'ONLINE' for Razorpay
     // ... (other payment details as needed for your backend)
   });
-
+console.log(order.data)
   if (order.data && order.data.id) {
     // Initialize Razorpay and open the payment dialog
     const options = {
@@ -1083,7 +1077,7 @@ try {
 };
 
 // Function to verify writer Razorpay payment
-function verifyWriterRazorpayPayment(order_id, amount, paymentMethod, writerId, movieName, dispatch) {
+function verifyWriterRazorpayPayment(order_id, amount, paymentMethod, writerId, movieName, dispatch,formData) {
 axios
   .post(`/api/v1/payment/writer/verification`, { order_id, amount, paymentMethod, writerId, movieName })
   .then((response) => {
