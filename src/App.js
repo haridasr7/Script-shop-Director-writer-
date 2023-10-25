@@ -44,6 +44,7 @@ import AdminAllPurchases from "./components/Admin/pages/AdminAllPurchases";
 import AdminBlockedUsers from "./components/Admin/pages/AdminBlockedUsers";
 import AnalyticsComponent from "./components/Analytics";
 import TawkToComponent from "./components/Tawkio";
+import UpdateScript from "./components/Updatescript";
 
 function App() {
   return (
@@ -80,6 +81,7 @@ function App() {
         <Route exact path="/AdminHome" Component={AdminHome} />
         <Route exact path="/AdminLogin" Component={AdminLogin} />
         <Route exact path="/PurchaseHistory" Component={PurchaseHistory} />
+        <Route exact path="/updatescript/:scriptId" Component={UpdateScript}/>
         <Route exact path="/Adminforgot" Component={ForgotPassword} />
         <Route exact path="/Adminreset" Component={ResetPassword} />
         <Route exact path="/AdminUserDetails" Component={AdminUserDetails} />

@@ -5,6 +5,8 @@ import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
+import NavbarWriter from './writernavbar/NavbarWriter';
+import FooterDirector from './writernavbar/Footerwriter';
 
 const TawkToComponent = () => {
   useEffect(() => {
@@ -49,19 +51,23 @@ const TawkToComponent = () => {
   });
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
-      <StyledCard>
-        <CardContent>
-          <Typography variant="h5" gutterBottom>
-            Welcome to Our Chat!
-          </Typography>
-          <Typography variant="body1" gutterBottom>
-            Have any questions? We're here to help!
-          </Typography>
-          <StyledButton variant="contained">Click the green button to chat with us</StyledButton>
-        </CardContent>
-      </StyledCard>
-    </Box>
+    <>
+      <NavbarWriter />  
+      <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
+        <StyledCard>
+          <CardContent>
+            <Typography variant="h5" gutterBottom>
+              Welcome to Our Chat!
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              Have any questions? We're here to help!
+            </Typography>
+            <StyledButton variant="contained">Click the green button to chat with us</StyledButton>
+          </CardContent>
+        </StyledCard>
+      </Box>
+      <FooterDirector/>
+    </>
   );
 };
 
