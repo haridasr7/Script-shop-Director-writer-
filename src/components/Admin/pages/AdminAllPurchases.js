@@ -43,9 +43,8 @@ function AdminAllPurchases() {
     setSearchQuery(event.target.value);
   };
 
-  const filteredPurchases = userpurchase.filter(
-    (details) =>
-      details.scriptName.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredPurchases = userpurchase.filter((details) =>
+    details.scriptName.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -58,7 +57,9 @@ function AdminAllPurchases() {
           <Container>
             <Grid container spacing={2} id="adminAllpurchaseHeadingBox">
               <Grid lg={4}>
-                <Typography id="adminAllpurchaseHeading">All Purchases</Typography>
+                <Typography id="adminAllpurchaseHeading">
+                  All Purchases
+                </Typography>
               </Grid>
 
               <Grid lg={8}>
@@ -88,26 +89,53 @@ function AdminAllPurchases() {
             <Grid container spacing={1}>
               <Grid lg={12} sx={{ marginTop: "5vw" }}>
                 <TableContainer>
-                  <Table sx={{ backgroundColor: "#EBEBEB" }}>
+                  <Table
+                    sx={{
+                      backgroundColor: "#EBEBEB",
+                      borderCollapse: "separate",
+                      borderSpacing: "0 4px",
+                      borderRadius: "53px",
+                    }}
+                  >
                     <TableHead>
                       <TableRow>
-                        <TableCell id="adminAllpurchasedirectorTableHead">Script No #</TableCell>
-                        <TableCell id="adminAllpurchasedirectorTableHead">Date</TableCell>
-                        <TableCell id="adminAllpurchasedirectorTableHead">Script Name</TableCell>
-                        <TableCell id="adminAllpurchasedirectorTableHead">Writer</TableCell>
-                        <TableCell id="adminAllpurchasedirectorTableHead">Purchased By</TableCell>
+                        <TableCell id="adminAllpurchasedirectorTableHead">
+                          Script No #
+                        </TableCell>
+                        <TableCell id="adminAllpurchasedirectorTableHead">
+                          Date
+                        </TableCell>
+                        <TableCell id="adminAllpurchasedirectorTableHead">
+                          Script Name
+                        </TableCell>
+                        <TableCell id="adminAllpurchasedirectorTableHead">
+                          Writer
+                        </TableCell>
+                        <TableCell id="adminAllpurchasedirectorTableHead">
+                          Purchased By
+                        </TableCell>
                       </TableRow>
                     </TableHead>
-                    <TableBody sx={{ backgroundColor: " #FFF", padding: "2px" }}>
+                    <TableBody
+                      sx={{ backgroundColor: " #FFF", padding: "2px" }}
+                    >
                       {filteredPurchases.map((details, index) => (
                         <TableRow key={index}>
-                          <TableCell id="adminAllpurchasedirectorTableBody">{details.scriptid}</TableCell>
+                          <TableCell id="adminAllpurchasedirectorTableBody">
+                            {details.scriptid}
+                          </TableCell>
                           <TableCell id="adminAllpurchasedirectorTableBody">
                             {formatPurchaseDate(details.dateofpurchase)}
                           </TableCell>
-                          <TableCell id="adminAllpurchasedirectorTableBody">{details.scriptName}</TableCell>
-                          <TableCell id="adminAllpurchasedirectorTableBody">{details.writerUsername}</TableCell>
-                          <TableCell id="adminAllpurchasedirectorTableBody">{details.purchasedBy}</TableCell>
+                          <TableCell id="adminAllpurchasedirectorTableBody">
+                            {details.scriptName}
+                          </TableCell>
+                          <TableCell id="adminAllpurchasedirectorTableBody">
+                            {details.writerUsername}
+                          </TableCell>
+                          <TableCell id="adminAllpurchasedirectorTableBody">
+                            {details.purchasedBy}
+                          </TableCell>
                         </TableRow>
                       ))}
                     </TableBody>

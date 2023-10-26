@@ -1037,7 +1037,7 @@ try {
     movieName, // Include any other necessary data
     amount: amount ,// Amount in paise (Indian currency)
     paymentMethod: 'ONLINE', // Always set to 'ONLINE' for Razorpay
-    // ... (other payment details as needed for your backend)
+    
   });
 console.log(order.data)
   if (order.data && order.data.id) {

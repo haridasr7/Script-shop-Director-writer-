@@ -27,6 +27,8 @@ const Updatepassword = () => {
     setShownewPassword((prevShownewPassword) => !prevShownewPassword);
   };
 
+  
+
   const handleoldPasswordChange = (e) => {
     setoldPassword(e.target.value);
   };
@@ -94,15 +96,15 @@ const Updatepassword = () => {
                   required
                 />
                 {showoldPassword ? (
-                  <VisibilityOffIcon className="eye1"onClick={handleToggleoldPasswordVisibility} />
+                  <VisibilityOffIcon className="eye1" onClick={handleToggleoldPasswordVisibility} />
                 ) : (
-                  <VisibilityIcon className="eye1"onClick={handleToggleoldPasswordVisibility} />
+                  <VisibilityIcon className="eye1" onClick={handleToggleoldPasswordVisibility} />
                 )}
               </label>
               <br />
               <label>
                 <input
-                  type={shownewPassword ? 'text' : 'newpassword'}
+                  type={shownewPassword ? 'text' : 'password'}
                   placeholder="New Password"
                   className="Pare1"
                   value={newPassword}

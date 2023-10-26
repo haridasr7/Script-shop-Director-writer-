@@ -60,20 +60,18 @@ export default function AdminSidebar() {
             style={{
               textDecoration: "none",
               color: "#2D2D2D",
-              // background:
-              //   activeLink === "/AdminBlockedUsers" ? "#767676" : "none",
+              background:
+                activeLink === "/Admincustomerqueries" ? "#767676" : "none",
+              color:
+                activeLink === "/Admincustomerqueries" ? "#FFF" : "#2D2D2D",
             }}
             className="Links"
-            // onClick={() => handleActive("/AdminBlockedUsers")}
+            to="/Admincustomerqueries"
+            onClick={() => handleActive("/Admincustomerqueries")}
           >
             Customer Queries
           </Link>
-          {/* <Link
-            style={{ textDecoration: "none", color: "#2D2D2D" }}
-            className="Links"
-          >
-            Add a Feature
-          </Link> */}
+
           <Link
             style={{
               textDecoration: "none",

@@ -108,7 +108,7 @@ function  Navbar (){
               <Link to='/updatepassword' className='navbarCdropdown-menuULLink'><li><div className='navbarCdropdown-menuLi'><p className='navbarCdropdown-menuTypo'>Update Password</p><IconButton> <KeyboardArrowRightIcon/></IconButton></div></li></Link>
               <Link  to="/chatbot"  className='navbarCdropdown-menuULLink'><li><div className='navbarCdropdown-menuLi'><p className='navbarCdropdown-menuTypo'>Customer Support</p><IconButton> <KeyboardArrowRightIcon/></IconButton></div></li></Link>
               <Link to='/privacy&policy' className='navbarCdropdown-menuULLink'><li><div className='navbarCdropdown-menuLi'><p className='navbarCdropdown-menuTypo'>Privacy & Policy</p><IconButton> <KeyboardArrowRightIcon/></IconButton></div></li></Link>
-              <Link  to='/purchasehistory' className='navbarCdropdown-menuULLink'><li><div className='navbarCdropdown-menuLi'><p className='navbarCdropdown-menuTypo'>Purchase History</p><IconButton> <KeyboardArrowRightIcon/></IconButton></div></li></Link>
+              <Link  to='/purchasedAll' className='navbarCdropdown-menuULLink'><li><div className='navbarCdropdown-menuLi'><p className='navbarCdropdown-menuTypo'>Purchase History</p><IconButton> <KeyboardArrowRightIcon/></IconButton></div></li></Link>
               <li><div onClick={directorHomeLogout} className='navbarCdropdown-menuLi'><p className='navbarCdropdown-menuTypo'>Logout</p><IconButton> <KeyboardArrowRightIcon/></IconButton></div></li>
             
             </ul>

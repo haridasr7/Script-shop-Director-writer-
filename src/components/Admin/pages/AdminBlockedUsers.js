@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./AdminBlockedUsers.css";
 import {
   Grid,
@@ -7,6 +7,7 @@ import {
   TextField,
   Box,
   Button,
+  MenuItem,
 } from "@mui/material";
 import AdminSidebar from "../components/AdminSidebar";
 import IconButton from "@mui/material/IconButton";
@@ -14,38 +15,86 @@ import SearchIcon from "@mui/icons-material/Search";
 import DoneIcon from "@mui/icons-material/Done";
 import CloseIcon from "@mui/icons-material/Close";
 import AdminFooter from "../components/AdminFooter";
+import { useEffect } from "react";
+import axios from "axios";
 
 function AdminBlockedUsers() {
-  const userDetails = [
-    {
-      photo: "Images/mediumshortwomen.png",
-      name: "Anna Jones",
-      role: "Director",
-      mail: "annajones1@xvy.com",
-      number: "(417) (819)(1234)",
-    },
-    {
-      photo: "Images/mediumshortwomen.png",
-      name: "Anna Jones",
-      role: "Director",
-      mail: "annajones1@xvy.com",
-      number: "(417) (819)(1234)",
-    },
-    {
-      photo: "Images/mediumshortwomen.png",
-      name: "Anna Jones",
-      role: "Director",
-      mail: "annajones1@xvy.com",
-      number: "(417) (819)(1234)",
-    },
-    {
-      photo: "Images/mediumshortwomen.png",
-      name: "Anna Jones",
-      role: "Director",
-      mail: "annajones1@xvy.com",
-      number: "(417) (819)(1234)",
-    },
-  ];
+  const [blockedDetails, setBlockedDetails] = useState({
+    writer: [],
+    director: [],
+  });
+  const [selectedOption, setSelectedOption] = useState("");
+
+  useEffect(() => {
+    const blockedUsers = async () => {
+      try {
+        const response = await axios.get(`/Admin/api/v1/getblockeduser`);
+        const blockedData = response.data.blockedUsers;
+
+        // console.log("Blocked Data:", blockedData);
+
+        const writerBlockedUsers = blockedData.filter(
+          (user) => user.Role === "writer"
+        );
+        const directorBlockedUsers = blockedData.filter(
+          (user) => user.Role === "director"
+        );
+        setBlockedDetails({
+          writer: writerBlockedUsers,
+          director: directorBlockedUsers,
+        });
+
+        // setBlockedDetails(response.data);
+        // console.log(response.data);
+        // console.log("Writer Blocked Users:", writerBlockedUsers);
+        // console.log("Director Blocked Users:", directorBlockedUsers);
+      } catch (error) {
+        console.error("blocked users not found.");
+      }
+    };
+    blockedUsers();
+  }, []);
+  // console.log(blockedDetails);
+
+  const unblockUser = async (userId) => {
+    try {
+      const response = await axios.put(`/Admin/api/v1/unblock/${userId}`);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error unblocking the user:", error);
+    }
+  };
+
+  const removeUser = async (userId) => {
+    try {
+      const response = await axios.delete(`/Admin/api/v1/remove/${userId}`);
+    } catch (error) {
+      console.error("Error removing the user:", error);
+    }
+  };
+
+  const [searchInput, setSearchInput] = useState("");
+  const [blockedFilters, setBlockedFilters] = useState([]);
+
+  const handleBlockedSearch = (event) => {
+    const inputs = event.target.value;
+    setSearchInput(inputs);
+
+    if (selectedOption === "writer") {
+      const searchBlockedWriters = blockedDetails.writer.filter((user) =>
+        user.userName.toLowerCase().includes(inputs.toLowerCase())
+      );
+      setBlockedFilters(searchBlockedWriters || []);
+    } else if (selectedOption === "director") {
+      const searchBlockedDirectors = blockedDetails.director.filter((user) =>
+        user.userName.toLowerCase().includes(inputs.toLowerCase())
+      );
+      setBlockedFilters(searchBlockedDirectors || []);
+    } else {
+      setBlockedFilters([]);
+    }
+  };
+
   return (
     <div>
       <Grid container spacing={0}>
@@ -66,10 +115,11 @@ function AdminBlockedUsers() {
             </Grid>
             <Grid item lg={6} paddingLeft={"6vw"}>
               <TextField
-                placeholder="Search Here"
+                placeholder="Search Username"
                 fullWidth
                 id="adminBlockedUsersearchBox"
                 InputProps={{ style: { border: "none" } }}
+                onChange={handleBlockedSearch}
               />
             </Grid>
             <Grid item lg={1} marginLeft={"1vw"}>
@@ -95,69 +145,260 @@ function AdminBlockedUsers() {
                     </Typography>
                   </Grid>
                   <Grid item lg={12} id="adminBlockedUserChooseWriter">
-                    Writer
+                    <Button
+                      id="adminBlockedUserChooseWriterbtn"
+                      onClick={() => setSelectedOption("writer")}
+                    >
+                      Writer
+                    </Button>
                   </Grid>
                   <Grid item lg={12} id="adminBlockedUserChooseDirector">
-                    Director
+                    <Button
+                      id="adminBlockedUserChooseDirectorbtn"
+                      onClick={() => setSelectedOption("director")}
+                    >
+                      Director
+                    </Button>
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item lg={7}>
-                {userDetails.map((content, index) => (
-                  <Grid
-                    container
-                    spacing={0}
-                    id="adminBlockedUserdetails"
-                    key={index}
-                    // marginTop={"3vw"}
-                  >
-                    <Grid item lg={3}>
-                      <img
-                        src={content.photo}
-                        alt=""
-                        style={{ width: "100%" }}
-                      />
-                    </Grid>
-                    <Grid item flexDirection={"column"} lg={4}>
-                      <Box paddingLeft={"1vw"}>
-                        <Typography id="adminBlockedUserName">
-                          {content.name}
-                        </Typography>
-                        <Typography id="adminBlockedUserRole">
-                          {content.role}
-                        </Typography>
-                        <Typography id="adminBlockedUserMail">
-                          {content.mail}
-                        </Typography>
-                        <Typography id="adminBlockedUserNum">
-                          {content.number}
-                        </Typography>
-                      </Box>
-                    </Grid>
-                    <Grid item lg={4}>
-                      <Box paddingLeft={"2vw"}>
-                        <IconButton>
-                          <DoneIcon sx={{ color: "#31D037" }} />
-                          <span className="adminBlockedUserrestriction">
-                            Restore User
-                          </span>
-                        </IconButton>
-                        <IconButton>
-                          <CloseIcon sx={{ color: "#E02323" }} />
-                          <span className="adminBlockedUserrestriction">
-                            Remove User
-                          </span>
-                        </IconButton>
-                        <Button id="adminBlockedUserviewbtn">
-                          View Details
-                        </Button>
-                      </Box>
-                    </Grid>
-                  </Grid>
-                ))}
-              </Grid>
+              {selectedOption === "writer" && (
+                <Grid item lg={7}>
+                  {searchInput === ""
+                    ? blockedDetails.writer.map((content, index) => (
+                        <Grid
+                          container
+                          spacing={0}
+                          id="adminBlockedUserdetails"
+                          key={index}
+                          // marginTop={"3vw"}
+                        >
+                          <Grid item lg={3}>
+                            <img
+                              src={content.imageUrl}
+                              alt=""
+                              style={{ width: "100%" }}
+                            />
+                          </Grid>
+                          <Grid item flexDirection={"column"} lg={4}>
+                            <Box paddingLeft={"1vw"}>
+                              <Typography id="adminBlockedUserName">
+                                {content.userName}
+                              </Typography>
+                              <Typography id="adminBlockedUserRole">
+                                {content.Role}
+                              </Typography>
+                              <Typography id="adminBlockedUserMail">
+                                {content.email}
+                              </Typography>
+                              <Typography id="adminBlockedUserNum">
+                                {content.contactNumber}
+                              </Typography>
+                            </Box>
+                          </Grid>
+                          <Grid item lg={4}>
+                            <Box paddingLeft={"2vw"}>
+                              <IconButton
+                                onClick={() => unblockUser(content.userid)}
+                              >
+                                <DoneIcon sx={{ color: "#31D037" }} />
+                                <span className="adminBlockedUserrestriction">
+                                  Restore User
+                                </span>
+                              </IconButton>
+                              <IconButton
+                                onClick={() => removeUser(content.userid)}
+                              >
+                                <CloseIcon sx={{ color: "#E02323" }} />
+                                <span className="adminBlockedUserrestriction">
+                                  Remove User
+                                </span>
+                              </IconButton>
+                              {/* <Button id="adminBlockedUserviewbtn">
+                            View Details
+                          </Button> */}
+                            </Box>
+                          </Grid>
+                        </Grid>
+                      ))
+                    : blockedFilters.map((content, index) => (
+                        <Grid
+                          container
+                          spacing={0}
+                          id="adminBlockedUserdetails"
+                          key={index}
+                          // marginTop={"3vw"}
+                        >
+                          <Grid item lg={3}>
+                            <img
+                              src={content.imageUrl}
+                              alt=""
+                              style={{ width: "100%" }}
+                            />
+                          </Grid>
+                          <Grid item flexDirection={"column"} lg={4}>
+                            <Box paddingLeft={"1vw"}>
+                              <Typography id="adminBlockedUserName">
+                                {content.userName}
+                              </Typography>
+                              <Typography id="adminBlockedUserRole">
+                                {content.Role}
+                              </Typography>
+                              <Typography id="adminBlockedUserMail">
+                                {content.email}
+                              </Typography>
+                              <Typography id="adminBlockedUserNum">
+                                {content.contactNumber}
+                              </Typography>
+                            </Box>
+                          </Grid>
+                          <Grid item lg={4}>
+                            <Box paddingLeft={"2vw"}>
+                              <IconButton
+                                onClick={() => unblockUser(content.userid)}
+                              >
+                                <DoneIcon sx={{ color: "#31D037" }} />
+                                <span className="adminBlockedUserrestriction">
+                                  Restore User
+                                </span>
+                              </IconButton>
+                              <IconButton
+                                onClick={() => removeUser(content.userid)}
+                              >
+                                <CloseIcon sx={{ color: "#E02323" }} />
+                                <span className="adminBlockedUserrestriction">
+                                  Remove User
+                                </span>
+                              </IconButton>
+                              {/* <Button id="adminBlockedUserviewbtn">
+                            View Details
+                          </Button> */}
+                            </Box>
+                          </Grid>
+                        </Grid>
+                      ))}
+                </Grid>
+              )}
+              {selectedOption === "director" && (
+                <Grid item lg={7}>
+                  {searchInput === ""
+                    ? blockedDetails.director.map((content, index) => (
+                        <Grid
+                          container
+                          spacing={0}
+                          id="adminBlockedUserdetails"
+                          key={index}
+                          // marginTop={"3vw"}
+                        >
+                          <Grid item lg={3}>
+                            <img
+                              src={content.imageUrl}
+                              alt=""
+                              style={{ width: "100%" }}
+                            />
+                          </Grid>
+                          <Grid item flexDirection={"column"} lg={4}>
+                            <Box paddingLeft={"1vw"}>
+                              <Typography id="adminBlockedUserName">
+                                {content.userName}
+                              </Typography>
+                              <Typography id="adminBlockedUserRole">
+                                {content.Role}
+                              </Typography>
+                              <Typography id="adminBlockedUserMail">
+                                {content.email}
+                              </Typography>
+                              <Typography id="adminBlockedUserNum">
+                                {content.contactNumber}
+                              </Typography>
+                            </Box>
+                          </Grid>
+                          <Grid item lg={4}>
+                            <Box paddingLeft={"2vw"}>
+                              <IconButton
+                                onClick={() => unblockUser(content.userid)}
+                              >
+                                <DoneIcon sx={{ color: "#31D037" }} />
+                                <span className="adminBlockedUserrestriction">
+                                  Restore User
+                                </span>
+                              </IconButton>
+                              <IconButton
+                                onClick={() => removeUser(content.userid)}
+                              >
+                                <CloseIcon sx={{ color: "#E02323" }} />
+                                <span className="adminBlockedUserrestriction">
+                                  Remove User
+                                </span>
+                              </IconButton>
+                              {/* <Button id="adminBlockedUserviewbtn">
+                            View Details
+                          </Button> */}
+                            </Box>
+                          </Grid>
+                        </Grid>
+                      ))
+                    : blockedFilters.map((content, index) => (
+                        <Grid
+                          container
+                          spacing={0}
+                          id="adminBlockedUserdetails"
+                          key={index}
+                          // marginTop={"3vw"}
+                        >
+                          <Grid item lg={3}>
+                            <img
+                              src={content.imageUrl}
+                              alt=""
+                              style={{ width: "100%" }}
+                            />
+                          </Grid>
+                          <Grid item flexDirection={"column"} lg={4}>
+                            <Box paddingLeft={"1vw"}>
+                              <Typography id="adminBlockedUserName">
+                                {content.userName}
+                              </Typography>
+                              <Typography id="adminBlockedUserRole">
+                                {content.Role}
+                              </Typography>
+                              <Typography id="adminBlockedUserMail">
+                                {content.email}
+                              </Typography>
+                              <Typography id="adminBlockedUserNum">
+                                {content.contactNumber}
+                              </Typography>
+                            </Box>
+                          </Grid>
+                          <Grid item lg={4}>
+                            <Box paddingLeft={"2vw"}>
+                              <IconButton
+                                onClick={() => unblockUser(content.userid)}
+                              >
+                                <DoneIcon sx={{ color: "#31D037" }} />
+                                <span className="adminBlockedUserrestriction">
+                                  Restore User
+                                </span>
+                              </IconButton>
+                              <IconButton
+                                onClick={() => removeUser(content.userid)}
+                              >
+                                <CloseIcon sx={{ color: "#E02323" }} />
+                                <span className="adminBlockedUserrestriction">
+                                  Remove User
+                                </span>
+                              </IconButton>
+                              {/* <Button id="adminBlockedUserviewbtn">
+                            View Details
+                          </Button> */}
+                            </Box>
+                          </Grid>
+                        </Grid>
+                      ))}
+                </Grid>
+              )}
             </Grid>
           </Container>
+
           <Grid container spacing={2} marginTop={"5vw"}>
             <Grid item lg={12} display={"flex"} justifyContent={"center"}>
               <div class="pagination">
