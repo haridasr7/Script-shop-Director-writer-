@@ -256,49 +256,9 @@ function Navbar() {
           <MenuIcon />
         </IconButton>
         {isOpenD1 && (
-          <div className="navbarCdropdown-menuD2">
-            <div className="navbarCdropdown-menuDiv">
-              <Typography className="navbarCdropdown-menuTypo">Menu</Typography>
-              <IconButton onClick={() => setIsOpenD1(!isOpenD1)}>
-                {" "}
-                <CloseIcon />
-              </IconButton>
-            </div>
-            <hr className="navdropHr2"></hr>
+          <div className="navbarCdropdown-menuD1 " ref={dropdownRef}>
+            <hr className="navdropHr"></hr>
             <ul className="navbarCdropdown-menuUL">
-              <Link to="/Directorhome" className="navbarCdropdown-menuULLink">
-                <li>
-                  <div className="navbarCdropdown-menuLi">
-                    <p className="navbarCdropdown-menuTypo">Home</p>
-                    <IconButton>
-                      {" "}
-                      <KeyboardArrowRightIcon />
-                    </IconButton>
-                  </div>
-                </li>
-              </Link>
-              <Link to="/services" className="navbarCdropdown-menuULLink">
-                <li>
-                  <div className="navbarCdropdown-menuLi">
-                    <p className="navbarCdropdown-menuTypo">Services</p>
-                    <IconButton>
-                      {" "}
-                      <KeyboardArrowRightIcon />
-                    </IconButton>
-                  </div>
-                </li>
-              </Link>
-              <Link to="/ContactUs" className="navbarCdropdown-menuULLink">
-                <li>
-                  <div className="navbarCdropdown-menuLi">
-                    <p className="navbarCdropdown-menuTypo">Contact Us</p>
-                    <IconButton>
-                      {" "}
-                      <KeyboardArrowRightIcon />
-                    </IconButton>
-                  </div>
-                </li>
-              </Link>
               <Link
                 to="/directorprofile"
                 className="navbarCdropdown-menuULLink"
@@ -335,10 +295,7 @@ function Navbar() {
                   </div>
                 </li>
               </Link>
-              <Link
-                to="/customersupport"
-                className="navbarCdropdown-menuULLink"
-              >
+              <Link to="/chatbot" className="navbarCdropdown-menuULLink">
                 <li>
                   <div className="navbarCdropdown-menuLi">
                     <p className="navbarCdropdown-menuTypo">Customer Support</p>
@@ -360,10 +317,7 @@ function Navbar() {
                   </div>
                 </li>
               </Link>
-              <Link
-                to="/purchasehistory"
-                className="navbarCdropdown-menuULLink"
-              >
+              <Link to="/purchasedAll" className="navbarCdropdown-menuULLink">
                 <li>
                   <div className="navbarCdropdown-menuLi">
                     <p className="navbarCdropdown-menuTypo">Purchase History</p>

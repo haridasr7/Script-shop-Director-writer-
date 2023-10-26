@@ -24,7 +24,7 @@ import AllScripts from "./components/director/pages/AllScripts";
 import ContactUs from "./components/director/pages/ContactUs";
 import FavoriteScripts from "./components/director/pages/FavoriteScripts";
 import WriterDetail from "./components/director/pages/WriterDetails";
-// import PurchasedScripts from "./components/director/pages/PurchasedScripts";
+import PurchasedScripts from "./components/director/pages/PurchasedScripts";
 import ReadNow from "./components/director/pages/ReadNow";
 import AllPurchased from "./components/director/pages/AllPurchased";
 import DirectorProfile from "./components/director/pages/DirectorProfile";
@@ -44,6 +44,9 @@ import AdminAllPurchases from "./components/Admin/pages/AdminAllPurchases";
 import AdminBlockedUsers from "./components/Admin/pages/AdminBlockedUsers";
 import AnalyticsComponent from "./components/Analytics";
 import TawkToComponent from "./components/Tawkio";
+
+import UpdateScript from "./components/Updatescript";
+
 import Admincustomerqueries from "./components/Admin/pages/Admincustomerqueries";
 import UpdateScripts from "./components/UpdateScripts";
 import PurchasedScripts from "./components/director/pages/PurchasedScripts";
@@ -69,7 +72,6 @@ function App() {
         <Route exact path="/ContactUs" Component={ContactUs} />
         <Route exact path="/myfavorites" Component={FavoriteScripts} />
         <Route exact path="/writerdetails" Component={WriterDetail} />
-
         <Route exact path="/purchasehistory" Component={PurchasedScripts} />
         <Route exact path="/readscript/:scriptId" Component={ReadNow} />
 
@@ -83,7 +85,8 @@ function App() {
         <Route path="/chatbot" element={<TawkToComponent />} />
         <Route exact path="/AdminHome" Component={AdminHome} />
         <Route exact path="/AdminLogin" Component={AdminLogin} />
-        <Route exact path="/wPurchaseHistory" Component={PurchaseHistory} />
+        <Route exact path="/WPurchaseHistory" Component={PurchaseHistory} />
+        <Route exact path="/updatescript/:scriptId" Component={UpdateScript} />
         <Route exact path="/Adminforgot" Component={ForgotPassword} />
         <Route exact path="/Adminreset" Component={ResetPassword} />
         <Route exact path="/AdminUserDetails" Component={AdminUserDetails} />

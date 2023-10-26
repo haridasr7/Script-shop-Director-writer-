@@ -11,10 +11,7 @@ import {
   Box,
   Card,
   styled,
-  Select,
-  InputLabel,
 } from "@mui/material";
-import FormControl from "@mui/material/FormControl";
 import AdminSidebar from "../components/AdminSidebar";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
@@ -23,8 +20,29 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Person2Icon from "@mui/icons-material/Person2";
 import CancelPresentationSharpIcon from "@mui/icons-material/CancelPresentationSharp";
 import AdminFooter from "../components/AdminFooter";
-import { useState, useEffect } from "react";
-import axios from "axios";
+
+const StyledMenu = styled((props) => (
+  <Menu
+    elevation={0}
+    anchorOrigin={{
+      vertical: "bottom",
+      horizontal: "center",
+    }}
+    transformOrigin={{
+      vertical: "top",
+      horizontal: "center",
+    }}
+    {...props}
+  />
+))(({ theme }) => ({
+  "& .MuiPaper-root": {
+    borderRadius: 6,
+    marginTop: theme.spacing(3),
+    minWidth: 200,
+    backgroundColor: "#F4F4F4",
+    borderBottom: 1,
+  },
+}));
 
 function AdminUserDetails() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -135,42 +153,34 @@ function AdminUserDetails() {
                       </InputAdornment>
                     ),
                   }}
-                  onChange={handleSearch}
                 />
               </Grid>
               <Grid item lg={3}>
-                <FormControl fullWidth>
-                  <InputLabel className="AdminUserDetails_dropdowntext">
-                    Select
-                  </InputLabel>
-
-                  <Select
-                    id="AdminUserDetails_DropDown"
-                    value={selectedRole || ""}
-                    label="Role"
-                    onChange={(event) => setSelectedRole(event.target.value)}
-                    InputProps={{
-                      startAdornment: (
-                        <IconButton>
-                          <Person2Icon />
-                        </IconButton>
-                      ),
-                    }}
-                  >
-                    <MenuItem
-                      value="Director"
-                      className="AdminUserDetails_dropdowntext"
-                    >
-                      Director
-                    </MenuItem>
-                    <MenuItem
-                      value="Writer"
-                      className="AdminUserDetails_dropdowntext"
-                    >
-                      Writer
-                    </MenuItem>
-                  </Select>
-                </FormControl>
+                <Button
+                  id="AdminUserDetails_DropDown"
+                  endIcon={<KeyboardArrowDownIcon />}
+                  startIcon={
+                    <Person2Icon
+                      style={{
+                        border: "1px solid #FFF",
+                        color: "white",
+                        fontSize: "35px",
+                      }}
+                    />
+                  }
+                  onClick={handleClick}
+                  fullWidth
+                >
+                  Select
+                </Button>
+                <StyledMenu
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                >
+                  <MenuItem>Director</MenuItem>
+                  <MenuItem>Director</MenuItem>
+                </StyledMenu>
               </Grid>
             </Grid>
             <Box
@@ -421,7 +431,7 @@ function AdminUserDetails() {
                 </Grid>
               )}
 
-              {/* <Grid
+              <Grid
                 item
                 lg={6}
                 sx={{
@@ -431,14 +441,14 @@ function AdminUserDetails() {
                   marginTop: "3vw",
                 }}
               >
-                <Button
+                {/* <Button
                   fullWidth
                   id="AdminUserDetails_viewDetailsbtn"
                   variant="contained"
                 >
                   View Details
-                </Button>
-              </Grid> */}
+                </Button> */}
+              </Grid>
             </Grid>
           </Container>
         </Grid>

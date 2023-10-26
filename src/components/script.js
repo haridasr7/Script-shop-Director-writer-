@@ -21,11 +21,13 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios"; // You need to import axios
 import { toast } from "react-toastify"; // You need to import react-toastify
 import "react-toastify/dist/ReactToastify.css"; // Don't forget to import the CSS for react-toastify
+
 const RoundImage = styled("img")({
   maxWidth: "100%",
   height: "40px",
   borderRadius: "50%",
 });
+
 const buttonStyles = {
   borderRadius: "5px",
   border: "1px solid #14ABE4",
@@ -33,20 +35,24 @@ const buttonStyles = {
   fontWeight: 700,
   background: "#FFF",
 };
+
 const MyScript = () => {
   const { isAuthenticated, user } = useSelector((state) => state.authState);
   const navigate = useNavigate();
   const { loading, error, scripts } = useSelector((state) => state.writerState);
   const dispatch = useDispatch();
+
   // State for search query
   const [searchQuery, setSearchQuery] = useState("");
   // State for comment text
   const [commentText, setCommentText] = useState("");
+
   useEffect(() => {
     if (user && user._id) {
       dispatch(getAllScripts(user._id));
     }
   }, [dispatch, user]);
+
   // Define the handleDelete function
   const handleDelete = async (scriptId) => {
     try {
@@ -56,6 +62,7 @@ const MyScript = () => {
         toast.success("Script deleted successfully!", {
           position: "top-right",
         });
+
         // After successful deletion, you may want to refresh the script list
         dispatch(getAllScripts(user._id));
       } else {
@@ -72,6 +79,7 @@ const MyScript = () => {
       });
     }
   };
+
   // Function to filter scripts based on search query
   const filterScripts = (scripts, query) => {
     return scripts.filter((script) => {
@@ -82,15 +90,19 @@ const MyScript = () => {
       return movieName.includes(lowerQuery) || synopsis.includes(lowerQuery);
     });
   };
+
   // Filter scripts based on search query
   const filteredScripts = filterScripts(scripts, searchQuery);
+
   // Function to clear the search query
   const clearSearch = () => {
     setSearchQuery("");
   };
+
   if (loading) {
     return <Loader />;
   }
+
   return (
     <>
       <NavbarWriter />
@@ -124,7 +136,7 @@ const MyScript = () => {
             style={{ backgroundColor: "#14ABE4", padding: "15px 30px" }}
             onClick={clearSearch}
           >
-            Search
+            Clear
           </Button>
         </div>
       </Container>
@@ -132,6 +144,7 @@ const MyScript = () => {
         <div className="fleximage">
           {filteredScripts.map((item) => {
             const { _id, movieName, synopsis, fileUrl, comments } = item;
+
             return (
               <div key={_id}>
                 <div className="buttonconatiner">
