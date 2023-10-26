@@ -74,10 +74,13 @@ function AdminUserDetails() {
   }, []);
   // console.log(userDetails);
 
+  const [buttonText, setButtonText] = useState("Block user");
+
   const blockUser = async (userid) => {
     try {
       const response = await axios.put(`/Admin/api/v1/block/${userid}`);
       console.log(response.data);
+      setButtonText("Blocked");
     } catch (error) {
       console.error("Error blocking the user:", error);
     }
@@ -248,7 +251,7 @@ function AdminUserDetails() {
                                     >
                                       <CancelPresentationSharpIcon />
                                       <span className="AdminUserDetails_BlockDetails">
-                                        Block User
+                                        {buttonText}
                                       </span>
                                     </IconButton>
                                   </Box>
@@ -298,7 +301,7 @@ function AdminUserDetails() {
                                   >
                                     <CancelPresentationSharpIcon />
                                     <span className="AdminUserDetails_BlockDetails">
-                                      Block User
+                                      {buttonText}
                                     </span>
                                   </IconButton>
                                 </Box>
@@ -359,7 +362,7 @@ function AdminUserDetails() {
                                     >
                                       <CancelPresentationSharpIcon />
                                       <span className="AdminUserDetails_BlockDetails">
-                                        Block User
+                                        {buttonText}
                                       </span>
                                     </IconButton>
                                   </Box>
@@ -407,7 +410,7 @@ function AdminUserDetails() {
                                   >
                                     <CancelPresentationSharpIcon />
                                     <span className="AdminUserDetails_BlockDetails">
-                                      Block User
+                                      {buttonText}
                                     </span>
                                   </IconButton>
                                 </Box>

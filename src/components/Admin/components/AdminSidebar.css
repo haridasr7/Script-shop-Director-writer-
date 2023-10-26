@@ -4,8 +4,7 @@
   justify-content: flex-start;
   align-items: center;
   background-color: #ebebeb;
-
-  min-height: 1700px;
+  height: 100vw;
 }
 .Logo {
   width: 7vw;

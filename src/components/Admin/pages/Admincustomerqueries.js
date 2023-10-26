@@ -19,6 +19,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import AdminFooter from "../components/AdminFooter";
 import { blue } from "@mui/material/colors";
+import { useNavigate } from "react-router-dom";
 
 function Admincustomerqueries() {
   const [contacts, setContacts] = useState([]);
@@ -34,17 +35,22 @@ function Admincustomerqueries() {
     };
     fetchContacts();
   }, []);
+
+  const navigate = useNavigate();
+
   const Contactsdel = async (itemId) => {
     try {
       const response = await axios.delete(
         `/Admin/api/v1/admin/contactsdelete/${itemId}`
       );
       console.log(response.data);
+      window.location.reload();
     } catch (error) {
       console.error("Script not found.");
     }
   };
   Contactsdel();
+
   const Contactsread = async (itemId) => {
     try {
       const response = await axios.put(
@@ -55,25 +61,36 @@ function Admincustomerqueries() {
       console.error("Script not found.");
     }
   };
+
   Contactsread();
   //   const [buttonColor, setButtonColor] = useState(' #DDE4E7'); // Initial background color
   // const handleButtonClick = () => {
   //   // Change the background color when the button is clicked
   //   setButtonColor('#fff');
   // };
-  const [buttonColors, setButtonColors] = useState({}); // Use an object to store button colors
-  const handleButtonClick = (messageId) => {
-    // Create a copy of the current button colors
-    const updatedButtonColors = { ...buttonColors };
-    // Toggle the color for the clicked message
-    if (updatedButtonColors[`${messageId}`] === "#fff") {
-      updatedButtonColors[`${messageId}`] = "white";
-    } else {
-      updatedButtonColors[`${messageId}`] = "#fff";
+
+  const [buttonColors, setButtonColors] = useState(true);
+  const handleButtonClick = async (itemId) => {
+    try {
+      const response = await axios.put(
+        `/Admin/api/v1/admin/contacts/${itemId}`
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.error("Script not found.");
     }
-    // Update the state with the new button colors
-    setButtonColors(updatedButtonColors);
+
+    // const updatedButtonColors = { ...buttonColors };
+
+    // if (updatedButtonColors[`${itemId}`] === "#fff") {
+    //   updatedButtonColors[`${itemId}`] = "white";
+    // } else {
+    //   updatedButtonColors[`${itemId}`] = "#fff";
+    // }
+
+    // setButtonColors(updatedButtonColors);
   };
+
   const [searched, setSearched] = useState("");
   const [filteredMessage, setFilteredMessage] = useState([]);
   const handlechangesearch = (event) => {
@@ -165,7 +182,19 @@ function Admincustomerqueries() {
                       <Container
                         id="admincustomerqueriesmestop"
                         style={{
-                          background: buttonColors[item._id] || " #DDE4E7",
+                          // background: buttonColors[item._id] || " #DDE4E7",
+                          background:
+                            buttonColors === item.readMessage
+                              ? "#fff"
+                              : "#DDE4E7",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          // flexDirection: "column",
+
+                          // maxHeight: "200px",
+                          overflowY: "auto",
+                          height: "fit-content",
                         }}
                       >
                         {/* <input type="checkbox" id="check"/> */}
@@ -185,16 +214,20 @@ function Admincustomerqueries() {
                       <Box
                         id="admincustomerqueriesmesbottom"
                         style={{
-                          background: buttonColors[item._id] || " #DDE4E7",
+                          // background: buttonColors[item._id] || " #DDE4E7",
+                          background:
+                            buttonColors === item.readMessage
+                              ? "#fff"
+                              : "#DDE4E7",
                         }}
                       >
-                        <Button
+                        {/* <Button
                           id="messagebtn"
                           variant="contained"
                           onClick={() => Contactsread(item._id)}
                         >
                           Read
-                        </Button>
+                        </Button> */}
                         {/* <a href={`mailto:${item.email}?Subject=${item.subject}&body=${item.text}`}> */}
                         <a
                           href={`https://mail.google.com/mail/?view=cm&fs=1&to=${item.email}`}
@@ -228,7 +261,10 @@ function Admincustomerqueries() {
                       <Container
                         id="admincustomerqueriesmestop"
                         style={{
-                          background: buttonColors[item._id] || " #DDE4E7",
+                          background:
+                            buttonColors === item.readMessage
+                              ? "#fff"
+                              : "#DDE4E7",
                         }}
                       >
                         {/* <input type="checkbox" id="check"/> */}
@@ -248,16 +284,19 @@ function Admincustomerqueries() {
                       <Box
                         id="admincustomerqueriesmesbottom"
                         style={{
-                          background: buttonColors[item._id] || " #DDE4E7",
+                          background:
+                            buttonColors === item.readMessage
+                              ? "#fff"
+                              : "#DDE4E7",
                         }}
                       >
-                        <Button
+                        {/* <Button
                           id="messagebtn"
                           variant="contained"
                           onClick={() => Contactsread(item._id)}
                         >
                           Read
-                        </Button>
+                        </Button> */}
                         {/* <a href={`mailto:${item.email}?Subject=${item.subject}&body=${item.text}`}> */}
                         <a
                           href={`https://mail.google.com/mail/?view=cm&fs=1&to=${item.email}`}

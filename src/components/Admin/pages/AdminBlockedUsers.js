@@ -17,6 +17,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import AdminFooter from "../components/AdminFooter";
 import { useEffect } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 function AdminBlockedUsers() {
   const [blockedDetails, setBlockedDetails] = useState({
@@ -56,10 +57,22 @@ function AdminBlockedUsers() {
   }, []);
   // console.log(blockedDetails);
 
+  const [restoreText, setRestoretext] = useState("Restore User");
+
   const unblockUser = async (userId) => {
     try {
       const response = await axios.put(`/Admin/api/v1/unblock/${userId}`);
       console.log(response.data);
+      if (response.data) {
+        toast.success("User Restored Successfully", {
+          position: "top-right",
+          autoClose: 3000, // Close the toast after 3 seconds
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      }
     } catch (error) {
       console.error("Error unblocking the user:", error);
     }
@@ -68,6 +81,16 @@ function AdminBlockedUsers() {
   const removeUser = async (userId) => {
     try {
       const response = await axios.delete(`/Admin/api/v1/remove/${userId}`);
+      if (response.data) {
+        toast.success("User Removed Successfully", {
+          position: "top-right",
+          autoClose: 3000, // Close the toast after 3 seconds
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      }
     } catch (error) {
       console.error("Error removing the user:", error);
     }

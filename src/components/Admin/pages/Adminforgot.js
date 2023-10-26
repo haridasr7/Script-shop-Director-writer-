@@ -100,16 +100,13 @@ function ForgotPassword() {
                 </Button>
 
                 <span
-                id="adminlogin_signinForgot"
-                onClick={() => navigate("/AdminLogin")} 
-                style={{ cursor: "pointer" }}
-              >
-                Log In ?
-              </span>
+                  id="adminlogin_signinForgot"
+                  onClick={() => navigate("/AdminLogin")}
+                  style={{ cursor: "pointer" }}
+                >
+                  Login ?
+                </span>
               </form>
-             
-
-      
             </Box>
           </Box>
         </Grid>

@@ -6,11 +6,11 @@
   top: 120px;
   left: 19px;
   border: 0;
-  background: #F5F5F5;
+  background: #f5f5f5;
   border-radius: 5px;
   font-family: inter;
 }
-.mobileview{
+.mobileview {
   display: none;
 }
 .signbutt {
@@ -23,8 +23,8 @@
   height: 35px;
   left: 22px;
   top: 120px;
-  background: #14ABE4;
-  border-color: #14ABE4;
+  background: #14abe4;
+  border-color: #14abe4;
   border-radius: 5px;
   color: white;
   font-size: 20px;
@@ -75,14 +75,14 @@
   display: flex;
   flex-direction: row;
 }
-.siconbutton{
-    cursor:pointer;
-     margin-top: 127px;
-     position: absolute;
-     margin-left: -10px;
+.siconbutton {
+  cursor: pointer;
+  margin-top: 127px;
+  position: absolute;
+  margin-left: -10px;
 }
 @media (max-width: 900px) {
-  .signbutt{
+  .signbutt {
     margin-bottom: 50px;
   }
 }
@@ -94,101 +94,101 @@
            left: 430px;
           } */
   .sign-box {
-  width: 30%;
+    width: 45%;
   }
-  .signbutt{
+  .signbutt {
     margin-bottom: 50px;
   }
-  .tabview{
-   visibility: hidden;
+  .tabview {
+    visibility: hidden;
   }
-  .mobileview{
-   display: block;
+  .mobileview {
+    display: block;
   }
 }
 @media (max-width: 650px) {
-  .sign-im1{
-         width:30% ;
-         margin-top: 50%;
-     }
-     .sign-box{
-      width: 40%;
-     }
-     .signbutt{
-      margin-bottom: 80px;
-    }
-    .sign-t1 {
-      position: relative;
-      top: 70px;
-      left: 15px;
-      font-weight: bold;
-    }
+  .sign-im1 {
+    width: 30%;
+    margin-top: 50%;
+  }
+  .sign-box {
+    width: 40%;
+  }
+  .signbutt {
+    margin-bottom: 80px;
+  }
+  .sign-t1 {
+    position: relative;
+    top: 70px;
+    left: 15px;
+    font-weight: bold;
+  }
 }
 @media (max-width: 500px) {
-  .sign-im1{
-         display: none;
-     }
-     .sign-box{
-      position: relative;
-      width: 50%;
-      margin-left: 5%;
-      margin-top: 80px;
-      border-radius: 35px;
-      border: 0;
-      background-color: white;
-      padding-left: 3%;
-      padding-right: 3%;
-      padding-bottom: 16%;
-      z-index: 1;
-      overflow-x: hidden;
-     }
-     .signup-main {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-    }
+  .sign-im1 {
+    display: none;
+  }
+  .sign-box {
+    position: relative;
+    width: 83%;
+    margin-left: 1%;
+    margin-top: 80px;
+    border-radius: 35px;
+    border: 0;
+    background-color: white;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-bottom: 16%;
+    z-index: 1;
+    overflow-x: hidden;
+  }
+  .signup-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 @media (max-width: 420px) {
   .te4 {
     top: 5px;
     left: 70px;
   }
-.sign-box{
-  padding-left: 30px;
-  padding-right: 30px;
-}
+  .sign-box {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 }
 @media (max-width: 680px) {
-  .sign-box{
-   margin-top: 15%;
+  .sign-box {
+    margin-top: 15%;
   }
-  .mobileview h1{
+  .mobileview h1 {
     font-size: 1.2rem;
   }
-  .mobileview h3{
+  .mobileview h3 {
     font-size: 1rem;
   }
 }
 @media (max-width: 600px) {
-  .sign-box{
-   margin-top: 20%;
+  .sign-box {
+    margin-top: 20%;
   }
 }
 @media (max-width: 520px) {
-  .sign-box{
-   margin-top: 30%;
+  .sign-box {
+    margin-top: 30%;
   }
 }
 @media (max-width: 500px) {
-  .sign-box{
-   margin-top: 30%;
+  .sign-box {
+    margin-top: 30%;
   }
-  .mobileview{
+  .mobileview {
     margin-bottom: 550px;
   }
 }
 @media (max-width: 385px) {
-  .sign-box{
-   margin-top: 50%;
+  .sign-box {
+    margin-top: 50%;
   }
 }

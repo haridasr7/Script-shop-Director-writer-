@@ -12,6 +12,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { logout } from "../../actions/userActions";
+import axios from "axios";
 
 function NavbarWriter() {
   const [isOpenD1, setIsOpenD1] = useState(false);
@@ -22,13 +23,32 @@ function NavbarWriter() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loading, error, isAuthenticated } = useSelector(
+  const { loading, error, isAuthenticated, profile, user } = useSelector(
     (state) => state.authState
   );
+
   const handleArrowClick = () => {
     setIsOpenD1(!isOpenD1);
   };
   const location = useLocation();
+
+  console.log(profile, user._id);
+  const [counts, setCounts] = useState(null);
+
+  useEffect(() => {
+    const followersCount = async () => {
+      try {
+        const response = await axios.get(
+          `/api/v1/profiles/${user.profile}/followers/${user._id}/count`
+        );
+        console.log(response.data);
+        setCounts(response.data);
+      } catch (error) {
+        console.error("followers not found.");
+      }
+    };
+    followersCount();
+  }, [isAuthenticated, user.profile, user._id]);
 
   // useEffect(() => {
 
@@ -170,10 +190,7 @@ function NavbarWriter() {
                     </div>
                   </li>
                 </Link>
-                <Link
-                  to="/chatbot"
-                  className="navbarCdropdown-menuULLink"
-                >
+                <Link to="/chatbot" className="navbarCdropdown-menuULLink">
                   <li>
                     <div className="navbarCdropdown-menuLi">
                       <p className="navbarCdropdown-menuTypo">
@@ -237,7 +254,11 @@ function NavbarWriter() {
         </div>
       </nav>
       <div className="navbarFollowers">
-        <Button id="navbarFollowerButton">Followers</Button>
+        {counts && (
+          <Button id="navbarFollowerButton">
+            {counts.followersCount} &nbsp; follower
+          </Button>
+        )}
         <IconButton
           id="NavbarCMenu"
           sx={{ marginLeft: "auto" }}
@@ -340,10 +361,7 @@ function NavbarWriter() {
                   </div>
                 </li>
               </Link>
-              <Link
-                to="/PurchaseHistory"
-                className="navbarCdropdown-menuULLink"
-              >
+              <Link to="/purchasedAll" className="navbarCdropdown-menuULLink">
                 <li>
                   <div className="navbarCdropdown-menuLi">
                     <p className="navbarCdropdown-menuTypo">Purchase History</p>

@@ -45,7 +45,8 @@ import AdminBlockedUsers from "./components/Admin/pages/AdminBlockedUsers";
 import AnalyticsComponent from "./components/Analytics";
 import TawkToComponent from "./components/Tawkio";
 import Admincustomerqueries from "./components/Admin/pages/Admincustomerqueries";
-
+import UpdateScripts from "./components/UpdateScripts";
+import PurchasedScripts from "./components/director/pages/PurchasedScripts";
 function App() {
   return (
     <Fragment className="body">
@@ -68,8 +69,10 @@ function App() {
         <Route exact path="/ContactUs" Component={ContactUs} />
         <Route exact path="/myfavorites" Component={FavoriteScripts} />
         <Route exact path="/writerdetails" Component={WriterDetail} />
-        {/* <Route exact path="/purchasehistory" Component={PurchasedScripts} /> */}
+
+        <Route exact path="/purchasehistory" Component={PurchasedScripts} />
         <Route exact path="/readscript/:scriptId" Component={ReadNow} />
+
         <Route exact path="/purchasedAll" Component={AllPurchased} />
         <Route exact path="/directorprofile" Component={DirectorProfile} />
         <Route exact path="/privacy&policy" Component={Privacypolicy} />
@@ -80,7 +83,7 @@ function App() {
         <Route path="/chatbot" element={<TawkToComponent />} />
         <Route exact path="/AdminHome" Component={AdminHome} />
         <Route exact path="/AdminLogin" Component={AdminLogin} />
-        <Route exact path="/PurchaseHistory" Component={PurchaseHistory} />
+        <Route exact path="/wPurchaseHistory" Component={PurchaseHistory} />
         <Route exact path="/Adminforgot" Component={ForgotPassword} />
         <Route exact path="/Adminreset" Component={ResetPassword} />
         <Route exact path="/AdminUserDetails" Component={AdminUserDetails} />
@@ -91,6 +94,12 @@ function App() {
           path="/Admincustomerqueries"
           Component={Admincustomerqueries}
         />
+        <Route
+          exact
+          path="/AnalyticsComponent"
+          Component={AnalyticsComponent}
+        />
+        <Route exact path="/updatescript/:scriptId" Component={UpdateScripts} />
       </Routes>
     </Fragment>
   );

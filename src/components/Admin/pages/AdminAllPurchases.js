@@ -65,7 +65,7 @@ function AdminAllPurchases() {
               <Grid lg={8}>
                 <TextField
                   id="adminAllpurchaseSearchBox"
-                  placeholder="Search Here"
+                  placeholder="Search User"
                   sx={{ backgroundColor: "#fff", borderRadius: "4px" }}
                   fullWidth
                   onChange={handleSearch}
