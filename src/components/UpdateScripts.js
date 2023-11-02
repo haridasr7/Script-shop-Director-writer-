@@ -16,6 +16,8 @@ import {
 } from "@mui/material";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import NavbarWriter from "./writernavbar/NavbarWriter";
+import FooterDirector from "./writernavbar/Footerwriter";
 const UpdateScripts = () => {
   const { scriptId } = useParams();
   const [scriptData, setScriptData] = useState({
@@ -56,112 +58,116 @@ const UpdateScripts = () => {
       });
   };
   return (
-    <Container maxWidth="md">
-      <Paper elevation={3} style={{ padding: "20px", marginTop: "20px" }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Update Script
-        </Typography>
-        <form onSubmit={handleSubmit}>
-          <TextField
-            label="Movie Name"
-            variant="outlined"
-            name="movieName"
-            value={scriptData.movieName}
-            onChange={handleInputChange}
-            fullWidth
-          />
-          <br />
-          <br />
-          <FormControl fullWidth variant="outlined">
-            <InputLabel htmlFor="genre">Genre</InputLabel>
-            <Select
-              label="Genre"
-              name="genre"
-              value={scriptData.genre}
+    <>
+      <NavbarWriter />
+      <Container maxWidth="md">
+        <Paper elevation={3} style={{ padding: "20px", marginTop: "20px" }}>
+          <Typography variant="h4" component="h1" gutterBottom>
+            Update Script
+          </Typography>
+          <form onSubmit={handleSubmit}>
+            <TextField
+              label="Movie Name"
+              variant="outlined"
+              name="movieName"
+              value={scriptData.movieName}
               onChange={handleInputChange}
-            >
-              {[
-                "comedy",
-                "horror",
-                "action",
-                "family",
-                "romance",
-                "thriller",
-                "adventure",
-                "crime",
-                "fantasy",
-                "musical",
-                "sci-fi",
-                "war",
-                "animation",
-                "drama",
-                "film-noir",
-                "mystery",
-                "short",
-                "western",
-              ].map((option) => (
-                <MenuItem key={option} value={option}>
-                  {option}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <br />
-          <br />
-          <TextareaAutosize
-            rowsMin={10}
-            cols={70}
-            placeholder="Synopsis"
-            name="synopsis"
-            value={scriptData.synopsis}
-            onChange={handleInputChange}
-            style={{
-              width: "100%",
-              padding: "10px",
-              fontSize: "16px",
-              lineHeight: "1.5",
-              border: "1px solid #ccc",
-              borderRadius: "4px",
-              resize: "vertical",
-            }}
-          />
-          <br />
-          <br />
-          <FormControl fullWidth variant="outlined">
-            <InputLabel htmlFor="scriptType">Script Type</InputLabel>
-            <Select
-              label="Script Type"
-              name="scriptType"
-              value={scriptData.scriptType}
+              fullWidth
+            />
+            <br />
+            <br />
+            <FormControl fullWidth variant="outlined">
+              <InputLabel htmlFor="genre">Genre</InputLabel>
+              <Select
+                label="Genre"
+                name="genre"
+                value={scriptData.genre}
+                onChange={handleInputChange}
+              >
+                {[
+                  "comedy",
+                  "horror",
+                  "action",
+                  "family",
+                  "romance",
+                  "thriller",
+                  "adventure",
+                  "crime",
+                  "fantasy",
+                  "musical",
+                  "sci-fi",
+                  "war",
+                  "animation",
+                  "drama",
+                  "film-noir",
+                  "mystery",
+                  "short",
+                  "western",
+                ].map((option) => (
+                  <MenuItem key={option} value={option}>
+                    {option}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <br />
+            <br />
+            <TextareaAutosize
+              rowsMin={10}
+              cols={70}
+              placeholder="Synopsis"
+              name="synopsis"
+              value={scriptData.synopsis}
               onChange={handleInputChange}
-            >
-              <MenuItem value="" disabled>
-                Default Script Type
-              </MenuItem>
-              {["shortFilm", "mainStreamFilm"].map((option) => (
-                <MenuItem key={option} value={option}>
-                  {option}
+              style={{
+                width: "100%",
+                padding: "10px",
+                fontSize: "16px",
+                lineHeight: "1.5",
+                border: "1px solid #ccc",
+                borderRadius: "4px",
+                resize: "vertical",
+              }}
+            />
+            <br />
+            <br />
+            <FormControl fullWidth variant="outlined">
+              <InputLabel htmlFor="scriptType">Script Type</InputLabel>
+              <Select
+                label="Script Type"
+                name="scriptType"
+                value={scriptData.scriptType}
+                onChange={handleInputChange}
+              >
+                <MenuItem value="" disabled>
+                  Default Script Type
                 </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <br />
-          <br />
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            disabled={isSubmitting}
-            style={{
-              textAlign: "center",
-              width: "100%",
-            }}
-          >
-            {isSubmitting ? <CircularProgress size={24} /> : "Update Script"}
-          </Button>
-        </form>
-      </Paper>
-    </Container>
+                {["shortFilm", "mainStreamFilm"].map((option) => (
+                  <MenuItem key={option} value={option}>
+                    {option}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <br />
+            <br />
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              disabled={isSubmitting}
+              style={{
+                textAlign: "center",
+                width: "100%",
+              }}
+            >
+              {isSubmitting ? <CircularProgress size={24} /> : "Update Script"}
+            </Button>
+          </form>
+        </Paper>
+        <FooterDirector />
+      </Container>
+    </>
   );
 };
 export default UpdateScripts;

@@ -45,11 +45,12 @@ import AdminBlockedUsers from "./components/Admin/pages/AdminBlockedUsers";
 import AnalyticsComponent from "./components/Analytics";
 import TawkToComponent from "./components/Tawkio";
 
-import UpdateScript from "./components/Updatescript";
+import Updatescript from "./components/Updatescript";
 
 import Admincustomerqueries from "./components/Admin/pages/Admincustomerqueries";
-import UpdateScripts from "./components/UpdateScripts";
-import PurchasedScripts from "./components/director/pages/PurchasedScripts";
+// import UpdateScripts from "./components/UpdateScripts";
+import DTawkToComponent from "./components/director/pages/Dtawk";
+// import PurchasedScripts from "./components/director/pages/PurchasedScripts";
 function App() {
   return (
     <Fragment className="body">
@@ -86,7 +87,7 @@ function App() {
         <Route exact path="/AdminHome" Component={AdminHome} />
         <Route exact path="/AdminLogin" Component={AdminLogin} />
         <Route exact path="/WPurchaseHistory" Component={PurchaseHistory} />
-        <Route exact path="/updatescript/:scriptId" Component={UpdateScript} />
+        {/* <Route exact path="/updatescript/:scriptId" Component={UpdateScripts} /> */}
         <Route exact path="/Adminforgot" Component={ForgotPassword} />
         <Route exact path="/Adminreset" Component={ResetPassword} />
         <Route exact path="/AdminUserDetails" Component={AdminUserDetails} />
@@ -102,7 +103,8 @@ function App() {
           path="/AnalyticsComponent"
           Component={AnalyticsComponent}
         />
-        <Route exact path="/updatescript/:scriptId" Component={UpdateScripts} />
+        <Route exact path="/updatescript/:scriptId" Component={Updatescript} />
+        <Route exact path="/Dtawk" Component={DTawkToComponent} />
       </Routes>
     </Fragment>
   );

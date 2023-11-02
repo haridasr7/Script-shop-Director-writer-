@@ -127,21 +127,34 @@ function ReadMore() {
 
   const handleReadmore = (scriptId) => {
     navigate(`/readmore/${scriptId}`);
-  };
-
-  // ... (rest of your code)
-
-  const handleReadnow = (scripId) => {
-    navigate("/readnow");
-    const viewersCount = async () => {
+    const viewersCount = async (scriptId) => {
       try {
         const response = await axios.put(
-          `/api/v1/increment-viewer-count/${scripId}`
+          `/api/v1/increment-viewer-count/${scriptId}`
         );
+        console.log(response.data);
       } catch (error) {
         console.log(error);
       }
     };
+    viewersCount(scriptId);
+  };
+
+  // ... (rest of your code)
+
+  const handleReadnow = (scriptId) => {
+    navigate("/readnow");
+    const viewStatus = async () => {
+      try {
+        const response = await axios.put(
+          `/api/v1/updateread/${scriptId}/${user._id}`
+        );
+        // console.log(scriptId, user._id);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    viewStatus(scriptId);
   };
 
   const handleDownloadPDF = () => {
@@ -478,7 +491,9 @@ function ReadMore() {
                                   </div>
                                   <div className="DHCardDS4">
                                     <Button
-                                      onClick={() => handleReadmore(item._id)}
+                                      onClick={() => {
+                                        handleReadmore(item._id);
+                                      }}
                                       id="DHCardButton"
                                     >
                                       ReadMore
@@ -512,7 +527,9 @@ function ReadMore() {
                               <Card
                                 key={item._id}
                                 id="DHS5Card"
-                                onClick={() => handleReadmore(item._id)}
+                                onClick={() => {
+                                  handleReadmore(item._id);
+                                }}
                               >
                                 <img
                                   className="DHS5CardI"

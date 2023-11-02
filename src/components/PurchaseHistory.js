@@ -4,7 +4,6 @@ import NavbarWriter from "./writernavbar/NavbarWriter";
 import FooterDirector from "./writernavbar/Footerwriter";
 import { useDispatch, useSelector } from "react-redux";
 
-
 import {
   Grid,
   Typography,
@@ -98,27 +97,29 @@ function PurchaseHistory() {
     }
   }, [isAuthenticated, user]);
 
-
   const fetchDirectorProfile = async () => {
     const directorId = "65265a4e7deb1c71c0773f55"; // Replace with the actual director ID
     try {
-      const response = await axios.get(`/api/v1/getProfileImageForDirector/${directorId}`, {
-        responseType: 'arraybuffer'
-      });
+      const response = await axios.get(
+        `/api/v1/getProfileImageForDirector/${directorId}`,
+        {
+          responseType: "arraybuffer",
+        }
+      );
       const base64Str = btoa(
         new Uint8Array(response.data).reduce(
           (data, byte) => data + String.fromCharCode(byte),
-          ''
+          ""
         )
       );
       const imageStr = "data:image/jpeg;base64," + base64Str;
-      setDirectorImage(imageStr)
+      setDirectorImage(imageStr);
       console.log(imageStr);
     } catch (error) {
       console.error("Failed to fetch the director's profile image.", error);
     }
   };
-    
+
   useEffect(() => {
     fetchDirectorProfile();
   }, []);
@@ -263,7 +264,6 @@ function PurchaseHistory() {
                     borderBottom: "1px solid #D9D9D9",
                   }}
                 >
-                  
                   <MenuItem
                     key={name.movieName}
                     className="purchaseHistory_dropdownmenu"
@@ -291,12 +291,16 @@ function PurchaseHistory() {
                   lg={4}
                   md={4}
                   sm={6}
+                  xs={12}
                   id="purchaseHistory_purchaseddirectorcontents"
                   key={index}
                 >
                   <Box style={BoxStyle} id="Forhover">
-                 
-                  <Avatar alt="User Avatar" src={director.profile} style={avatarStyle} />
+                    <Avatar
+                      alt="User Avatar"
+                      src={director.profile}
+                      style={avatarStyle}
+                    />
 
                     <CardContent>
                       <Typography id="purchaseHistory_purchaseddirectorName">

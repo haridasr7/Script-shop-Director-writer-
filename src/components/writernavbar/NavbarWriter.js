@@ -19,50 +19,26 @@ function NavbarWriter() {
   const [isOpenD2, setIsOpenD2] = useState(false);
   const [profileImage, setProfileImage] = useState("");
 
+  const [data, setData] = useState([]);
   const dropdownRef = useRef(null);
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loading, error, isAuthenticated, profile, user } = useSelector(
+  const { loading, error, isAuthenticated, user } = useSelector(
     (state) => state.authState
   );
-
   const handleArrowClick = () => {
     setIsOpenD1(!isOpenD1);
   };
   const location = useLocation();
-
-  console.log(profile, user._id);
-  const [counts, setCounts] = useState(null);
-
-  useEffect(() => {
-    const followersCount = async () => {
-      try {
-        const response = await axios.get(
-          `/api/v1/profiles/${user.profile}/followers/${user._id}/count`
-        );
-        console.log(response.data);
-        setCounts(response.data);
-      } catch (error) {
-        console.error("followers not found.");
-      }
-    };
-    followersCount();
-  }, [isAuthenticated, user.profile, user._id]);
-
   // useEffect(() => {
-
   //   if(!isAuthenticated){
   //     toast("please login", {
   //       position: toast.POSITION.BOTTOM_CENTER,
   //       type: 'error',
-
   //     })
   //     navigate('/login')
   //   }
-
   // }, [isAuthenticated])
-
   const directorHomeLogout = () => {
     dispatch(logout);
     toast("You have been successfully logged out", {
@@ -71,7 +47,6 @@ function NavbarWriter() {
     });
     navigate("/");
   };
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       // Check if the click target is outside the dropdown container
@@ -79,17 +54,45 @@ function NavbarWriter() {
         setIsOpenD1(false);
       }
     };
-
     // Attach the event listener when the popup is open
     if (isOpenD1) {
       document.addEventListener("click", handleClickOutside);
     }
-
     // Clean up the event listener when the component unmounts or the popup is closed
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, [isOpenD1]);
+
+  // const fetchFollowersCount = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       `/api/v1/profiles/${user.profile}/followers/${user._id}/count`
+  //     );
+  //     setFollowersCount(response.data); // Update followers count in the state
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  // // Fetch followers count when the component mounts
+  // useEffect(() => {
+  //   fetchFollowersCount();
+  // });
+  useEffect(() => {
+    const fetchFollowers = async () => {
+      try {
+        const response = await axios.get(
+          `/api/v1/profiles/${user.profile}/followers/${user._id}/count`
+        ); // Replace the URL with your actual endpoint
+        setData(response.data); // Assuming your response data is an array
+      } catch (error) {
+        // Handle error
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchFollowers();
+  }, []);
 
   return (
     <div className="navbarMainDiv">
@@ -173,7 +176,6 @@ function NavbarWriter() {
                     </div>
                   </li>
                 </Link>
-
                 <Link
                   to="/updatepassword"
                   className="navbarCdropdown-menuULLink"
@@ -220,7 +222,7 @@ function NavbarWriter() {
                   </li>
                 </Link>
                 <Link
-                  to="/PurchaseHistory"
+                  to="/WPurchaseHistory"
                   className="navbarCdropdown-menuULLink"
                 >
                   <li>
@@ -254,11 +256,9 @@ function NavbarWriter() {
         </div>
       </nav>
       <div className="navbarFollowers">
-        {counts && (
-          <Button id="navbarFollowerButton">
-            {counts.followersCount} &nbsp; follower
-          </Button>
-        )}
+        <Button id="navbarFollowerButton">
+          {data.followersCount} Followers
+        </Button>
         <IconButton
           id="NavbarCMenu"
           sx={{ marginLeft: "auto" }}
@@ -302,7 +302,7 @@ function NavbarWriter() {
                   </div>
                 </li>
               </Link>
-              <Link to="/contact" className="navbarCdropdown-menuULLink">
+              <Link to="/ContactUs" className="navbarCdropdown-menuULLink">
                 <li>
                   <div className="navbarCdropdown-menuLi">
                     <p className="navbarCdropdown-menuTypo">Contact Us</p>
@@ -324,7 +324,6 @@ function NavbarWriter() {
                   </div>
                 </li>
               </Link>
-
               <Link to="/updatepassword" className="navbarCdropdown-menuULLink">
                 <li>
                   <div className="navbarCdropdown-menuLi">
@@ -336,10 +335,7 @@ function NavbarWriter() {
                   </div>
                 </li>
               </Link>
-              <Link
-                to="/customersupport"
-                className="navbarCdropdown-menuULLink"
-              >
+              <Link to="/chatbot" className="navbarCdropdown-menuULLink">
                 <li>
                   <div className="navbarCdropdown-menuLi">
                     <p className="navbarCdropdown-menuTypo">Customer Support</p>
@@ -361,7 +357,10 @@ function NavbarWriter() {
                   </div>
                 </li>
               </Link>
-              <Link to="/purchasedAll" className="navbarCdropdown-menuULLink">
+              <Link
+                to="/WPurchaseHistory"
+                className="navbarCdropdown-menuULLink"
+              >
                 <li>
                   <div className="navbarCdropdown-menuLi">
                     <p className="navbarCdropdown-menuTypo">Purchase History</p>
@@ -392,5 +391,4 @@ function NavbarWriter() {
     </div>
   );
 }
-
 export default NavbarWriter;

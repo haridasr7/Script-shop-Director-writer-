@@ -11,7 +11,10 @@ import {
   Box,
   Card,
   styled,
+  Select,
+  InputLabel,
 } from "@mui/material";
+import FormControl from "@mui/material/FormControl";
 import AdminSidebar from "../components/AdminSidebar";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
@@ -20,30 +23,9 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Person2Icon from "@mui/icons-material/Person2";
 import CancelPresentationSharpIcon from "@mui/icons-material/CancelPresentationSharp";
 import AdminFooter from "../components/AdminFooter";
-
-const StyledMenu = styled((props) => (
-  <Menu
-    elevation={0}
-    anchorOrigin={{
-      vertical: "bottom",
-      horizontal: "center",
-    }}
-    transformOrigin={{
-      vertical: "top",
-      horizontal: "center",
-    }}
-    {...props}
-  />
-))(({ theme }) => ({
-  "& .MuiPaper-root": {
-    borderRadius: 6,
-    marginTop: theme.spacing(3),
-    minWidth: 200,
-    backgroundColor: "#F4F4F4",
-    borderBottom: 1,
-  },
-}));
-
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
 function AdminUserDetails() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -53,7 +35,6 @@ function AdminUserDetails() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
   const [userDetails, setUserDetails] = useState({
     directors: [],
     writers: [],
@@ -74,7 +55,6 @@ function AdminUserDetails() {
         console.log(error);
       }
     };
-
     const fetchWriter = async () => {
       try {
         const response = await axios.get("Admin/api/v1/view-users/writer");
@@ -86,19 +66,66 @@ function AdminUserDetails() {
         console.log(error);
       }
     };
-
     fetchDirector();
     fetchWriter();
   }, []);
   // console.log(userDetails);
 
-  const [buttonText, setButtonText] = useState("Block user");
+  // const blockUser = async (userid) => {
+  //   try {
+  //     const response = await axios.put(`/Admin/api/v1/block/${userid}`);
+  //     console.log(response.data);
+  //      if (response.data.blockedUser.blocked) {
+  //       toast.success("User  Blocked Successfully", {
+  //         position: "top-right",
+  //         autoClose: 3000, // Close the toast after 3 seconds
+  //         hideProgressBar: false,
+  //         closeOnClick: true,
+  //         pauseOnHover: true,
+  //         draggable: true,
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.error("Error blocking the user:", error);
+  //   }
+  // };
+
+  const [blockedUsers, setBlockedUsers] = useState([]);
+
+  // ...
 
   const blockUser = async (userid) => {
     try {
-      const response = await axios.put(`/Admin/api/v1/block/${userid}`);
-      console.log(response.data);
-      setButtonText("Blocked");
+      // Check if the user is already blocked
+      if (blockedUsers.includes(userid)) {
+        // User is already blocked, display a message
+        toast.warning("User is already blocked.", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      } else {
+        // User is not blocked, make the block request
+        const response = await axios.put(`/Admin/api/v1/block/${userid}`);
+        console.log(response.data);
+        if (response.data.blockedUser.blocked) {
+          // Update the list of blocked users
+          setBlockedUsers([...blockedUsers, userid]);
+
+          // Display a success message
+          toast.success("User blocked successfully", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          });
+        }
+      }
     } catch (error) {
       console.error("Error blocking the user:", error);
     }
@@ -123,7 +150,6 @@ function AdminUserDetails() {
   };
   // console.log(filteredUsers);
   // console.log(userDetails.writers);
-
   return (
     <div>
       <Grid container spacing={2} gap={"5vw"}>
@@ -143,7 +169,7 @@ function AdminUserDetails() {
                   label=""
                   placeholder="Search for Users"
                   fullWidth
-                  sx={{ backgroundColor: "#d9d9d9" }}
+                  sx={{ backgroundColor: "#D9D9D9" }}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment>
@@ -153,34 +179,41 @@ function AdminUserDetails() {
                       </InputAdornment>
                     ),
                   }}
+                  onChange={handleSearch}
                 />
               </Grid>
               <Grid item lg={3}>
-                <Button
-                  id="AdminUserDetails_DropDown"
-                  endIcon={<KeyboardArrowDownIcon />}
-                  startIcon={
-                    <Person2Icon
-                      style={{
-                        border: "1px solid #FFF",
-                        color: "white",
-                        fontSize: "35px",
-                      }}
-                    />
-                  }
-                  onClick={handleClick}
-                  fullWidth
-                >
-                  Select
-                </Button>
-                <StyledMenu
-                  anchorEl={anchorEl}
-                  open={open}
-                  onClose={handleClose}
-                >
-                  <MenuItem>Director</MenuItem>
-                  <MenuItem>Director</MenuItem>
-                </StyledMenu>
+                <FormControl fullWidth>
+                  <InputLabel className="AdminUserDetails_dropdowntext">
+                    Select
+                  </InputLabel>
+                  <Select
+                    id="AdminUserDetails_DropDown"
+                    value={selectedRole || ""}
+                    label="Role"
+                    onChange={(event) => setSelectedRole(event.target.value)}
+                    InputProps={{
+                      startAdornment: (
+                        <IconButton>
+                          <Person2Icon />
+                        </IconButton>
+                      ),
+                    }}
+                  >
+                    <MenuItem
+                      value="Director"
+                      className="AdminUserDetails_dropdowntext"
+                    >
+                      Director
+                    </MenuItem>
+                    <MenuItem
+                      value="Writer"
+                      className="AdminUserDetails_dropdowntext"
+                    >
+                      Writer
+                    </MenuItem>
+                  </Select>
+                </FormControl>
               </Grid>
             </Grid>
             <Box
@@ -202,7 +235,6 @@ function AdminUserDetails() {
               alt=""
               style={{ width: "2%", marginLeft: "-1vw" }}
             />
-
             <Grid
               container
               direction={"row"}
@@ -261,7 +293,7 @@ function AdminUserDetails() {
                                     >
                                       <CancelPresentationSharpIcon />
                                       <span className="AdminUserDetails_BlockDetails">
-                                        {buttonText}
+                                        Block User
                                       </span>
                                     </IconButton>
                                   </Box>
@@ -311,7 +343,7 @@ function AdminUserDetails() {
                                   >
                                     <CancelPresentationSharpIcon />
                                     <span className="AdminUserDetails_BlockDetails">
-                                      {buttonText}
+                                      Block User
                                     </span>
                                   </IconButton>
                                 </Box>
@@ -372,7 +404,7 @@ function AdminUserDetails() {
                                     >
                                       <CancelPresentationSharpIcon />
                                       <span className="AdminUserDetails_BlockDetails">
-                                        {buttonText}
+                                        Block User
                                       </span>
                                     </IconButton>
                                   </Box>
@@ -420,7 +452,7 @@ function AdminUserDetails() {
                                   >
                                     <CancelPresentationSharpIcon />
                                     <span className="AdminUserDetails_BlockDetails">
-                                      {buttonText}
+                                      Block User
                                     </span>
                                   </IconButton>
                                 </Box>
@@ -430,8 +462,7 @@ function AdminUserDetails() {
                         )))}
                 </Grid>
               )}
-
-              <Grid
+              {/* <Grid
                 item
                 lg={6}
                 sx={{
@@ -441,14 +472,14 @@ function AdminUserDetails() {
                   marginTop: "3vw",
                 }}
               >
-                {/* <Button
+                <Button
                   fullWidth
                   id="AdminUserDetails_viewDetailsbtn"
                   variant="contained"
                 >
                   View Details
-                </Button> */}
-              </Grid>
+                </Button>
+              </Grid> */}
             </Grid>
           </Container>
         </Grid>
@@ -457,5 +488,4 @@ function AdminUserDetails() {
     </div>
   );
 }
-
 export default AdminUserDetails;

@@ -39,18 +39,20 @@ const scriptsSlice = createSlice({
       };
     },
     scriptSuccess(state, action) {
+      const filteredOtherScripts = action.payload.scripts.filter((item) => item.ispaid);
+    
       return {
         ...state,
         loading: false,
         script: action.payload.script,
         imageFile: action.payload.imageUrl,
-        otherScripts: action.payload.scripts,
+        otherScripts: filteredOtherScripts,
         pdfFile: action.payload.pdf,
-        writerProfile:action.payload.writerProfile,
-        profilePic:action.payload.profilePicUrl,
-        isFollower:action.payload.isFollower,
-        isFavorite:action.payload.isFavorite,
-        isPaid:action.payload.isPaid
+        writerProfile: action.payload.writerProfile,
+        profilePic: action.payload.profilePicUrl,
+        isFollower: action.payload.isFollower,
+        isFavorite: action.payload.isFavorite,
+        isPaid: action.payload.isPaid,
       };
     },
     scriptFail(state, action) {

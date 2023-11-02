@@ -422,7 +422,7 @@ function AdminBlockedUsers() {
             </Grid>
           </Container>
 
-          <Grid container spacing={2} marginTop={"5vw"}>
+          {/* <Grid container spacing={2} marginTop={"5vw"}>
             <Grid item lg={12} display={"flex"} justifyContent={"center"}>
               <div class="pagination">
                 <a href="#">&laquo;</a>
@@ -438,7 +438,7 @@ function AdminBlockedUsers() {
                 <a href="#">&raquo;</a>
               </div>
             </Grid>
-          </Grid>
+          </Grid> */}
         </Grid>
       </Grid>
       <AdminFooter />
