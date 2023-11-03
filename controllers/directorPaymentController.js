@@ -46,7 +46,7 @@ function validateUpiId(upiId) {
 exports.directorprocessPayment = catchAsyncError(async (req, res, next) => {
   const { amount, paymentMethod } = req.body;
   const { directorId } = req.params;
-
+  
   // const paymentAmountLimitForCard = 50000; // Set your desired amount limit
   // const paymentAmountLimitForUpi = 100000; // Set the maximum amount for UPI payment
   // Generate a unique order ID
@@ -132,7 +132,7 @@ exports.directorprocessPayment = catchAsyncError(async (req, res, next) => {
 exports.directorpaymentverification = catchAsyncError(
   async (req, res, next) => {
     const { order_id, amount, paymentMethod } = req.body;
-    console.log(req.body, req.params);
+      console.log(req.body, req.params);
 
     const { directorId, scriptId } = req.params;
     // Convert directorId from string to ObjectId
@@ -150,7 +150,7 @@ exports.directorpaymentverification = catchAsyncError(
         .status(400)
         .json({ success: false, message: "Payment data not found" });
     }
-
+    
     // Compare the stored payment data with the data in the verification request
     // if (
     //   amount !== storedData.amount ||
@@ -211,30 +211,23 @@ exports.directorpaymentverification = catchAsyncError(
     }
 
     const user = await User.findById(directorId);
-    const Date = await DirectorPayment.findOne({
-      directorId: directorId,
-      scriptId: scriptId,
-    });
-
+    const Date = await DirectorPayment.findOne({directorId:directorId, scriptId:scriptId });
+     
     const scriptid = await Publish.findOne({ _id: scriptId });
-    const directorProfile = await DirectorProfile.findOne({
-      directorId: directorId,
-    });
-
+    const directorProfile = await DirectorProfile.findOne({ directorId: directorId });
+    
     console.log(directorProfile);
-
+    
     if (!scriptid || !directorProfile) {
-      return res
-        .status(404)
-        .json({ message: "Script or director profile not found" });
+      return res.status(404).json({ message: "Script or director profile not found" });
     }
-
+    
     const imageUrl = `http://127.0.0.1:8000/api/v1/getProfileImageForDirector/${directorProfile.profilePic}`;
-
+    
     const script = await Publish.findByIdAndUpdate(
       scriptId,
       {
-        $addToSet: {
+        $addToSet: { 
           purchasedBy: directorId,
           purchaserUsernames: {
             _id: directorId,
@@ -251,11 +244,12 @@ exports.directorpaymentverification = catchAsyncError(
         runValidators: true,
       }
     );
-
+    
+    
     if (!script) {
       return res.status(500).json({ message: "Failed to update script" });
     }
-
+    
     const paymentUpdateResult = await DirectorPayment.findOneAndUpdate(
       { order_id },
       {
@@ -266,13 +260,10 @@ exports.directorpaymentverification = catchAsyncError(
         runValidators: true,
       }
     );
-
+    
     if (!paymentUpdateResult) {
-      return res
-        .status(500)
-        .json({ message: "Failed to update director's payment" });
+      return res.status(500).json({ message: "Failed to update director's payment" });
     }
-
+    
     res.json({ status: "ok", script });
-  }
-);
+  });    

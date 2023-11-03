@@ -381,9 +381,7 @@ exports.getScriptsByScriptTypeAndGenre = catchAsyncError(
       const skip = (page - 1) * limit;
 
       // Define the query object based on whether genre is provided or not
-      const query = genre
-        ? { scriptType, genre, ispaid: true }
-        : { scriptType, ispaid: true }; // Change filter for ispaid field to true
+      const query = genre ? { scriptType, genre, ispaid: true } : { scriptType, ispaid: true }; // Change filter for ispaid field to true
 
       // Fetch scripts of the specified genre and populate the 'writerId' field with 'userName'
       const publish = await Publish.find(query).skip(skip).limit(limit);
@@ -553,7 +551,6 @@ exports.updateScriptStatusRead = catchAsyncError(async (req, res, next) => {
 
     // Assuming you have a Mongoose model for your script named "Publish"
     const script = await Publish.findById(scriptId);
-    console.log(scriptId, directorId);
 
     // If the script is not found, return an error
     if (!script) {

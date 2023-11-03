@@ -14,7 +14,7 @@ const fileFilter = (req, file, cb) => {
     "image/tiff",
     "image/webp",
   ];
-
+  
   if (allowedMimeTypes.includes(file.mimetype)) {
     cb(null, true);
   } else {
@@ -37,11 +37,7 @@ const router = express.Router();
 
 router
   .route("/myprofile")
-  .put(
-    upload.fields([{ name: "profilePic", maxCount: 1 }]),
-    isAuthenticatedUser,
-    createUserProfile
-  );
+  .put(upload.fields([{ name: "profilePic", maxCount: 1 }]),isAuthenticatedUser, createUserProfile);
 
 router.route("/myprofile/:id").get(isAuthenticatedUser, getUserProfile);
 
