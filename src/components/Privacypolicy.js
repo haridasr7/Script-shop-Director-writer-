@@ -53,7 +53,6 @@ const Privacypolicy = () => {
             <p>
               <h2>1. Information We Collect</h2>
               <br />
-              <br />
               <b>Information You Provide:</b>
               <br />
               <br /> When you sign up for an account, use our Service, or
@@ -163,7 +162,7 @@ const Privacypolicy = () => {
               section of our Privacy Policy.
               <br />
               <br />
-              <h2>2. How We Use Your Information</h2> <br />
+              <h2>2. How We Use Your Information</h2>
               <br />
               The Company may use Personal Data for the following purposes:
               <br />

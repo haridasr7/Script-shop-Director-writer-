@@ -1,28 +1,31 @@
+* {
+  box-sizing: border-box;
+}
 
 .rating-outer {
-    display: inline-block;
-    position: relative;
-    font-size: 24px; /* Adjust the font size to control the size of the stars */
-    line-height: 1;
-  }
-  /* Styles for the filled part of the rating */
-  .rating-inner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    overflow: hidden;
-     /* Change the color to represent filled stars */
-  }
-  /* Styles for the unfilled part of the rating */
-  .rating-outer::before {
-    content: '\2605\2605\2605\2605\2605'; /* Unicode representation of five empty stars */
-    color: lightgray; /* Change the color to represent empty stars */
-  }
-  .rating-inner::before {
-    content: '\2605\2605\2605\2605\2605'; /* Unicode representation of five empty stars */
-    color: gold; /* Change the color to represent empty stars */
-  }
+  display: inline-block;
+  position: relative;
+  font-size: 24px; /* Adjust the font size to control the size of the stars */
+  line-height: 1;
+}
+/* Styles for the filled part of the rating */
+.rating-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+  /* Change the color to represent filled stars */
+}
+/* Styles for the unfilled part of the rating */
+.rating-outer::before {
+  content: "\2605\2605\2605\2605\2605"; /* Unicode representation of five empty stars */
+  color: lightgray; /* Change the color to represent empty stars */
+}
+.rating-inner::before {
+  content: "\2605\2605\2605\2605\2605"; /* Unicode representation of five empty stars */
+  color: gold; /* Change the color to represent empty stars */
+}
 /* Loader */
 .loader {
   display: block;
@@ -34,14 +37,14 @@
   padding-left: 0;
 }
 .loader:after {
-  content: ' ';
+  content: " ";
   display: block;
   width: 64px;
   height: 64px;
   margin: 8px;
   border-radius: 50%;
-  border: 6px solid #14ABE4;
-  border-color: #14ABE4 transparent;
+  border: 6px solid #14abe4;
+  border-color: #14abe4 transparent;
   animation: lds-dual-ring 1.2s linear infinite;
 }
 @keyframes lds-dual-ring {

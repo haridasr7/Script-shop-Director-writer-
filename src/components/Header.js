@@ -14,6 +14,8 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import NavbarWriter from "./writernavbar/NavbarWriter";
 import backgroundImage from "../imagesrc/OBJECTS.png";
 import FooterLanding from "./navbarlanding/Footerlanding";
+import FooterDirector from "./writernavbar/Footerwriter";
+
 const RoundImage = styled("img")({
   maxWidth: "100%",
   height: "40px",
@@ -80,15 +82,10 @@ const Header = () => {
           </div>
         </div>
         <Container>
-          <div
-            style={{
-              textAlign: "center",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
+          <div className="yourDashBoard">
             <h3>Your Dashboard</h3>
           </div>
+
           <div
             className="maincontainer"
             style={{ display: "flex", marginTop: "5%" }}
@@ -173,7 +170,7 @@ const Header = () => {
           </div>
         </Container>
         <br />
-        <FooterLanding />
+        <FooterDirector />
       </div>
     </div>
   );

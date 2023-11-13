@@ -11,8 +11,8 @@ import {
   Input,
 } from "@mui/material";
 import FooterDirector from "./writernavbar/Footerwriter";
-import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { writerPay } from "../actions/scriptAction";
@@ -44,12 +44,11 @@ function PublishScript() {
   const [scriptType, setScriptType] = useState("Script Type");
   const [scriptFile, setScriptFile] = useState(null);
   const [imageFile, setImageFile] = useState(null);
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { isAuthenticated, user } = useSelector((state) => state.authState);
   const [amount] = useState(1000);
 
-  
   const handleMovieNameChange = (e) => {
     setMovieName(e.target.value);
   };
@@ -79,10 +78,8 @@ function PublishScript() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
   };
-  
- 
+
   useEffect(() => {
     if (isSubmitting) {
       const formData = new FormData();
@@ -92,11 +89,18 @@ function PublishScript() {
       formData.append("scriptType", scriptType);
       formData.append("scriptFile", scriptFile);
       formData.append("imageFile", imageFile);
-  
-      console.log(movieName, synopsis, genre, scriptType, scriptFile, imageFile);
+
+      console.log(
+        movieName,
+        synopsis,
+        genre,
+        scriptType,
+        scriptFile,
+        imageFile
+      );
       // Replace with your actual API endpoint URL
       const apiUrl = `/api/v1/publish/new/${user._id}`; // API to send the request
-  
+
       fetch(apiUrl, {
         method: "POST",
         body: formData,
@@ -122,9 +126,17 @@ function PublishScript() {
           setIsSubmitting(false);
         });
     }
-  }, [user._id, isSubmitting, movieName, synopsis, genre, scriptType, scriptFile, imageFile]);
-  
- 
+  }, [
+    user._id,
+    isSubmitting,
+    movieName,
+    synopsis,
+    genre,
+    scriptType,
+    scriptFile,
+    imageFile,
+  ]);
+
   return (
     <div>
       <div className="publishscriptHeader">
@@ -260,7 +272,7 @@ function PublishScript() {
                     }
                     style={{ marginTop: "-4px" }}
                   >
-                    Upload Image File
+                    Upload Cover Image
                   </Button>
                 </label>
                 <Button

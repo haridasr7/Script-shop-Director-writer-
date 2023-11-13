@@ -90,6 +90,15 @@
   width: 80%;
 }
 
+.Dphone:active {
+  border: 1px solid !important;
+  border-color: #14abe4 !important;
+}
+/* Add this CSS to your stylesheet */
+input:focus {
+  outline: none;
+}
+
 .DPRbutton {
   display: flex;
   margin: auto;
@@ -98,31 +107,31 @@
   color: white;
   border-radius: 5px;
   font-weight: bold;
-  width: 85%;
+  width: 82%;
   justify-content: center;
   align-items: center;
   min-height: 30px;
   padding: 10px;
-  width: 100px;
+
   height: 30px;
   font-size: 15px;
 }
 
-.DPRUpdateButton{
-   display: flex;
-   flex-direction: row;
+.DPRUpdateButton {
+  display: flex;
+  flex-direction: row;
   margin: auto;
   background-color: #14abe4;
   border-color: #14abe4;
   color: white;
   border-radius: 5px;
   font-weight: bold;
-  width: 85%;
+  width: 82%;
   justify-content: center;
   align-items: center;
   min-height: 30px;
   padding: 10px;
-  width: 100px;
+
   height: 30px;
   font-size: 15px;
 }

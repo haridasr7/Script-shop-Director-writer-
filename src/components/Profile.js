@@ -2,15 +2,22 @@ import React, { Fragment, useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import { useDispatch, useSelector } from "react-redux";
-import { clearSuccessMessage, clearloadingError, addWriterProfile, writerDetails } from "../actions/scriptAction";
+import {
+  clearSuccessMessage,
+  clearloadingError,
+  addWriterProfile,
+  writerDetails,
+} from "../actions/scriptAction";
 import { toast } from "react-toastify";
 import NavbarWriter from "./writernavbar/NavbarWriter";
 import FooterDirector from "./writernavbar/Footerwriter";
 import Loader from "./Loader";
 
+import CreateIcon from "@mui/icons-material/Create";
+
 function DirectorProfile() {
-  const [profilePic, setprofilePic] = useState("");
-    const [profilePic1, setprofilePic1] = useState("");
+  const [profilePic, setprofilePic] = useState(null);
+  const [profilePic1, setprofilePic1] = useState(null);
 
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
@@ -18,7 +25,14 @@ function DirectorProfile() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const dispatch = useDispatch();
 
-  const { loading, writerProfile, profilePhoto, error, isAuthenticated, message } = useSelector((state) => state.scriptsState);
+  const {
+    loading,
+    writerProfile,
+    profilePhoto,
+    error,
+    isAuthenticated,
+    message,
+  } = useSelector((state) => state.scriptsState);
   const { user } = useSelector((state) => state.authState);
 
   useEffect(() => {
@@ -29,7 +43,7 @@ function DirectorProfile() {
 
   useEffect(() => {
     if (writerProfile && profilePhoto) {
-      console.log(profilePhoto)
+      console.log(profilePhoto);
       setName(writerProfile.name || "");
       setBio(writerProfile.bio || "");
       setBusinessEmail(writerProfile.businessEmail || "");
@@ -67,7 +81,6 @@ function DirectorProfile() {
     const file = e.target.files[0];
     setprofilePic(file);
     setprofilePic1(URL.createObjectURL(file));
-    
   };
 
   const handleSubmit = (e) => {
@@ -93,23 +106,57 @@ function DirectorProfile() {
             <div className="DPMainSub">
               <div className="DPLeft">
                 <p className="DPLeftp">
-                  Complete the profile so that people can know you better..
+                  Complete the profile so that people can know you better.
                 </p>
-                <img className="DPLeftImg" src="./Images/bgg.png" alt="Background" />
+                <img
+                  className="DPLeftImg"
+                  src="./Images/bgg.png"
+                  alt="Background"
+                />
               </div>
               <div className="DPRight">
                 <div className="DPRBox">
-                {
-                  profilePic1 &&  <img className="DPRImg" src={profilePic1} />
-                }
-                 
+                  {profilePic1 && <img className="DPRImg" src={profilePic1} />}
+                  <label htmlFor="profilePicInput" className="DPRAI">
+                    <CreateIcon fontSize="large" />
+                  </label>
+                  <input
+                    id="profilePicInput"
+                    type="file"
+                    accept="image/*"
+                    onChange={handlePhotoChange}
+                    style={{ display: "none" }}
+                  />
 
-                  <input className="DPRAI" type="file" accept="image/*" onChange={handlePhotoChange} />
                   <form onSubmit={handleSubmit} className="DPRInput">
-                    <input type="text" placeholder="Name" className="Dname" value={name} onChange={(e) => setName(e.target.value)} />
-                    <input type="text" placeholder="Bio" className="Dbio" value={bio} onChange={(e) => setBio(e.target.value)} />
-                    <input type="email" placeholder="Business Mail" className="Dmail" value={businessEmail} onChange={(e) => setBusinessEmail(e.target.value)} />
-                    <input type="phone" placeholder="Phone" className="Dphone" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+                    <input
+                      type="text"
+                      placeholder="Name"
+                      className="Dname"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                    <input
+                      type="text"
+                      placeholder="Bio"
+                      className="Dbio"
+                      value={bio}
+                      onChange={(e) => setBio(e.target.value)}
+                    />
+                    <input
+                      type="email"
+                      placeholder="Business Mail"
+                      className="Dmail"
+                      value={businessEmail}
+                      onChange={(e) => setBusinessEmail(e.target.value)}
+                    />
+                    <input
+                      type="phone"
+                      placeholder="Phone"
+                      className="Dphone"
+                      value={phoneNumber}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
+                    />
                     <button className="DPRbutton" type="submit">
                       Save
                     </button>

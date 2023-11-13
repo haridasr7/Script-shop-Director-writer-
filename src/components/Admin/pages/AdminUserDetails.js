@@ -184,7 +184,10 @@ function AdminUserDetails() {
               </Grid>
               <Grid item lg={3}>
                 <FormControl fullWidth>
-                  <InputLabel className="AdminUserDetails_dropdowntext">
+                  <InputLabel
+                    className="AdminUserDetails_dropdowntext"
+                    sx={{ color: "#fff" }}
+                  >
                     Select
                   </InputLabel>
                   <Select

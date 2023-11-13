@@ -6,12 +6,18 @@ import Navbar from "../component/NavbarDirector";
 import FooterDirector from "../component/FooterDirector";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import { useDispatch, useSelector } from "react-redux";
-import { addDirectorProfile, clearSuccessMessage, clearloadingError, getDirectorProfile } from "../../../actions/scriptAction";
+import {
+  addDirectorProfile,
+  clearSuccessMessage,
+  clearloadingError,
+  getDirectorProfile,
+} from "../../../actions/scriptAction";
 import { toast } from "react-toastify";
+import CreateIcon from "@mui/icons-material/Create";
 
-function DirectorProfile ()  {
+function DirectorProfile() {
   const [profilePic, setprofilePic] = useState("");
-    const [profilePic1, setprofilePic1] = useState("");
+  const [profilePic1, setprofilePic1] = useState("");
 
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
@@ -27,12 +33,12 @@ function DirectorProfile ()  {
     message,
   } = useSelector((state) => state.scriptsState);
   const { user } = useSelector((state) => state.authState);
- 
+
   useEffect(() => {
-   if (user.profile) {
-     dispatch(getDirectorProfile(user._id));
-   }
- }, [dispatch, user]);
+    if (user.profile) {
+      dispatch(getDirectorProfile(user._id));
+    }
+  }, [dispatch, user]);
 
   useEffect(() => {
     if (directorProfile && profilePhoto) {
@@ -41,8 +47,7 @@ function DirectorProfile ()  {
       setBusinessEmail(directorProfile.businessEmail);
       setPhoneNumber(directorProfile.phoneNumber);
       setprofilePic(profilePhoto);
-            setprofilePic1(profilePhoto);
-
+      setprofilePic1(profilePhoto);
     }
   }, [directorProfile, profilePhoto]);
 
@@ -72,7 +77,7 @@ function DirectorProfile ()  {
 
   const handlePhotoChange = (e) => {
     const file = e.target.files[0];
-    setprofilePic(file)
+    setprofilePic(file);
     setprofilePic1(URL.createObjectURL(file));
   };
   const handleSubmit = (e) => {
@@ -83,14 +88,14 @@ function DirectorProfile ()  {
     formData.append("bio", bio);
     formData.append("businessEmail", businessEmail);
     formData.append("phoneNumber", phoneNumber);
-    console.log(profilePic)
+    console.log(profilePic);
     dispatch(addDirectorProfile(formData, user._id));
   };
   return (
     <Fragment>
       {loading ? (
         <Loader />
-      ) :  
+      ) : (
         <Fragment>
           <Navbar />
           <div className="DPMAin">
@@ -107,16 +112,17 @@ function DirectorProfile ()  {
               </div>
               <div className="DPRight">
                 <div className="DPRBox">
-                  <img
-                    className="DPRImg"
-                    src={profilePic1}
-                  />
-                  
+                  <img className="DPRImg" src={profilePic1} />
+
+                  <label htmlFor="profilePicInput" className="DPRAI">
+                    <CreateIcon fontSize="large" />
+                  </label>
                   <input
-                    className="DPRAI"
+                    id="profilePicInput"
                     type="file"
-                      accept="image/*"
+                    accept="image/*"
                     onChange={handlePhotoChange}
+                    style={{ display: "none" }}
                   />
                   <form onSubmit={handleSubmit} className="DPRInput">
                     <input
@@ -157,10 +163,9 @@ function DirectorProfile ()  {
           </div>
           <FooterDirector />
         </Fragment>
-      }
+      )}
     </Fragment>
   );
 }
-
 
 export default DirectorProfile;

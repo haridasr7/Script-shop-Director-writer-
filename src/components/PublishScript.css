@@ -7,9 +7,9 @@
   /* gap: 5vw; */
 }
 .publishscriptheading {
-  color: #000;
+  color: #14abe4;
   font-family: Inter !important;
-  font-size: 32px !important;
+  font-size: 48px !important;
   font-style: normal !important;
   font-weight: 500 !important;
   line-height: normal !important;
@@ -226,5 +226,8 @@
   }
   .publishscriptHeader {
     margin-top: 7vw;
+  }
+  .publishscriptheading {
+    font-size: 40px !important;
   }
 }

@@ -1,22 +1,22 @@
-import React, {useEffect, useState,useRef } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import './navbarlanding.css';
-import '../Landing.css';
-import { Button, Typography } from '@mui/material';
-import PersonIcon from '@mui/icons-material/Person';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import IconButton from '@mui/material/IconButton';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
-import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../../actions/userActions';
+import React, { useEffect, useState, useRef } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import "./navbarlanding.css";
+import "../Landing.css";
+import { Button, Typography } from "@mui/material";
+import PersonIcon from "@mui/icons-material/Person";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import IconButton from "@mui/material/IconButton";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../actions/userActions";
 
 function Navbarlanding() {
   const [isOpenD1, setIsOpenD1] = useState(false);
   const [isOpenD2, setIsOpenD2] = useState(false);
-  const [profileImage, setProfileImage] = useState('');
+  const [profileImage, setProfileImage] = useState("");
 
   const dropdownRef = useRef(null);
 
@@ -46,12 +46,12 @@ function Navbarlanding() {
 
     // Attach the event listener when the popup is open
     if (isOpenD1) {
-      document.addEventListener('click', handleClickOutside);
+      document.addEventListener("click", handleClickOutside);
     }
 
     // Clean up the event listener when the component unmounts or the popup is closed
     return () => {
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, [isOpenD1]);
 
@@ -59,47 +59,67 @@ function Navbarlanding() {
     <div className="navbarMainDiv">
       <nav className="CommonNavbar">
         <div className="Navleft-section">
-        <Link style={{ textDecoration: 'none' }} id='DNImageLink' to={'/'}> <img
-            className="CNavLogo"
-            src="./images/navbarLogo.png"
-            alt="Logo"
-          /></Link>
+          <Link style={{ textDecoration: "none" }} id="DNImageLink" to={"/"}>
+            {" "}
+            <img
+              className="CNavLogo"
+              src="./images/navbarLogo.png"
+              alt="Logo"
+            />
+          </Link>
         </div>
         <div className="Navcenter-section">
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/")}
+            className={
+              location.pathname === "/" ? "Navbaractive" : "NavbarInactive"
+            }
+          >
+            <Typography id="navbarC3Typo">Home</Typography>
+          </div>
           {!isAuthenticated ? null : (
             <>
-              {user.role == 'writer' ? (
-                <div style={{ cursor: 'pointer' }} onClick={() => navigate('/Writerhome')}>
-                <Typography id="navbarC3Typo">Home</Typography>
+              {user.role == "writer" ? (
+                <div
+                  style={{ cursor: "pointer" }}
+                  onClick={() => navigate("/Writerhome")}
+                >
+                  <Typography id="navbarC3Typo">Home</Typography>
                 </div>
-                 
-               
               ) : (
-               
-                <div style={{ cursor: 'pointer' }} onClick={() => navigate('/Directorhome')}>
-                <Typography id="navbarC3Typo">Home</Typography>
+                <div
+                  style={{ cursor: "pointer" }}
+                  onClick={() => navigate("/Directorhome")}
+                >
+                  <Typography id="navbarC3Typo">Home</Typography>
                 </div>
-                
               )}
             </>
           )}
           <Link
             to="/services"
-            className={location.pathname === '/services' ? 'Navbaractive' : 'NavbarInactive'}
+            className={
+              location.pathname === "/services"
+                ? "Navbaractive"
+                : "NavbarInactive"
+            }
           >
             <Typography id="navbarC3Typo1">Services</Typography>
           </Link>
           <Link
             to="/ContactUs"
             className={
-              location.pathname === '/ContactUs' ? 'Navbaractive' : 'NavbarInactive'
+              location.pathname === "/ContactUs"
+                ? "Navbaractive"
+                : "NavbarInactive"
             }
           >
             <Typography id="navbarC3Typo2">Contact Us</Typography>
           </Link>
         </div>
 
-        <div className="Navright-section" style={{ paddingLeft: '20%' }}>
+        <div className="Navright-section" style={{ paddingLeft: "20%" }}>
           <div className="ltwobuttons">
             {isAuthenticated ? (
               <Button
@@ -114,14 +134,14 @@ function Navbarlanding() {
                 <Button
                   class="lcustom-button"
                   variant="contained"
-                  onClick={() => navigate('/login')}
+                  onClick={() => navigate("/login")}
                 >
                   Login
                 </Button>
                 <Button
                   class="lcustom-button"
                   variant="contained"
-                  onClick={() => navigate('/signup')}
+                  onClick={() => navigate("/signup")}
                 >
                   Sign Up
                 </Button>
@@ -133,8 +153,11 @@ function Navbarlanding() {
       <div className="navbarFollowers">
         <IconButton
           id="NavbarCMenu"
-          sx={{ marginLeft: 'auto' }}
-          onClick={(event)=>{ event.stopPropagation(); setIsOpenD1(!isOpenD1)}}
+          sx={{ marginLeft: "auto" }}
+          onClick={(event) => {
+            event.stopPropagation();
+            setIsOpenD1(!isOpenD1);
+          }}
         >
           <MenuIcon />
         </IconButton>
@@ -149,27 +172,28 @@ function Navbarlanding() {
             </div>
             <hr className="navdropHr2"></hr>
             <ul className="navbarCdropdown-menuUL">
-                <li>
+              <li>
                 {!isAuthenticated ? null : (
-            <>
-              {user.role == 'writer' ? (
-                <div style={{ cursor: 'pointer' }} onClick={() => navigate('/Writerhome')}>
-                <p className="navbarCdropdown-menuTypo">Home</p>
-                </div>
-                 
-               
-              ) : (
-             
-               
-                <div style={{ cursor: 'pointer' }} onClick={() => navigate('/Directorhome')}>
-                <p className="navbarCdropdown-menuTypo">Home</p>
-                </div>
-                
-              )}
-            </>
-          )}
-                </li>
-             
+                  <>
+                    {user.role == "writer" ? (
+                      <div
+                        style={{ cursor: "pointer" }}
+                        onClick={() => navigate("/Writerhome")}
+                      >
+                        <p className="navbarCdropdown-menuTypo">Home</p>
+                      </div>
+                    ) : (
+                      <div
+                        style={{ cursor: "pointer" }}
+                        onClick={() => navigate("/Directorhome")}
+                      >
+                        <p className="navbarCdropdown-menuTypo">Home</p>
+                      </div>
+                    )}
+                  </>
+                )}
+              </li>
+
               <Link to="/services" className="navbarCdropdown-menuULLink">
                 <li>
                   <div className="navbarCdropdown-menuLi">
